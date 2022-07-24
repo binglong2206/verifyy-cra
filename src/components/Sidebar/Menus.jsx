@@ -12,6 +12,7 @@ import { CreativeTimLogo } from "../Icons/Icons";
 import Separator from "../Separator";
 import { NavLink, useLocation } from "react-router-dom";
 import routes from "../../routes";
+import OpenSourceCard from "./OpenSourceCard";
 
 
 
@@ -183,6 +184,7 @@ const Menus = () => {
     <Stack direction="column" mb="40px">
         <Box>{links}</Box>
     </Stack>
+    <OpenSourceCard />
     </>
   )
 }
