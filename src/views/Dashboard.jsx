@@ -5,6 +5,7 @@ import MainPanel from "../components/layouts/MainPanel";
 import PanelContainer from "../components/layouts/PanelContainer";
 import PanelContent from "../components/layouts/PanelContent";
 import Navbar from "../components/Navbar";
+import Footer from "../components/footer/Footer";
 
 
 export default function Dashboard() {
@@ -30,7 +31,7 @@ export default function Dashboard() {
               <div>main content</div>
           </PanelContainer>
         </PanelContent>
-        <div>footer</div>
+        <Footer />
 
         <Portal>
             <div>dark light fixed button</div>
