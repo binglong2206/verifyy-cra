@@ -5,7 +5,8 @@ import MainPanel from "../components/layouts/MainPanel";
 import PanelContainer from "../components/layouts/PanelContainer";
 import PanelContent from "../components/layouts/PanelContent";
 import Navbar from "../components/Navbar";
-import Footer from "../components/footer/Footer";
+import Footer from "../components/Footer";
+import ConfigFixedButton from "../components/config/ConfigFixedButton";
 
 
 export default function Dashboard() {
@@ -34,10 +35,10 @@ export default function Dashboard() {
         <Footer />
 
         <Portal>
-            <div>dark light fixed button</div>
+            <ConfigFixedButton />
         </Portal>
 
-        <div>github sidebar</div>
+        <div>Config sidebar</div>
         
       </MainPanel>
       </>
