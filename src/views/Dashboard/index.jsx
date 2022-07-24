@@ -3,6 +3,8 @@ import { ChakraProvider, Portal, useDisclosure } from "@chakra-ui/react";
 import Sidebar from "../../components/Sidebar";
 import routes from "routes.js";
 import MainPanel from "../../components/Layout/MainPanel";
+import PanelContainer from "../../components/layouts/PanelContainer";
+import PanelContent from "../../components/layouts/PanelContent";
 
 
 export default function Dashboard() {
@@ -13,20 +15,30 @@ export default function Dashboard() {
 
   return (
     <> 
-    <Sidebar
-        routes={routes}
-        logoText={"VERIFYY.co"}
-        display="none"
-        sidebarVariant='transparent'
-      />
+    <Sidebar />
       <MainPanel
         w={{
           base: "100%",
           xl: "calc(100% - 275px)",
         }}
       >
+        <Portal>
+            <div>Nav bar</div>
+        </Portal>
 
-   
+        <PanelContent>
+          <PanelContainer>
+              <div>main content</div>
+          </PanelContainer>
+        </PanelContent>
+        <div>footer</div>
+
+        <Portal>
+            <div>dark light fixed button</div>
+        </Portal>
+
+        <div>github sidebar</div>
+        
       </MainPanel>
       </>
 );
