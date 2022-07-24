@@ -1,13 +1,12 @@
-// chakra imports
+import React, {useRef} from "react";
 import {
     Box, useColorModeValue
   } from "@chakra-ui/react";
-  import React from "react";
 import Menus from "./Menus";
   
   
 const Sidebar = () => {
-    const mainPanel = React.useRef();
+    const mainPanel = useRef();
     let variantChange = "0.2s linear";
     let sidebarBg = "none";
     let sidebarRadius = "0px";

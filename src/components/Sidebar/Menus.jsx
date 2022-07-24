@@ -1,4 +1,4 @@
-// chakra imports
+import React from "react";
 import {
     Box,
     Button, Flex,
@@ -9,8 +9,7 @@ import {
 } from "@chakra-ui/react";
 import IconBox from "../Icons/IconBox";
 import { CreativeTimLogo } from "../Icons/Icons";
-import { Separator } from "../Separator";
-import React from "react";
+import Separator from "../Separator";
 import { NavLink, useLocation } from "react-router-dom";
 import routes from "../../routes";
 
@@ -184,7 +183,6 @@ const Menus = () => {
     <Stack direction="column" mb="40px">
         <Box>{links}</Box>
     </Stack>
-    <SidebarHelp />
     </>
   )
 }

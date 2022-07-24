@@ -1,5 +1,5 @@
 // import
-
+import React from "react";
 import Dashboard from "../views/Dashboard";
 import {
   HomeIcon,
@@ -17,21 +17,21 @@ const dashRoutes = [
     name: "Dashboard",
     icon: <PersonIcon color="inherit" />,
     secondaryNavbar: true,
-    component: Dashboard,
+    // component: Dashboard,
     layout: "/edit",
   },
   {
     path: "/dashboard",
     name: "Profile",
     icon: <StatsIcon color="inherit" />,
-    component: Dashboard,
+    // component: Dashboard,
     layout: "/admin",
   },
   {
     path: "/dashboard",
     name: "Background",
     icon: <CreditIcon color="inherit" />,
-    component: Dashboard,
+    // component: Dashboard,
     layout: "/admin",
   },
   {
@@ -44,7 +44,7 @@ const dashRoutes = [
         path: "/dashboard",
         name: "Youtube",
         icon: <DocumentIcon color="inherit" />,
-        component: Dashboard,
+        // component: Dashboard,
         layout: "/auth",
       },
       {
@@ -52,7 +52,7 @@ const dashRoutes = [
         name: "Instagram",
         icon: <RocketIcon color="inherit" />,
         secondaryNavbar: true,
-        component: Dashboard,
+        // component: Dashboard,
         layout: "/auth",
       },
       {
@@ -60,7 +60,7 @@ const dashRoutes = [
         name: "Facebook",
         icon: <RocketIcon color="inherit" />,
         secondaryNavbar: true,
-        component: Dashboard,
+        // component: Dashboard,
         layout: "/auth",
       },
     ],
