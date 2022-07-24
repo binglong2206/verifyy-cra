@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChakraProvider, Portal, useDisclosure } from "@chakra-ui/react";
+import { ChakraProvider, Portal, useDisclosure, useColorModeValue, Flex } from "@chakra-ui/react";
 import Sidebar from "../components/Sidebar";
 import MainPanel from "../components/layouts/MainPanel";
 import PanelContainer from "../components/layouts/PanelContainer";
@@ -8,11 +8,19 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ConfigFixedButton from "../components/config/ConfigFixedButton";
 import ConfigSideBar from "../components/config/ConfigSideBar";
+import ProfileBgImage from "../assets/img/ProfileBackground.png";
+import avatar from "../assets/img/avatar.png";
+import DashboardHeader from "../components/DashboardHeader";
+
 
 
 export default function Dashboard() {
-  const [fixed, setFixed] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const textColor = useColorModeValue("gray.700", "white");
+  const bgProfile = useColorModeValue(
+    "hsla(0,0%,100%,.8)",
+    "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
+  );
   document.documentElement.dir = "ltr";
 
   return (
@@ -30,7 +38,16 @@ export default function Dashboard() {
 
         <PanelContent>
           <PanelContainer>
-              <div>main content</div>
+            <Flex direction='column'>
+              <DashboardHeader
+                  backgroundHeader={ProfileBgImage}
+                  backgroundProfile={bgProfile}
+                  avatarImage={avatar}
+                  name={"Matthew Ryu"}
+                  email={"MatthewFireHand@gmail.com"} />
+
+                <div>charts......</div>
+              </Flex>
           </PanelContainer>
         </PanelContent>
         <Footer />
