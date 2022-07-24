@@ -1,15 +1,12 @@
-// Chakra Imports
+import React, { useState } from "react";
 import {
   Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
   Flex,
-  Link,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
 import AdminNavbarLinks from "./AdminNavbarLinks";
+import { SettingsIcon } from "../Icons/Icons";
+
 
 export default function Navbar({onOpen}) {
 
@@ -25,6 +22,10 @@ export default function Navbar({onOpen}) {
   let secondaryMargin = "22px"; // 0px
   let paddingX = "30px";
 
+  let mainTeal = useColorModeValue("teal.300", "teal.300");
+  let inputBg = useColorModeValue("white", "gray.800");
+  let navBarColor = useColorModeValue("gray.500", "gray.200");
+  let searchIcon = useColorModeValue("gray.700", "gray.200");
 
   return (
     <Flex
@@ -71,7 +72,24 @@ export default function Navbar({onOpen}) {
         alignItems={{ xl: "center" }}
       >
         
-        <div>menu list</div>
+      <Box ms="auto" w={{ sm: "100%", md: "unset" }}>
+      <Flex
+        pe={{ sm: "0px", md: "16px" }}
+        w={{ sm: "100%", md: "auto" }}
+        alignItems="center"            
+        flexDirection="row">
+          <div>mobile menu responsive</div>
+        <SettingsIcon
+            cursor="pointer"
+            ms={{ base: "16px", xl: "0px" }}
+            me="16px"
+            onClick={onOpen}
+            color={navBarColor}
+            w="18px"
+            h="18px"
+          />
+      </Flex>
+        </Box>
       </Flex>
     </Flex>
   );
