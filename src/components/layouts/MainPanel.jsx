@@ -1,7 +1,7 @@
 import { Box, useStyleConfig } from "@chakra-ui/react";
 function MainPanel(props) {
   const { variant, children, ...rest } = props;
-  const styles = useStyleConfig("MainPanel", { variant });
+  const styles = useStyleConfig("MainPanel", 'transparent');
   // Pass the computed styles into the `__css` prop
   return (
     <Box __css={styles} {...rest}>

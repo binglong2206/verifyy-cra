@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { ChakraProvider, Portal, useDisclosure } from "@chakra-ui/react";
 import Sidebar from "../../components/Sidebar";
-import routes from "routes.js";
-import MainPanel from "../../components/Layout/MainPanel";
+import MainPanel from "../../components/layouts/MainPanel";
 import PanelContainer from "../../components/layouts/PanelContainer";
 import PanelContent from "../../components/layouts/PanelContent";
 
 
 export default function Dashboard() {
   const [fixed, setFixed] = useState(false);
-  
   const { isOpen, onOpen, onClose } = useDisclosure();
   document.documentElement.dir = "ltr";
 
