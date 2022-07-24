@@ -16,9 +16,9 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { Separator } from "components/Separator/Separator";
+import Separator  from "../Separator";
 
-export default function Configurator({isOpen, onClose}) {
+export default function ConfigSideBar({isOpen, onClose}) {
 
   const { colorMode, toggleColorMode } = useColorMode();
   let bgButton = useColorModeValue(
@@ -44,15 +44,30 @@ export default function Configurator({isOpen, onClose}) {
           <DrawerHeader pt="24px" px="24px">
             <DrawerCloseButton />
             <Text fontSize="xl" fontWeight="bold" mt="16px">
-              config sidebar
+              Configure Dashboard
             </Text>
             <Text fontSize="md" mb="16px">
-              Sblah blah chart stuff
+              Select your charts
             </Text>
             <Separator />
           </DrawerHeader>
           <DrawerBody w="340px" ps="24px" pe="40px">
-       <div>content</div>
+            <Flex flexDirection="column">
+              <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                mb="24px"
+              >
+                <Text fontSize="md" fontWeight="600" mb="4px">
+                  Dark/Light
+                </Text>
+                <Button onClick={toggleColorMode}>
+                  Toggle {colorMode === "light" ? "Dark" : "Light"}
+                </Button>
+              </Flex>
+              <Separator />
+              <div>chart config options</div>
+            </Flex>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

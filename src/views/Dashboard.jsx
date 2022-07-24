@@ -7,6 +7,7 @@ import PanelContent from "../components/layouts/PanelContent";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ConfigFixedButton from "../components/config/ConfigFixedButton";
+import ConfigSideBar from "../components/config/ConfigSideBar";
 
 
 export default function Dashboard() {
@@ -35,12 +36,12 @@ export default function Dashboard() {
         <Footer />
 
         <Portal>
-            <ConfigFixedButton />
+          <ConfigFixedButton onOpen={onOpen} />
         </Portal>
-
-        <div>Config sidebar</div>
-        
+        <ConfigSideBar 
+          isOpen={isOpen}
+          onClose={onClose} />
       </MainPanel>
-      </>
+    </>
 );
 }
