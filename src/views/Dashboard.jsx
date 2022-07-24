@@ -4,6 +4,7 @@ import Sidebar from "../components/Sidebar";
 import MainPanel from "../components/layouts/MainPanel";
 import PanelContainer from "../components/layouts/PanelContainer";
 import PanelContent from "../components/layouts/PanelContent";
+import Navbar from "../components/Navbar";
 
 
 export default function Dashboard() {
@@ -21,7 +22,7 @@ export default function Dashboard() {
         }}
       >
         <Portal>
-            <div>Nav bar</div>
+            <Navbar />
         </Portal>
 
         <PanelContent>

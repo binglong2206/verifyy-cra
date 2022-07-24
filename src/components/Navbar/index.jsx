@@ -4,8 +4,8 @@ import {
   Flex,
   useColorModeValue,
 } from "@chakra-ui/react";
-import AdminNavbarLinks from "./AdminNavbarLinks";
 import { SettingsIcon } from "../Icons/Icons";
+import SidebarMobile from "../Sidebar/Mobile";
 
 
 export default function Navbar({onOpen}) {
@@ -78,16 +78,7 @@ export default function Navbar({onOpen}) {
         w={{ sm: "100%", md: "auto" }}
         alignItems="center"            
         flexDirection="row">
-          <div>mobile menu responsive</div>
-        <SettingsIcon
-            cursor="pointer"
-            ms={{ base: "16px", xl: "0px" }}
-            me="16px"
-            onClick={onOpen}
-            color={navBarColor}
-            w="18px"
-            h="18px"
-          />
+          <SidebarMobile />
       </Flex>
         </Box>
       </Flex>
