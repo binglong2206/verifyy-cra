@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { ChakraProvider, Portal, useDisclosure } from "@chakra-ui/react";
-import Sidebar from "../../components/Sidebar";
-import MainPanel from "../../components/layouts/MainPanel";
-import PanelContainer from "../../components/layouts/PanelContainer";
-import PanelContent from "../../components/layouts/PanelContent";
+import Sidebar from "../components/Sidebar";
+import MainPanel from "../components/layouts/MainPanel";
+import PanelContainer from "../components/layouts/PanelContainer";
+import PanelContent from "../components/layouts/PanelContent";
 
 
 export default function Dashboard() {

@@ -1,6 +1,5 @@
 // import
 import React from "react";
-import Dashboard from "../views/Dashboard";
 import {
   HomeIcon,
   StatsIcon,
