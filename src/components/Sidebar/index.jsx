@@ -3,15 +3,12 @@ import {
     Box, useColorModeValue
   } from "@chakra-ui/react";
   import React from "react";
-  import SidebarContent from "./SidebarContent";
 import Menus from "./Menus";
   
   
-const Sidebar = ({ logoText, routes, sidebarVariant } ) => {
+const Sidebar = () => {
     const mainPanel = React.useRef();
     let variantChange = "0.2s linear";
-  
-  
     let sidebarBg = "none";
     let sidebarRadius = "0px";
     let sidebarMargins = "0px";
