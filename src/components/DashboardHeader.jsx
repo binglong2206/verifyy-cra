@@ -1,5 +1,4 @@
-// Chakra imports
-import React from "react";
+import React, {useState, useReducer} from "react";
 import {
   Avatar,
   Box,
@@ -9,6 +8,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FaCube } from "react-icons/fa";
+import { useTabStore } from "../state/useStore";
 
 const DashboardHeader = ({
   backgroundHeader,
@@ -18,13 +18,47 @@ const DashboardHeader = ({
   email,
   tabs,
 }) => {
-  // Chakra color mode
-  const textColor = useColorModeValue("gray.700", "white");
+  // State and action are auto params set by usereducer
+  // const tabReducer = (state, action) => {
+  //   switch(action.tab){
+  //     case 'ytTab': 
+  //       return {...state, ytTab: !state.ytTab};
+  //     case 'igTab': 
+  //       return {...state, igTab: !state.igTab};
+  //     case 'fbTab': 
+  //       return {...state, fbTab: !state.fbTab};
+  //     default: 
+  //       throw new Error()
+  //   }
+  // }
+  // const [activeTab, setActiveTab] = useReducer(tabReducer, {
+  //   ytTab: true,
+  //   igTab: true,
+  //   fbTab: true
+  // })
+
+  const activeTabs = useTabStore(state=>state)
+  const setTab = useTabStore(state=> state.setTab);
+
+
+  const textColor = useColorModeValue("gray.700", "gray.600");
   const borderProfileColor = useColorModeValue(
     "white",
     "rgba(255, 255, 255, 0.31)"
   );
-  const emailColor = useColorModeValue("gray.400", "gray.300");
+  const emailColor = useColorModeValue("gray.400", "gray.500");
+  const selectedTabStyle = {
+    bg:'hsla(0,0%,100%,.3)',
+    boxShadow:'inset 0 0 1px 1px hsl(0deg 0% 100% / 90%), 0 20px 27px 0 rgb(0 0 0 / 5%)'
+  }
+  const buttonColor = useColorModeValue("gray.700", "gray.700")
+  const bgProfile = useColorModeValue(
+    "hsla(0,0%,100%,.8)",
+    "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
+  );
+  
+
+
   return (
     <Box
       mb={{ sm: "205px", md: "75px", xl: "70px" }}
@@ -56,7 +90,7 @@ const DashboardHeader = ({
           boxShadow='0px 2px 5.5px rgba(0, 0, 0, 0.02)'
           border='2px solid'
           borderColor={borderProfileColor}
-          bg={backgroundProfile}
+          bg={"hsla(0,0%,100%,.8)"}
           p='24px'
           borderRadius='20px'
           transform={{
@@ -96,15 +130,14 @@ const DashboardHeader = ({
           <Flex
             direction={{ sm: "column", lg: "row" }}
             w={{ sm: "100%", md: "50%", lg: "auto" }}>
-            <Button p='0px' bg='transparent' _hover={{ bg: "none" }}>
+            <Button p='0px' color={buttonColor} bg='transparent' _hover={{ bg: "none" }} onClick={()=>setTab('ytTab')}>
               <Flex
+                {...(activeTabs.ytTab ? selectedTabStyle : null)}
                 align='center'
-                w={{ sm: "100%", lg: "135px" }}
-                bg='hsla(0,0%,100%,.3)'
+                w={{ sm: "70%", lg: "135px" }}
                 borderRadius='15px'
                 justifyContent='center'
                 py='10px'
-                boxShadow='inset 0 0 1px 1px hsl(0deg 0% 100% / 90%), 0 20px 27px 0 rgb(0 0 0 / 5%)'
                 border='1px solid gray.200'
                 cursor='pointer'>
                 <FaCube w='100%' h='100%' />
@@ -117,10 +150,11 @@ const DashboardHeader = ({
                 </Text>
               </Flex>
             </Button>
-            <Button p='0px' bg='transparent' _hover={{ bg: "none" }}>
+            <Button p='0px' color={buttonColor} bg='transparent' _hover={{ bg: "none" }} onClick={()=>setTab('igTab')}>
               <Flex
+               {...(activeTabs.igTab ? selectedTabStyle : null)}
                 align='center'
-                w={{ lg: "135px" }}
+                w={{ sm: "70%", lg: "135px" }}
                 borderRadius='15px'
                 justifyContent='center'
                 py='10px'
@@ -136,10 +170,11 @@ const DashboardHeader = ({
                 </Text>
               </Flex>
             </Button>
-            <Button p='0px' bg='transparent' _hover={{ bg: "none" }}>
+            <Button p='0px' color={buttonColor} bg='transparent' _hover={{ bg: "none" }} onClick={()=>setTab('fbTab')}>
               <Flex
+                {...(activeTabs.fbTab ? selectedTabStyle : null)}
                 align='center'
-                w={{ lg: "135px" }}
+                w={{ sm: "70%", lg: "135px" }}
                 borderRadius='15px'
                 justifyContent='center'
                 py='10px'

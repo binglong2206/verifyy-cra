@@ -12,7 +12,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/edit/dashboard' element={<Dashboard />}/>
-          <Route path='/' element={<Login /> }/>
+          <Route path='/:userId' element={<Login /> }/>
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
