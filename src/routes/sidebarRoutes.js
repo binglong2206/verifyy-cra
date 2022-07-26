@@ -12,25 +12,22 @@ import {
 
 const dashRoutes = [
   {
-    path: "/dashboard",
+    path: "/edit",
     name: "Dashboard",
     icon: <PersonIcon color="inherit" />,
     secondaryNavbar: true,
-    // component: Dashboard,
     layout: "/edit",
   },
   {
     path: "/dashboard",
     name: "Profile",
     icon: <StatsIcon color="inherit" />,
-    // component: Dashboard,
     layout: "/admin",
   },
   {
     path: "/dashboard",
     name: "Background",
     icon: <CreditIcon color="inherit" />,
-    // component: Dashboard,
     layout: "/admin",
   },
   {
@@ -43,7 +40,6 @@ const dashRoutes = [
         path: "/dashboard",
         name: "Youtube",
         icon: <DocumentIcon color="inherit" />,
-        // component: Dashboard,
         layout: "/auth",
       },
       {
@@ -51,7 +47,6 @@ const dashRoutes = [
         name: "Instagram",
         icon: <RocketIcon color="inherit" />,
         secondaryNavbar: true,
-        // component: Dashboard,
         layout: "/auth",
       },
       {
@@ -59,7 +54,6 @@ const dashRoutes = [
         name: "Facebook",
         icon: <RocketIcon color="inherit" />,
         secondaryNavbar: true,
-        // component: Dashboard,
         layout: "/auth",
       },
     ],

@@ -11,7 +11,7 @@ import IconBox from "../Icons/IconBox";
 import { CreativeTimLogo } from "../Icons/Icons";
 import Separator from "../Separator";
 import { NavLink, useLocation } from "react-router-dom";
-import routes from "../../routes";
+import routes from "../../routes/sidebarRoutes";
 import OpenSourceCard from "./OpenSourceCard";
 
 
@@ -54,7 +54,7 @@ const Menus = () => {
       }
       return (
         <NavLink to={prop.layout + prop.path} key={prop.name}>
-          {activeRoute(prop.layout + prop.path) === "active" ? (
+          {activeRoute(prop.path) === "active" ? (
             <Button
               boxSize="initial"
               justifyContent="flex-start"

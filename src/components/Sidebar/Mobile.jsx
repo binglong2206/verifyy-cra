@@ -21,7 +21,7 @@ import { CreativeTimLogo } from "../Icons/Icons";
 import Separator  from "../Separator";
 import OpenSourceCard  from "./OpenSourceCard";
 import { NavLink, useLocation } from "react-router-dom";
-import routes from "../../routes";
+import routes from "../../routes/sidebarRoutes";
 
 function SidebarMobile() {
     let location = useLocation();
