@@ -16,7 +16,7 @@ import DashboardHeader from "../components/DashboardHeader";
 
 
 export default function Dashboard() {
-  const {userId} = useParams();
+  const {username} = useParams();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const textColor = useColorModeValue("gray.700", "white");
   const bgProfile = useColorModeValue(
@@ -48,7 +48,7 @@ export default function Dashboard() {
                   name={"Matthew Ryu"}
                   email={"MatthewFireHand@gmail.com"} />
 
-                <div>THIS PRIVATE EDIT PAGE BELONGS TO  {userId}</div>
+                <div>THIS PRIVATE EDIT PAGE BELONGS TO  {username}</div>
               </Flex>
           </PanelContainer>
         </PanelContent>

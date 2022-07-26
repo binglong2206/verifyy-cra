@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { ChakraProvider, Portal, useDisclosure, useColorModeValue, Flex } from "@chakra-ui/react";
 import Sidebar from "../components/Sidebar";
 import MainPanel from "../components/layouts/MainPanel";
@@ -12,11 +12,14 @@ import ConfigSideBar from "../components/config/ConfigSideBar";
 import ProfileBgImage from "../assets/img/ProfileBackground.png";
 import avatar from "../assets/img/avatar.png";
 import DashboardHeader from "../components/DashboardHeader";
+import axios from 'axios'
+import { CheckUser } from "../hooks/checkUser";
 
 
 
 export default function Dashboard() {
-  const {userId} = useParams()
+  const [userStatus, setUserStatus] = useState(false);
+  const {username} = useParams()
   const { isOpen, onOpen, onClose } = useDisclosure();
   const textColor = useColorModeValue("gray.700", "white");
   const bgProfile = useColorModeValue(
@@ -24,6 +27,31 @@ export default function Dashboard() {
     "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
   );
   document.documentElement.dir = "ltr";
+
+  const navigate = useNavigate();
+
+
+  if(!userStatus) {
+    navigate('/404')
+  }
+
+
+
+
+  useEffect(()=> {
+    const checkUser = async() => {
+     await axios.get(`http://localhost:8000/checkUser/${username}`)
+      .then(r=> setUserStatus(true))
+      .catch(e=>{})
+    };
+    checkUser();
+
+    if (userStatus) {
+      console.log('start fetching....')
+    }
+
+  });
+
 
   return (
     <> 
@@ -48,7 +76,7 @@ export default function Dashboard() {
                   name={"Matthew Ryu"}
                   email={"MatthewFireHand@gmail.com"} />
 
-                  <div>THIS PUBLIC DASHBOARD BELONGS TO  {userId}</div>
+                  <div>THIS PUBLIC DASHBOARD BELONGS TO  {username}</div>
               </Flex>
           </PanelContainer>
         </PanelContent>

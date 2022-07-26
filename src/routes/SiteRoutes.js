@@ -8,8 +8,9 @@ export default function SiteRoutes() {
   return (
     <BrowserRouter>
         <Routes>
-          <Route path='/edit/:userId' element={<Edit />}/>
-          <Route path='/:userId' element={<Dashboard />} />
+          <Route path='/404' element={<div>404</div>} /> 
+          <Route path='/edit/:username' element={<Edit />}/>
+          <Route path='/:username' element={<Dashboard />} />
           <Route path='/' element={<Login />} /> 
           <Route path='*' element={<div>404</div>} /> 
         </Routes>
