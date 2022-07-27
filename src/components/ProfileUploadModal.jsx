@@ -26,7 +26,6 @@ import {
 // THIS COMPONENT WILL BE USED IN THE SIDEBAR MENU COMPONENT
 const ProfileUploadModal = (isOpen, onOpen, onClose) => {
     const toast = useToast();
-    // const {} = useDisclosure();
     const [status, setStatus] = useState('idle');
     const [progress, setProgress] = useState(0);
     const [image, setImage] = useState({

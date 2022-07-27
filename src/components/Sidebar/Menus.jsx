@@ -41,7 +41,6 @@ const Menus = () => {
   const {isOpen, onOpen, onClose} = useDisclosure(); 
   const toast = useToast();
     const [status, setStatus] = useState('idle');
-    const [progress, setProgress] = useState(0);
     const [image, setImage] = useState({
       file: null,
       url: ""
@@ -91,8 +90,13 @@ const Menus = () => {
   
  
     const uploadToFirebase = async (file) => {
+      setStatus('loading')
       // make post request to server
-      
+       setTimeout(()=> {
+        showSuccessToast();
+        setStatus('done');
+        onClose()
+       },3000)
     };
 
 
