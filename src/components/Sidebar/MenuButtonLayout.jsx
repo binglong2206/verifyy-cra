@@ -20,7 +20,7 @@ import {
 
 
 
-const MenuButtonLayout = ({text, isActive, icon}) => {
+const MenuButtonLayout = ({text, isActive, _onClick}) => {
     /*eslint-disable*/
     const activeBg = useColorModeValue("white", "gray.700");
     const inactiveBg = useColorModeValue("white", "gray.700");
