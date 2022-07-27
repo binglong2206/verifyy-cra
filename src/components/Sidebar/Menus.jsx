@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
     Box,
     Button, Flex,
@@ -6,8 +6,19 @@ import {
     Stack,
     Text,
     useColorModeValue,
-    useDisclosure
+    useDisclosure,
+    ModalOverlay,
+    Modal,
+    ModalBody,
+    ModalContent,
+    ModalFooter,
+    Input,
+    ModalCloseButton,
+    ModalHeader,
+    HStack,
+    useToast
 } from "@chakra-ui/react";
+import { FiUpload } from "react-icons/fi";
 import IconBox from "../Icons/IconBox";
 import { CreativeTimLogo } from "../Icons/Icons";
 import Separator from "../Separator";
@@ -15,8 +26,9 @@ import { NavLink, useLocation } from "react-router-dom";
 import routes from "../../routes/sidebarRoutes";
 import OpenSourceCard from "./OpenSourceCard";
 import MenuButton from "./MenuButtonLayout";
-import ProfileUpload from "../ProfileUpload";
+import ProfileUpload from "../ProfileUploadModal";
 
+const MAX_FILE_SIZE = 524288; //512KB
 
 
 const Menus = () => {
@@ -26,9 +38,64 @@ const Menus = () => {
   const activeColor = useColorModeValue("gray.700", "white");
   const inactiveColor = useColorModeValue("gray.400", "gray.400");
 
-  const {isOpen, onOpen, onClose} = useDisclosure; 
-
+  const {isOpen, onOpen, onClose} = useDisclosure(); 
+  const toast = useToast();
+    const [status, setStatus] = useState('idle');
+    const [progress, setProgress] = useState(0);
+    const [image, setImage] = useState({
+      file: null,
+      url: ""
+    });
   
+    const showSuccessToast = () => {
+        toast({
+            title: 'Upload Success.',
+            description: "We've created your account for you.",
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          });
+    }
+
+    const showErrorToast = () => {
+        toast({
+            title: 'Error',
+            description: "We've created your account for you.",
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+          });
+    }
+    
+
+    const handleModalClose = () => {
+      setImage({ ...image, file: null });
+      onClose();
+    };
+
+
+    const handleImageChange = async (e) => {
+      const file = e.target.files[0];
+  
+      if (file) {
+        if (file.size > MAX_FILE_SIZE) {
+          setImage({ ...image, file: null });
+          return showErrorToast();
+        }
+          setImage({ ...image, file });
+
+      } else {
+        setImage({ ...image, file: null });
+      }
+    };
+  
+ 
+    const uploadToFirebase = async (file) => {
+      // make post request to server
+      
+    };
+
+
 
 
     return (
@@ -54,8 +121,9 @@ const Menus = () => {
     </Box>
     <Stack direction="column" mb="40px">
       <Box key='asd'>
+        <button onClick={onOpen}>yoyo</button>
         <MenuButton text='Dashboard' isActive={true} />
-        <MenuButton text='Profile' onClick={}/>
+        <MenuButton text='Profile' />
         <MenuButton text='Background' />
         <Text color={activeColor} fontWeight="bold" mb={{ xl: "12px"}} mx="auto" ps={{sm: "10px", xl: "16px"}} py="12px" > 
            CONNECT ANALYTICS
@@ -64,8 +132,66 @@ const Menus = () => {
         <MenuButton text='Instagram' />
         <MenuButton text='Facebook' />
       </Box>
-    </Stack>
+    </Stack>    
     <OpenSourceCard />
+
+    <Modal isOpen={isOpen} onClose={handleModalClose}>
+        <ModalOverlay />
+        <ModalContent minW="lg">
+          <ModalCloseButton />
+          <ModalHeader>
+            <Text>Upload New Photo</Text>
+            <Text
+              fontSize="sm"
+              color={useColorModeValue("gray", "whiteAlpha")}
+              fontWeight="normal"
+            >
+              Choose a file to upload
+            </Text>
+          </ModalHeader>
+          <ModalBody>
+            <Text
+              fontSize="sm"
+              color={useColorModeValue("gray", "whiteAlpha.600")}
+            >
+              Supported Format: PNG/JPEG. Max file size = 512KB
+            </Text>
+            <Input
+              type="file"
+              accept="image/x-png, image/jpeg"
+              onChange={handleImageChange}
+              pt="1"
+              variant="filled"
+              my="4"
+            />
+          </ModalBody>
+          <ModalFooter>
+            <HStack>
+              <Button
+                rightIcon={<FiUpload />}
+                colorScheme="purple"
+                size="sm"
+                variant="solid"
+                onClick={() => uploadToFirebase(image.file)}
+                isLoading={status === 'loading'}
+                loadingText="Uploading"
+                isDisabled={!image.file}
+              >
+                Upload
+              </Button>
+              <Button
+                colorScheme="gray"
+                size="sm"
+                variant="ghost"
+                onClick={handleModalClose}
+                isDisabled={status === 'loading'}
+              >
+                Cancel
+              </Button>
+            </HStack>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </>
   )
 }

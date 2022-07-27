@@ -21,8 +21,10 @@ import {
   
   const MAX_FILE_SIZE = 524288; //512KB
   
+
   
-  const ProfileUpload = (isOpen, onOpen, onClose) => {
+// THIS COMPONENT WILL BE USED IN THE SIDEBAR MENU COMPONENT
+const ProfileUploadModal = (isOpen, onOpen, onClose) => {
     const toast = useToast();
     // const {} = useDisclosure();
     const [status, setStatus] = useState('idle');
@@ -141,5 +143,5 @@ import {
     );
   };
   
-  export default ProfileUpload;
+  export default ProfileUploadModal;
   
