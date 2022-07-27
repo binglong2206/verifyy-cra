@@ -3,14 +3,15 @@ import "firebase/auth";
 import "firebase/storage";
 
 const firebaseConfig = {
-};
+    apiKey: "AIzaSyCd0ahTLZ_AbaVzMfYAALWzfItv1gu51jg",
+    authDomain: "verifyy-e4ece.firebaseapp.com",
+    projectId: "verifyy-e4ece",
+    storageBucket: "verifyy-e4ece.appspot.com",
+    messagingSenderId: "758740792774",
+    appId: "1:758740792774:web:09ba88030505e1a535aec7"
+  };
 
-if (!firebase.apps.length) {
-  try {
-    firebase.initializeApp(firebaseConfig);
-  } catch (err) {
-    throw new Error(err)
-  }
-}
+
+firebase.initializeApp(firebaseConfig);
 const firebaseSDK = firebase;
 export default firebaseSDK;
