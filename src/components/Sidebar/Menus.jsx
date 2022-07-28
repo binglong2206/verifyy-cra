@@ -27,6 +27,7 @@ import routes from "../../routes/sidebarRoutes";
 import OpenSourceCard from "./OpenSourceCard";
 import MenuButton from "./MenuButtonLayout";
 import ProfileUpload from "../ProfileUploadModal";
+import axios from 'axios'
 
 const MAX_FILE_SIZE = 524288; //512KB
 
@@ -91,12 +92,17 @@ const Menus = () => {
  
     const uploadToFirebase = async (file) => {
       setStatus('loading')
-      // make post request to server
-       setTimeout(()=> {
-        showSuccessToast();
-        setStatus('done');
-        onClose()
-       },3000)
+
+      // Create a FormData object and store the file and then make an axios post to server
+      const formData = new FormData();
+      formData.append('profile', file);
+      await axios.post('http://localhost:8000/user/profile', formData , {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'multipart-formdata'
+        }
+       }).then(r=> console.log('done uploading'))
+     
     };
 
 
