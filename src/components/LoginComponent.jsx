@@ -13,6 +13,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import signInImage from "../assets/img/signInImage.png";
+import axios from 'axios'
 
 export default function LoginComponent() {
   const titleColor = useColorModeValue("teal.300", "teal.200");
@@ -36,7 +37,12 @@ export default function LoginComponent() {
 
   const onSubmit = async(e) => {
     e.preventDefault(); // prevent form from default refresh;
-    console.log(state)
+    await axios.post('http://localhost:8000/login', state, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      withCredentials: true
+    })
 
   }
 
