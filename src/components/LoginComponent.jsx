@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useReducer} from "react";
 import {
   Box,
   Flex,
@@ -18,12 +18,25 @@ export default function LoginComponent() {
   const titleColor = useColorModeValue("teal.300", "teal.200");
   const textColor = useColorModeValue("gray.400", "white");
 
+  const [state, dispatch] = useReducer( // (reducerFunction, initialState)
+    (state, param) => { // param is whatever defined in dispatch params
+      return { ...state, ...param }; // merge initial state with dispatch params
+    },
+    {
+      username: "",
+      password: "",
+    }
+  )
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    dispatch({ [name]: value });
+  };
+
 
   const onSubmit = async(e) => {
     e.preventDefault(); // prevent form from default refresh;
-    console.log(e)
-
-
+    console.log(state)
 
   }
 
@@ -62,9 +75,11 @@ export default function LoginComponent() {
             </Text>
             <FormControl onSubmit={onSubmit}>
               <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
-                Email
+                Username
               </FormLabel>
               <Input
+                onChange={handleInput}
+                name='username'
                 borderRadius='15px'
                 mb='24px'
                 fontSize='sm'
@@ -76,6 +91,8 @@ export default function LoginComponent() {
                 Password
               </FormLabel>
               <Input
+                onChange={handleInput}
+                name='password'
                 borderRadius='15px'
                 mb='36px'
                 fontSize='sm'
@@ -94,6 +111,7 @@ export default function LoginComponent() {
                 </FormLabel>
               </FormControl>
               <Button
+                onClick={onSubmit}
                 fontSize='10px'
                 type='submit'
                 bg='teal.300'
