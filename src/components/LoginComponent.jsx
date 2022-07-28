@@ -17,6 +17,17 @@ import signInImage from "../assets/img/signInImage.png";
 export default function LoginComponent() {
   const titleColor = useColorModeValue("teal.300", "teal.200");
   const textColor = useColorModeValue("gray.400", "white");
+
+
+  const onSubmit = async(e) => {
+    e.preventDefault(); // prevent form from default refresh;
+    console.log(e)
+
+
+
+  }
+
+
   return (
     <Flex position='relative' mb='40px'>
       <Flex
@@ -49,7 +60,7 @@ export default function LoginComponent() {
               fontSize='14px'>
               Enter your email and password to sign in
             </Text>
-            <FormControl>
+            <FormControl onSubmit={onSubmit}>
               <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                 Email
               </FormLabel>

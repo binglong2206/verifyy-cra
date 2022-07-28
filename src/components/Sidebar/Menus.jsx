@@ -28,16 +28,25 @@ import OpenSourceCard from "./OpenSourceCard";
 import MenuButton from "./MenuButtonLayout";
 import ProfileUpload from "../ProfileUploadModal";
 import axios from 'axios'
+import { uploadProfile, uploadBackground } from "../../api/uploadFirebase";
 
 const MAX_FILE_SIZE = 524288; //512KB
 
 
 const Menus = () => {
   let location = useLocation();
+  const [modal, setModal] = useState('Profile');
   const activeBg = useColorModeValue("white", "gray.700");
   const inactiveBg = useColorModeValue("white", "gray.700");
   const activeColor = useColorModeValue("gray.700", "white");
   const inactiveColor = useColorModeValue("gray.400", "gray.400");
+
+  const getModalTitle = () => {
+    if (modal === 'Profile') {
+      return 'UPLOAD A NEW PROFILE'
+    } else return 'UPLOAD A NEW BACKGROUND'
+  }
+
 
   const {isOpen, onOpen, onClose} = useDisclosure(); 
   const toast = useToast();
@@ -105,6 +114,25 @@ const Menus = () => {
      
     };
 
+    const uploadHandler = async() => {
+      setStatus('loading');
+
+      if (modal === 'Profile') {
+        await uploadProfile(image.file)
+          .then(r=> {
+            setStatus('Upload Profile Done');
+            showSuccessToast()
+            onClose()
+          })
+      } else  {
+        await uploadBackground(image.file)
+          .then(r=> {
+            setStatus('Upload Background Done');
+            showSuccessToast()
+            onClose()
+          })
+      }
+    }
 
 
 
@@ -133,8 +161,8 @@ const Menus = () => {
       <Box key='asd'>
         <button onClick={onOpen}>yoyo</button>
         <MenuButton text='Dashboard' isActive={true} />
-        <MenuButton text='Profile' />
-        <MenuButton text='Background' />
+        <MenuButton text='Profile' onOpen={onOpen} setModal={setModal} />
+        <MenuButton text='Background' onOpen={onOpen} setModal={setModal} />
         <Text color={activeColor} fontWeight="bold" mb={{ xl: "12px"}} mx="auto" ps={{sm: "10px", xl: "16px"}} py="12px" > 
            CONNECT ANALYTICS
         </Text>
@@ -150,7 +178,7 @@ const Menus = () => {
         <ModalContent minW="lg">
           <ModalCloseButton />
           <ModalHeader>
-            <Text>Upload New Photo</Text>
+            <Text>{getModalTitle()}</Text>
             <Text
               fontSize="sm"
               color={useColorModeValue("gray", "whiteAlpha")}
@@ -182,7 +210,7 @@ const Menus = () => {
                 colorScheme="purple"
                 size="sm"
                 variant="solid"
-                onClick={() => uploadToFirebase(image.file)}
+                onClick={uploadHandler}
                 isLoading={status === 'loading'}
                 loadingText="Uploading"
                 isDisabled={!image.file}

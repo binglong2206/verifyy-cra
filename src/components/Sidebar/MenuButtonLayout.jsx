@@ -20,7 +20,7 @@ import {
 
 
 
-const MenuButtonLayout = ({text, isActive, _onClick}) => {
+const MenuButtonLayout = ({text, isActive, onOpen, setModal}) => {
     /*eslint-disable*/
     const activeBg = useColorModeValue("white", "gray.700");
     const inactiveBg = useColorModeValue("white", "gray.700");
@@ -47,9 +47,19 @@ const MenuButtonLayout = ({text, isActive, _onClick}) => {
       }
     }
   
+    const handleModal = () => {
+      if (text === 'Profile'){
+        setModal('Profile');
+      } else {
+        setModal('Background')
+      };
+      onOpen();
+    }
+
 
   return ( 
   <Button
+    {...(onOpen ? {onClick: handleModal} : null) }
     boxSize="initial"
     justifyContent="flex-start"
     alignItems="center"
