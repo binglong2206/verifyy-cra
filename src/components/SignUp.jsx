@@ -1,4 +1,4 @@
-import React, {useReducer} from "react";
+import React, {useReducer, useState} from "react";
 import {
   Box,
   Flex,
@@ -11,27 +11,64 @@ import {
   Switch,
   Text,
   useColorModeValue,
+  FormErrorMessage,
+  FormHelperText
 } from "@chakra-ui/react";
+import {Formik, Form, Field} from 'formik';
 import signInImage from "../assets/img/signInImage.png";
 import axios from 'axios'
 
 export default function SignUp() {
   const titleColor = useColorModeValue("teal.300", "teal.200");
   const textColor = useColorModeValue("gray.400", "white");
+  const [isLoading, setLoading] = useState(false);
+  const [isDisabled, setDisabled] = useState(true);
+  const [showError, setShowError] = useState(false)
+
 
   const [state, dispatch] = useReducer( // (reducerFunction, initialState)
     (state, param) => { // param is whatever defined in dispatch params
       return { ...state, ...param }; // merge initial state with dispatch params
     },
     {
+      email: "",
       username: "",
       password: "",
     }
   )
 
-  const handleInput = (e) => {
+  const inputHandler = async (e) => {
+    setLoading(true);
+    setDisabled(true); // Reset if user change input
+    setShowError(false); // Hide previous errors
     const { name, value } = e.target;
-    dispatch({ [name]: value });
+
+    // Make POST request to check username
+    // await axios.post()
+
+    // Simulate after request
+    setTimeout(()=> {
+      if(value === '' || !value){
+        setShowError(true);
+        setDisabled(true);
+        setLoading(false);
+        return;
+      }
+
+      if(value === 'demo'){
+        setShowError(true);
+        setDisabled(true);
+        setLoading(false);
+        return;
+      }
+
+      dispatch({ [name]: value });
+      setLoading(false);
+      setDisabled(false);
+      setShowError(false);
+    }, 1000);
+
+   
   };
 
 
@@ -43,8 +80,9 @@ export default function SignUp() {
       },
       withCredentials: true
     })
-
   }
+
+
 
 
   return (
@@ -79,49 +117,54 @@ export default function SignUp() {
               fontSize='14px'>
               Enter your email and password to sign in
             </Text>
-            <FormControl onSubmit={onSubmit}>
-              <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
-                Username
-              </FormLabel>
-              <Input
-                onChange={handleInput}
-                name='username'
-                borderRadius='15px'
-                mb='24px'
-                fontSize='sm'
-                type='text'
-                placeholder='Your email adress'
-                size='lg'
-              />
-              <FormControl display='flex' alignItems='center'>
-                <Switch id='remember-login' colorScheme='teal' me='10px' />
-                <FormLabel
-                  htmlFor='remember-login'
-                  mb='0'
-                  ms='1'
-                  fontWeight='normal'>
-                  Remember me
+
+      
+               
+              <FormControl onSubmit={onSubmit} isInvalid={showError}>
+                <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+                  Claim your free URL
                 </FormLabel>
+                <Flex>
+                  <Flex ms='4px' fontSize='md' fontWeight='bold' alignItems='center'>
+                    verifyy.co/
+                  </Flex>
+                    <Input onChange={inputHandler} name='username' placeholder='Username' borderRadius='10px' 
+                    mb='0px'ml='7px' fontSize='sm' type='text' size='lg' maxLength='25' />
+                </Flex>
+                {!isDisabled && <FormHelperText pl='5px'>
+                      Username available!
+                    </FormHelperText>}
+                {!showError && isDisabled ? (
+                    <FormHelperText pl='5px'>
+                      Tips: spaces will be replaced with an underscore "_"
+                    </FormHelperText>
+                  ) : (
+                    <FormErrorMessage pl='5px'>Input Error</FormErrorMessage>
+                  )}
+                <Button
+                  onClick={()=>{console.log(state)}}
+                  isLoading={isLoading}
+                  disabled={isDisabled}
+                  borderRadius='10px'
+                  fontSize='10px'
+                  type='submit'
+                  bg='teal.300'
+                  w='100%'
+                  h='45'
+                  mb='20px'
+                  color='white'
+                  mt='20px'
+                  _hover={{
+                    bg: "teal.200",
+                  }}
+                  _active={{
+                    bg: "teal.400",
+                  }}>
+                  CONTINUE
+                </Button>
               </FormControl>
-              <Button
-                onClick={onSubmit}
-                fontSize='10px'
-                type='submit'
-                bg='teal.300'
-                w='100%'
-                h='45'
-                mb='20px'
-                color='white'
-                mt='20px'
-                _hover={{
-                  bg: "teal.200",
-                }}
-                _active={{
-                  bg: "teal.400",
-                }}>
-                SIGN IN
-              </Button>
-            </FormControl>
+
+
             <Flex
               flexDirection='column'
               justifyContent='center'
@@ -129,14 +172,15 @@ export default function SignUp() {
               maxW='100%'
               mt='0px'>
               <Text color={textColor} fontWeight='medium'>
-                Don't have an account?
+                Others:
                 <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
-                  Sign Up
+                  Login
                 </Link>
-                {" "}or
+                {" "} or 
                 <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
                   Demo Login
                 </Link>
+       
               </Text>
             </Flex>
           </Flex>

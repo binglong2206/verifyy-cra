@@ -99,7 +99,7 @@ import {
             <Text>Dashboard</Text>
           </Button>
         </NavLink>
-        <NavLink to="/admin/profile">
+        <NavLink to="/google">
           <Button
             fontSize="sm"
             ms="0px"
@@ -109,13 +109,14 @@ import {
             color={navbarIcon}
             variant="transparent-with-icon"
             leftIcon={
-              <PersonIcon color={navbarIcon} w="12px" h="12px" me="0px" />
+              <RocketIcon color={navbarIcon} w="12px" h="12px" me="0px" />
             }
           >
-            <Text>Profile</Text>
+            <Text>Source Code</Text>
           </Button>
         </NavLink>
-        <NavLink to="/auth/signup">
+  
+        <NavLink to="/google">
           <Button
             fontSize="sm"
             ms="0px"
@@ -131,7 +132,7 @@ import {
             <Text>Sign Up</Text>
           </Button>
         </NavLink>
-        <NavLink to="/auth/signin">
+        <NavLink to="/google">
           <Button
             fontSize="sm"
             ms="0px"
@@ -143,12 +144,12 @@ import {
               <DocumentIcon color={navbarIcon} w="12px" h="12px" me="0px" />
             }
           >
-            <Text>Sign In</Text>
+            <Text>Login</Text>
           </Button>
         </NavLink>
       </HStack>
   
-          <Link href="https://creative-tim.com/product/purity-ui-dashboard">
+          <Link href="google">
             <Button
               bg={bgButton}
               color={colorButton}
