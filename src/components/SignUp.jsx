@@ -37,37 +37,45 @@ export default function SignUp() {
       password: "",
     }
   )
+    
+  const emailPasswordHandler = (e) => {
+    const { name, value } = e.target;
+    dispatch({ [name]: value });
+  };
 
   const usernameHandler = async (e) => {
     setLoading(true);
     setDisabled(true); // Reset if user change input
     setShowError(false); // Hide previous errors
-    const { name, value } = e.target;
+    const { name, value } = e.target; // name:Username, value:value
+
+    if(value === '' || !value){
+      setShowError(true);
+      setDisabled(true);
+      setLoading(false);
+      return;
+    }
 
     // Make POST request to check username
-    // await axios.post()
+    const res = await axios.get(`http://localhost:8000/checkUser/${value}`)
 
-    // Simulate after request
-    setTimeout(()=> {
-      if(value === '' || !value){
-        setShowError(true);
-        setDisabled(true);
-        setLoading(false);
-        return;
-      }
-
-      if(value === 'demo'){
-        setShowError(true);
-        setDisabled(true);
-        setLoading(false);
-        return;
-      }
-
-      dispatch({ [name]: value });
+    if (res.data.result === true ) {
+      setTimeout(() => {
+      setShowError(true);
+      setDisabled(true);
       setLoading(false);
-      setDisabled(false);
-      setShowError(false);
-    }, 1000);
+      return;
+      }, (2000)); // Set a timeout otherwise query too fast, load spinner looks buggy
+      
+    } else {
+      setTimeout(() => {
+        dispatch({ [name]: value });
+        setLoading(false);
+        setDisabled(false);
+        setShowError(false);
+        return;
+        }, (2000));
+    }
   };
 
   const backHandler = () => {
@@ -79,7 +87,7 @@ export default function SignUp() {
 
   const onSubmit = async(e) => {
     e.preventDefault(); // prevent form from default refresh;
-    await axios.post('http://localhost:8000/login', state, {
+    await axios.post('http://localhost:8000/signup', state, {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -124,7 +132,7 @@ export default function SignUp() {
       
                
             {modalStep === 1 && 
-            <FormControl onSubmit={onSubmit} isInvalid={showError}>
+            <FormControl isInvalid={showError}>
                 {/* <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                   Claim your free URL
                 </FormLabel> */}
@@ -151,7 +159,7 @@ export default function SignUp() {
                   disabled={isDisabled}
                   borderRadius='10px'
                   fontSize='10px'
-                  type='submit'
+                  // type='submit'
                   bg='teal.300'
                   w='100%'
                   h='45'
@@ -174,6 +182,8 @@ export default function SignUp() {
                 Email
               </FormLabel>
               <Input
+                onChange={emailPasswordHandler}
+                name='email'
                 borderRadius='15px'
                 mb='24px'
                 fontSize='sm'
@@ -185,6 +195,8 @@ export default function SignUp() {
                 Password
               </FormLabel>
               <Input
+                onChange={emailPasswordHandler}
+                name='password'
                 borderRadius='15px'
                 mb='36px'
                 fontSize='sm'
@@ -207,6 +219,7 @@ export default function SignUp() {
                   BACK
                 </Button>
                 <Button
+                  onClick={onSubmit}
                   fontSize='10px'
                   type='submit'
                   bg='teal.300'
@@ -224,7 +237,6 @@ export default function SignUp() {
                   CREATE ACCOUNT
                 </Button>
               </Flex>
-              
             </FormControl>}
 
             <Flex
