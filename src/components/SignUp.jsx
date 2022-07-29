@@ -23,7 +23,8 @@ export default function SignUp() {
   const textColor = useColorModeValue("gray.400", "white");
   const [isLoading, setLoading] = useState(false);
   const [isDisabled, setDisabled] = useState(true);
-  const [showError, setShowError] = useState(false)
+  const [showError, setShowError] = useState(false);
+  const [modalStep, setModalStep] = useState(1)
 
 
   const [state, dispatch] = useReducer( // (reducerFunction, initialState)
@@ -37,7 +38,7 @@ export default function SignUp() {
     }
   )
 
-  const inputHandler = async (e) => {
+  const usernameHandler = async (e) => {
     setLoading(true);
     setDisabled(true); // Reset if user change input
     setShowError(false); // Hide previous errors
@@ -67,10 +68,14 @@ export default function SignUp() {
       setDisabled(false);
       setShowError(false);
     }, 1000);
-
-   
   };
 
+  const backHandler = () => {
+    // reset things
+    dispatch({username:''})
+    setDisabled(true);
+    setModalStep(1);
+  }
 
   const onSubmit = async(e) => {
     e.preventDefault(); // prevent form from default refresh;
@@ -81,8 +86,6 @@ export default function SignUp() {
       withCredentials: true
     })
   }
-
-
 
 
   return (
@@ -107,7 +110,7 @@ export default function SignUp() {
             p='48px'
             mt={{ md: "150px", lg: "80px" }}>
             <Heading color={titleColor} fontSize='32px' mb='10px'>
-              Welcome Back
+              Sign Up
             </Heading>
             <Text
               mb='36px'
@@ -115,20 +118,21 @@ export default function SignUp() {
               color={textColor}
               fontWeight='bold'
               fontSize='14px'>
-              Enter your email and password to sign in
+              {modalStep === 1 ? 'Step 1: Claim your personalized URL for free!' : `Step 2: verifyy.co/${state.username}`}
             </Text>
 
       
                
-              <FormControl onSubmit={onSubmit} isInvalid={showError}>
-                <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+            {modalStep === 1 && 
+            <FormControl onSubmit={onSubmit} isInvalid={showError}>
+                {/* <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                   Claim your free URL
-                </FormLabel>
+                </FormLabel> */}
                 <Flex>
                   <Flex ms='4px' fontSize='md' fontWeight='bold' alignItems='center'>
                     verifyy.co/
                   </Flex>
-                    <Input onChange={inputHandler} name='username' placeholder='Username' borderRadius='10px' 
+                    <Input onChange={usernameHandler} name='username' placeholder='Username' borderRadius='10px' 
                     mb='0px'ml='7px' fontSize='sm' type='text' size='lg' maxLength='25' />
                 </Flex>
                 {!isDisabled && <FormHelperText pl='5px'>
@@ -142,7 +146,7 @@ export default function SignUp() {
                     <FormErrorMessage pl='5px'>Input Error</FormErrorMessage>
                   )}
                 <Button
-                  onClick={()=>{console.log(state)}}
+                  onClick={()=>setModalStep(2)}
                   isLoading={isLoading}
                   disabled={isDisabled}
                   borderRadius='10px'
@@ -162,8 +166,66 @@ export default function SignUp() {
                   }}>
                   CONTINUE
                 </Button>
-              </FormControl>
+              </FormControl>}
 
+            {modalStep === 2 &&  
+            <FormControl>
+              <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+                Email
+              </FormLabel>
+              <Input
+                borderRadius='15px'
+                mb='24px'
+                fontSize='sm'
+                type='text'
+                placeholder='Your email adress'
+                size='lg'
+              />
+              <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+                Password
+              </FormLabel>
+              <Input
+                borderRadius='15px'
+                mb='36px'
+                fontSize='sm'
+                type='password'
+                placeholder='Your password'
+                size='lg'
+              />
+              <Flex>
+                <Button
+                  onClick={backHandler}
+                  fontSize='10px'
+                  variant='ghost'
+                  type='submit'
+                  colorScheme='teal'
+                  w='40%'
+                  h='45'
+                  mb='20px'
+                  mt='20px'
+                  >
+                  BACK
+                </Button>
+                <Button
+                  fontSize='10px'
+                  type='submit'
+                  bg='teal.300'
+                  w='60%'
+                  h='45'
+                  mb='20px'
+                  color='white'
+                  mt='20px'
+                  _hover={{
+                    bg: "teal.200",
+                  }}
+                  _active={{
+                    bg: "teal.400",
+                  }}>
+                  CREATE ACCOUNT
+                </Button>
+              </Flex>
+              
+            </FormControl>}
 
             <Flex
               flexDirection='column'
