@@ -3,9 +3,11 @@ import { useParams } from "react-router-dom";
 import { Box, Portal } from "@chakra-ui/react";
 import Footer from '../components/Footer'
 import LoginNavBar from "../components/Navbar/LoginNavBar";
-import LoginComponent from "../components/LoginComponent";
+import Login from "../components/Login";
+import SignUp from "../components/SignUp";
 
-export default function Pages() {
+
+export default function AuthPage() {
   const navRef = React.useRef();
   const wrapper = React.createRef();
   useEffect(() => {
@@ -21,7 +23,7 @@ export default function Pages() {
         </Portal>
         <Box w="100%">
           <Box ref={wrapper} w="100%">
-           <LoginComponent />
+           <SignUp />
           </Box>
         </Box>
         <Box px="24px" mx="auto" width="1044px" maxW="100%">

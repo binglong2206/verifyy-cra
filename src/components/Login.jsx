@@ -146,6 +146,10 @@ export default function LoginComponent() {
                 <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
                   Sign Up
                 </Link>
+                {" "}or
+                <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
+                  Demo Login
+                </Link>
               </Text>
             </Flex>
           </Flex>
