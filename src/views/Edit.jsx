@@ -33,7 +33,9 @@ export default function Dashboard() {
   // Data States
   const setYoutubeState = useYoutubeStore(state=>state.setYoutubeState)
   const setInstagramState = useInstagramStore(state=> state.setInstagramState)
-  const setFacebookState = useFacebookStore(state=>state.setFacebookState)
+  const setFacebookState = useFacebookStore(state=>state.setFacebookState);
+  const setUserState = useUserStore(state=>setUserState);
+  const userState =  useUserStore(state=> state)
   const youtubeState = useYoutubeStore(state=> state);
   const instagramState = useInstagramStore(state=>state);
   const facebookState = useFacebookStore(state=>state)
@@ -45,6 +47,7 @@ export default function Dashboard() {
         withCredentials: true // include cookies
       }) // Will run check on param too
         .then(r=> {
+          setUserState(r.data.stat)
           setYoutubeState(r.data.yt);
           setInstagramState(r.data.ig);
           setFacebookState(r.data.fb);

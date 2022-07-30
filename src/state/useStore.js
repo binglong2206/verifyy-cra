@@ -5,14 +5,27 @@ import create from "zustand";
 // Set(state => {...}) -> use state if you want access to prev state
 // If not, set({...}) directly will suffice
 export const useUserStore = create((set) => ({
+  id: 0,
   username: "",
   email: "",
+  profile_image: "",
+  background_image: "",
+  follower_count: 0,
+  media_count: 0,
+  charts_order: [],
 
   setUserState: (username, email) => {
     set({
       username: username,
       email: email,
     });
+  },
+  setStatState: (props)=> {
+    for (let key in props) {
+      set({
+        [key]: props[key]
+      })
+    };
   },
 }));
 
@@ -32,9 +45,7 @@ export const useYoutubeStore = create((set)=> ({
         [key]: props[key]
       })
     };
-
   },
-
 }))
 
 
@@ -74,6 +85,7 @@ export const useFacebookStore = create((set)=> ({
     }
   }
 }))
+
 
 
 export const useTabStore = create((set)=> ({
