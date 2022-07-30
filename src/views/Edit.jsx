@@ -34,7 +34,7 @@ export default function Dashboard() {
   const setYoutubeState = useYoutubeStore(state=>state.setYoutubeState)
   const setInstagramState = useInstagramStore(state=> state.setInstagramState)
   const setFacebookState = useFacebookStore(state=>state.setFacebookState);
-  const setUserState = useUserStore(state=>setUserState);
+  const setStatState = useUserStore(state=>state.setStatState);
   const userState =  useUserStore(state=> state)
   const youtubeState = useYoutubeStore(state=> state);
   const instagramState = useInstagramStore(state=>state);
@@ -47,7 +47,7 @@ export default function Dashboard() {
         withCredentials: true // include cookies
       }) // Will run check on param too
         .then(r=> {
-          setUserState(r.data.stat)
+          setStatState(r.data.stat)
           setYoutubeState(r.data.yt);
           setInstagramState(r.data.ig);
           setFacebookState(r.data.fb);
@@ -84,19 +84,10 @@ export default function Dashboard() {
                   avatarImage={avatar}
                   name={"Matthew Ryu"}
                   email={"MatthewFireHand@gmail.com"} />
-
                 <div>THIS PRIVATE EDIT PAGE BELONGS TO  {username}</div>
-                <Text fontSize={70}>AOISDJAOSPIdj</Text>
-                <Text fontSize={70}>AOISDJAOSPIdj</Text>
-                <Text fontSize={70}>AOISDJAOSPIdj</Text>
-                <Text fontSize={70}>AOISDJAOSPIdj</Text>
-                <Text fontSize={70}>AOISDJAOSPIdj</Text>
-                <Text fontSize={70}>AOISDJAOSPIdj</Text>
-                <Text fontSize={70}>AOISDJAOSPIdj</Text>
-                <Text fontSize={70}>AOISDJAOSPIdj</Text>
-                <Text fontSize={70}>AOISDJAOSPIdj</Text>
-                <Text fontSize={70}>AOISDJAOSPIdj</Text>
-                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+                {userState.charts_order.map(e => {
+                  return <Text fontSize={80}>CHART ID: {e}</Text>
+                })}
 
               </Flex>
           </PanelContainer>
@@ -108,7 +99,9 @@ export default function Dashboard() {
         </Portal>
         <ConfigSideBar 
           isOpen={isOpen}
-          onClose={onClose} />
+          onClose={onClose} 
+          charts_order={userState.charts_order}
+          />
       </MainPanel>
     </>
 );
