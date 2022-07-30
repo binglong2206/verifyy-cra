@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
-import { ChakraProvider, Portal, useDisclosure, useColorModeValue, Flex } from "@chakra-ui/react";
+import { ChakraProvider, Portal, useDisclosure, useColorModeValue, Flex, Text } from "@chakra-ui/react";
 import Sidebar from "../components/Sidebar";
 import MainPanel from "../components/layouts/MainPanel";
 import PanelContainer from "../components/layouts/PanelContainer";
@@ -83,6 +83,18 @@ export default function Dashboard() {
                   email={"MatthewFireHand@gmail.com"} />
 
                 <div>THIS PRIVATE EDIT PAGE BELONGS TO  {username}</div>
+                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+                <Text fontSize={70}>AOISDJAOSPIdj</Text>
+
               </Flex>
           </PanelContainer>
         </PanelContent>

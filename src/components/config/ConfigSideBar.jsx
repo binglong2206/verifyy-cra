@@ -66,7 +66,133 @@ export default function ConfigSideBar({isOpen, onClose}) {
                 </Button>
               </Flex>
               <Separator />
-              <div>chart config options</div>
+              <Box mt='24px'> 
+                <Text fontSize="md" fontWeight="600" >
+                    Youtube Configuration
+                  </Text>
+                  <Text fontSize="sm" mb="16px">
+                    Modify the visibility of charts.
+                  </Text>
+              </Box>
+              <Box> 
+                <Flex
+                  justifyContent="space-between"
+                  alignItems="center"
+                  px='10px'
+                >
+                  <Text fontSize="md" fontWeight="600" mb="4px">
+                    Dark/Light
+                  </Text>
+                  <Switch colorScheme="teal"/>
+                </Flex>
+                <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                px='10px'
+              >
+                <Text fontSize="md" fontWeight="600" mb="4px">
+                  Dark/Light
+                </Text>
+                <Switch colorScheme="teal"/>
+              </Flex>
+              <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                px='10px'
+              >
+                <Text fontSize="md" fontWeight="600" mb="4px">
+                  Dark/Light
+                </Text>
+                <Switch colorScheme="teal"/>
+              </Flex>
+              </Box>
+
+              <Box mt='24px'> 
+                <Text fontSize="md" fontWeight="600" >
+                    Instagram Configuration
+                  </Text>
+                  <Text fontSize="sm" mb="16px">
+                    Modify the visibility of charts.
+                  </Text>
+              </Box>
+              <Box> 
+                <Flex
+                  justifyContent="space-between"
+                  alignItems="center"
+                  px='10px'
+                >
+                  <Text fontSize="md" fontWeight="600" mb="4px">
+                    Dark/Light
+                  </Text>
+                  <Switch colorScheme="teal"/>
+                </Flex>
+                <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                px='10px'
+              >
+                <Text fontSize="md" fontWeight="600" mb="4px">
+                  Dark/Light
+                </Text>
+                <Switch colorScheme="teal"/>
+              </Flex>
+              <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                px='10px'
+              >
+                <Text fontSize="md" fontWeight="600" mb="4px">
+                  Dark/Light
+                </Text>
+                <Switch colorScheme="teal"/>
+              </Flex>
+              </Box>
+
+              <Box mt='24px'> 
+                <Text fontSize="md" fontWeight="600" >
+                    Facebook Page Configuration
+                  </Text>
+                  <Text fontSize="sm" mb="16px">
+                    Modify the visibility of charts.
+                  </Text>
+              </Box>
+              <Box> 
+                <Flex
+                  justifyContent="space-between"
+                  alignItems="center"
+                  px='10px'
+                >
+                  <Text fontSize="md" fontWeight="600" mb="4px">
+                    Dark/Light
+                  </Text>
+                  <Switch colorScheme="teal" disabled={true}/>
+                </Flex>
+                <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                px='10px'
+              >
+                <Text fontSize="md" fontWeight="600" mb="4px">
+                  Dark/Light
+                </Text>
+                <Switch colorScheme="teal" disabled={true}/>
+              </Flex>
+              <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                px='10px'
+              >
+                <Text fontSize="md" fontWeight="600" mb="4px">
+                  Dark/Light
+                </Text>
+                <Switch colorScheme="teal" disabled={true}/>
+              </Flex>
+              </Box>
+
+
+
+
+
             </Flex>
           </DrawerBody>
         </DrawerContent>
