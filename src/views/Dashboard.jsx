@@ -42,12 +42,11 @@ export default function Dashboard() {
 
   useEffect(()=> {
     const getDashboard = async() => {
-      await axios.get(`http://localhost:8000/dashboard/${username}`) // Will run check on param too
+      await axios.get(`http://localhost:8000/dashboard/${username}`) // Will run check on param too, no need cookies
         .then(r=> {
           setYoutubeState(r.data.yt);
-          // setInstagramState(r.data.ig);
-          // setFacebookState(r.data.fb);
-          console.log(r.data.yt)
+          setInstagramState(r.data.ig);
+          setFacebookState(r.data.fb);
         })
         .catch(e=>{
           setUserStatus(false);
@@ -74,9 +73,6 @@ export default function Dashboard() {
         <PanelContent>
           <PanelContainer>
             <Flex direction='column'>
-              <button onClick={()=> {
-                console.log(youtubeState)
-              }}>show state</button>
               <DashboardHeader
                   backgroundHeader={ProfileBgImage}
                   backgroundProfile={bgProfile}

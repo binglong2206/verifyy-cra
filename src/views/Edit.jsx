@@ -12,6 +12,7 @@ import ConfigSideBar from "../components/config/ConfigSideBar";
 import ProfileBgImage from "../assets/img/ProfileBackground.png";
 import avatar from "../assets/img/avatar.png";
 import DashboardHeader from "../components/DashboardHeader";
+import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
 import axios from "axios";
 
 
@@ -29,16 +30,32 @@ export default function Dashboard() {
 
 
 
+  // Data States
+  const setYoutubeState = useYoutubeStore(state=>state.setYoutubeState)
+  const setInstagramState = useInstagramStore(state=> state.setInstagramState)
+  const setFacebookState = useFacebookStore(state=>state.setFacebookState)
+  const youtubeState = useYoutubeStore(state=> state);
+  const instagramState = useInstagramStore(state=>state);
+  const facebookState = useFacebookStore(state=>state)
+
+
   useEffect(()=> {
-    axios.get(`http://localhost:8000/dashboard/edit/${username}`, {
-      withCredentials: true
-    }).then(r=> {
-      console.log('ready to fetch')
-    }).catch(e=>{
-      setUserStatus(false)
-      console.error(e)
-    })
-  })
+    const getDashboard = async() => {
+      await axios.get(`http://localhost:8000/dashboard/edit/${username}`, {
+        withCredentials: true // include cookies
+      }) // Will run check on param too
+        .then(r=> {
+          setYoutubeState(r.data.yt);
+          setInstagramState(r.data.ig);
+          setFacebookState(r.data.fb);
+        })
+        .catch(e=>{
+          setUserStatus(false);
+        })
+    };
+     
+    getDashboard();
+  },[username, setFacebookState, setInstagramState, setYoutubeState]);
 
 
   return (
