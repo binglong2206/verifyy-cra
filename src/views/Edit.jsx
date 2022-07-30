@@ -39,8 +39,6 @@ export default function Dashboard() {
         <Portal>
             <Navbar />
         </Portal>
-        <img src={url} alt='test iamge'/>
-
         <PanelContent>
           <PanelContainer>
             <Flex direction='column'>

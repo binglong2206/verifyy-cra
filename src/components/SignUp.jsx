@@ -17,11 +17,14 @@ import {
 import {Formik, Form, Field} from 'formik';
 import signInImage from "../assets/img/signInImage.png";
 import axios from 'axios'
+import { Navigate } from "react-router-dom";
 
 export default function SignUp() {
   const titleColor = useColorModeValue("teal.300", "teal.200");
   const textColor = useColorModeValue("gray.400", "white");
   const [isLoading, setLoading] = useState(false);
+  const [navigate, setNavigate] = useState(false); 
+  const [accountLoading, setAccountLoading] = useState(false);
   const [isDisabled, setDisabled] = useState(true);
   const [showError, setShowError] = useState(false);
   const [modalStep, setModalStep] = useState(1)
@@ -65,7 +68,7 @@ export default function SignUp() {
       setDisabled(true);
       setLoading(false);
       return;
-      }, (2000)); // Set a timeout otherwise query too fast, load spinner looks buggy
+      }, (1000)); // Set a timeout otherwise query too fast, load spinner looks buggy
       
     } else {
       setTimeout(() => {
@@ -74,7 +77,7 @@ export default function SignUp() {
         setDisabled(false);
         setShowError(false);
         return;
-        }, (2000));
+        }, (1000));
     }
   };
 
@@ -87,17 +90,27 @@ export default function SignUp() {
 
   const onSubmit = async(e) => {
     e.preventDefault(); // prevent form from default refresh;
-    await axios.post('http://localhost:8000/signup', state, {
+    setAccountLoading(true);
+
+    setTimeout(async ()=> {
+      await axios.post('http://localhost:8000/signup', state, {
       headers: {
         'Content-Type': 'application/json'
       },
       withCredentials: true
+    }).then(r => {
+      setNavigate(true);
+    }).catch(e => {
+      console.error('Account creation failed', e)
     })
+    }, 2000)
+    
   }
 
 
   return (
     <Flex position='relative' mb='40px'>
+      {navigate && <Navigate to={`/edit/${state.username}`} push={true} /> }
       <Flex
         h={{ sm: "initial", md: "75vh", lg: "85vh" }}
         w='100%'
@@ -220,6 +233,7 @@ export default function SignUp() {
                 </Button>
                 <Button
                   onClick={onSubmit}
+                  isLoading={accountLoading}
                   fontSize='10px'
                   type='submit'
                   bg='teal.300'

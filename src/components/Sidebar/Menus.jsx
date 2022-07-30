@@ -159,7 +159,6 @@ const Menus = () => {
     </Box>
     <Stack direction="column" mb="40px">
       <Box key='asd'>
-        <button onClick={onOpen}>yoyo</button>
         <MenuButton text='Dashboard' isActive={true} />
         <MenuButton text='Profile' onOpen={onOpen} setModal={setModal} />
         <MenuButton text='Background' onOpen={onOpen} setModal={setModal} />
