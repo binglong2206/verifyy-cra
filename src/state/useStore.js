@@ -29,7 +29,7 @@ export const useYoutubeStore = create((set)=> ({
   setYoutubeState: (props)=> {
     for (let key in props) {
       set({
-        [key]: props
+        [key]: props[key]
       })
     };
 
@@ -51,7 +51,7 @@ export const useInstagramStore = create((set)=> ({
   setInstagramState: (props) => {
     for (let key in props) {
       set({
-        [key]: props // woohoo!
+        [key]: props[key] // woohoo!
       })
     }
   },
@@ -69,7 +69,7 @@ export const useFacebookStore = create((set)=> ({
   setFacebookState: (props) => {
     for (let key in props) {
       set({
-        [key]: props
+        [key]: props[key]
       })
     }
   }

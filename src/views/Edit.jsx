@@ -27,7 +27,6 @@ export default function Dashboard() {
   );
   // document.documentElement.dir = "ltr";
 
-  const url = 'https://firebasestorage.googleapis.com/v0/b/verifyy-e4ece.appspot.com/o/logan%2Fbackground?alt=media&token=1a756ad7-e915-4870-b2ff-dd55ff1fdcae'
 
 
   useEffect(()=> {

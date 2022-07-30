@@ -15,6 +15,7 @@ import DashboardHeader from "../components/DashboardHeader";
 import axios from 'axios'
 import { CheckUser } from "../hooks/checkUser";
 import FullScreenSpinner from "../components/FullScreenSpinner";
+import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
 
 
 
@@ -28,26 +29,33 @@ export default function Dashboard() {
     "hsla(0,0%,100%,.8)",
     "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
   );
-  document.documentElement.dir = "ltr";
+  // document.documentElement.dir = "ltr";
 
-  const navigate = useNavigate();
-
+  // Data States
+  const setYoutubeState = useYoutubeStore(state=>state.setYoutubeState)
+  const setInstagramState = useInstagramStore(state=> state.setInstagramState)
+  const setFacebookState = useFacebookStore(state=>state.setFacebookState)
+  const youtubeState = useYoutubeStore(state=> state);
+  const instagramState = useInstagramStore(state=>state);
+  const facebookState = useFacebookStore(state=>state)
 
 
   useEffect(()=> {
-    const checkUser = async() => {
-     await axios.get(`http://localhost:8000/checkUser/${username}`)
-      .then(r=> {
-        if (!r.data.result) setUserStatus(false);
-        setLoading(false)
-      })
-      .catch(e=>{})
+    const getDashboard = async() => {
+      await axios.get(`http://localhost:8000/dashboard/${username}`) // Will run check on param too
+        .then(r=> {
+          setYoutubeState(r.data.yt);
+          // setInstagramState(r.data.ig);
+          // setFacebookState(r.data.fb);
+          console.log(r.data.yt)
+        })
+        .catch(e=>{
+          setUserStatus(false);
+        })
     };
      
-    checkUser();
-
-    //Start fetching data
-  });
+    getDashboard();
+  },[username, setFacebookState, setInstagramState, setYoutubeState]);
 
 
   return (
@@ -66,6 +74,9 @@ export default function Dashboard() {
         <PanelContent>
           <PanelContainer>
             <Flex direction='column'>
+              <button onClick={()=> {
+                console.log(youtubeState)
+              }}>show state</button>
               <DashboardHeader
                   backgroundHeader={ProfileBgImage}
                   backgroundProfile={bgProfile}
