@@ -23,7 +23,7 @@ export default function Dashboard() {
     "hsla(0,0%,100%,.8)",
     "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
   );
-  document.documentElement.dir = "ltr";
+  // document.documentElement.dir = "ltr";
 
   const url = 'https://firebasestorage.googleapis.com/v0/b/verifyy-e4ece.appspot.com/o/logan%2Fbackground?alt=media&token=1a756ad7-e915-4870-b2ff-dd55ff1fdcae'
 
@@ -39,6 +39,8 @@ export default function Dashboard() {
         <Portal>
             <Navbar />
         </Portal>
+        <img src={url} alt='test iamge'/>
+
         <PanelContent>
           <PanelContainer>
             <Flex direction='column'>

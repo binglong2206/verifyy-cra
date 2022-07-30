@@ -14,11 +14,13 @@ import avatar from "../assets/img/avatar.png";
 import DashboardHeader from "../components/DashboardHeader";
 import axios from 'axios'
 import { CheckUser } from "../hooks/checkUser";
+import FullScreenSpinner from "../components/FullScreenSpinner";
 
 
 
 export default function Dashboard() {
-  const [userStatus, setUserStatus] = useState(false);
+  const [userStatus, setUserStatus] = useState(true);
+  const [isLoading, setLoading] = useState(true);
   const {username} = useParams()
   const { isOpen, onOpen, onClose } = useDisclosure();
   const textColor = useColorModeValue("gray.700", "white");
@@ -31,31 +33,27 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
 
-  if(!userStatus) {
-    navigate('/404')
-  }
-
-
-
 
   useEffect(()=> {
     const checkUser = async() => {
      await axios.get(`http://localhost:8000/checkUser/${username}`)
-      .then(r=> setUserStatus(true))
+      .then(r=> {
+        if (!r.data.result) setUserStatus(false);
+        setLoading(false)
+      })
       .catch(e=>{})
     };
+     
     checkUser();
 
-    if (userStatus) {
-      console.log('start fetching....')
-    }
-
+    //Start fetching data
   });
 
 
   return (
     <> 
-    {/* <Sidebar /> */}
+    {!userStatus && <Navigate to={`/404`} push={true} /> }
+     <FullScreenSpinner userStatus={true} />
       <MainPanel
         w={{
           base: "100%",
