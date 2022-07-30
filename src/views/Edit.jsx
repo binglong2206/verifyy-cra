@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { ChakraProvider, Portal, useDisclosure, useColorModeValue, Flex } from "@chakra-ui/react";
 import Sidebar from "../components/Sidebar";
 import MainPanel from "../components/layouts/MainPanel";
@@ -18,6 +18,7 @@ import axios from "axios";
 
 export default function Dashboard() {
   const {username} = useParams();
+  const [userStatus, setUserStatus] = useState(true);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const textColor = useColorModeValue("gray.700", "white");
   const bgProfile = useColorModeValue(
@@ -29,15 +30,21 @@ export default function Dashboard() {
   const url = 'https://firebasestorage.googleapis.com/v0/b/verifyy-e4ece.appspot.com/o/logan%2Fbackground?alt=media&token=1a756ad7-e915-4870-b2ff-dd55ff1fdcae'
 
 
-  // useEffect(()=> {
-  //   axios.get(`http://localhost:8000/edit/${username}`, {
-  //     withCredentials: true
-  //   })
-  // })
+  useEffect(()=> {
+    axios.get(`http://localhost:8000/dashboard/edit/${username}`, {
+      withCredentials: true
+    }).then(r=> {
+      console.log('ready to fetch')
+    }).catch(e=>{
+      setUserStatus(false)
+      console.error(e)
+    })
+  })
 
 
   return (
     <> 
+    {!userStatus && <Navigate to={`/404}`} push={true} />}
     <Sidebar />
       <MainPanel
         w={{
@@ -48,7 +55,6 @@ export default function Dashboard() {
         <Portal>
             <Navbar />
         </Portal>
-        <img src={url} alt='test iamge'/>
 
         <PanelContent>
           <PanelContainer>
