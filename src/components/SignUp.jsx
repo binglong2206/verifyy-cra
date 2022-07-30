@@ -18,6 +18,7 @@ import {Formik, Form, Field} from 'formik';
 import signInImage from "../assets/img/signInImage.png";
 import axios from 'axios'
 import { Navigate } from "react-router-dom";
+import { Link as ReachLink } from "@reach/router"
 
 export default function SignUp() {
   const titleColor = useColorModeValue("teal.300", "teal.200");
@@ -261,11 +262,11 @@ export default function SignUp() {
               mt='0px'>
               <Text color={textColor} fontWeight='medium'>
                 Others:
-                <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
+                <Link href='/login' isExternal={false} color={titleColor}  ms='5px' fontWeight='bold'>
                   Login
                 </Link>
                 {" "} or 
-                <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
+                <Link href='/login' color={titleColor} ms='5px' fontWeight='bold'>
                   Demo Login
                 </Link>
        

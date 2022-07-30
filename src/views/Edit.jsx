@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ChakraProvider, Portal, useDisclosure, useColorModeValue, Flex } from "@chakra-ui/react";
 import Sidebar from "../components/Sidebar";
@@ -12,6 +12,7 @@ import ConfigSideBar from "../components/config/ConfigSideBar";
 import ProfileBgImage from "../assets/img/ProfileBackground.png";
 import avatar from "../assets/img/avatar.png";
 import DashboardHeader from "../components/DashboardHeader";
+import axios from "axios";
 
 
 
@@ -26,6 +27,14 @@ export default function Dashboard() {
   // document.documentElement.dir = "ltr";
 
   const url = 'https://firebasestorage.googleapis.com/v0/b/verifyy-e4ece.appspot.com/o/logan%2Fbackground?alt=media&token=1a756ad7-e915-4870-b2ff-dd55ff1fdcae'
+
+
+  // useEffect(()=> {
+  //   axios.get(`http://localhost:8000/edit/${username}`, {
+  //     withCredentials: true
+  //   })
+  // })
+
 
   return (
     <> 

@@ -1,4 +1,4 @@
-import React, {useReducer} from "react";
+import React, {useReducer, useState} from "react";
 import {
   Box,
   Flex,
@@ -11,44 +11,60 @@ import {
   Switch,
   Text,
   useColorModeValue,
+  FormErrorMessage
 } from "@chakra-ui/react";
 import signInImage from "../assets/img/signInImage.png";
 import axios from 'axios'
+import { Navigate } from "react-router-dom";
+
 
 export default function LoginComponent() {
   const titleColor = useColorModeValue("teal.300", "teal.200");
   const textColor = useColorModeValue("gray.400", "white");
 
+  const [navigate, setNavigate] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
   const [state, dispatch] = useReducer( // (reducerFunction, initialState)
     (state, param) => { // param is whatever defined in dispatch params
       return { ...state, ...param }; // merge initial state with dispatch params
     },
     {
-      username: "",
-      password: "",
+      username: "demo", // Default states
+      password: "demo",
     }
   )
 
   const handleInput = (e) => {
     const { name, value } = e.target;
     dispatch({ [name]: value });
+    console.log(state)
   };
 
 
   const onSubmit = async(e) => {
+    setLoading(true);
+    setShowError(false)
     e.preventDefault(); // prevent form from default refresh;
     await axios.post('http://localhost:8000/login', state, {
       headers: {
         'Content-Type': 'application/json'
       },
       withCredentials: true
+    }).then(r => {
+      setLoading(false)
+      setNavigate(true)
+    }).catch(e=>{
+      setLoading(false);
+      setShowError(true)
+      console.error(e)
     })
-
   }
 
 
   return (
     <Flex position='relative' mb='40px'>
+      {navigate && <Navigate to={`/edit/${state.username}`} push={true} /> }
       <Flex
         h={{ sm: "initial", md: "75vh", lg: "85vh" }}
         w='100%'
@@ -79,12 +95,13 @@ export default function LoginComponent() {
               fontSize='14px'>
               Enter your email and password to sign in
             </Text>
-            <FormControl onSubmit={onSubmit}>
+            <FormControl onSubmit={onSubmit} isInvalid={showError}>
               <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                 Username
               </FormLabel>
               <Input
                 onChange={handleInput}
+                value={state.username}
                 name='username'
                 borderRadius='15px'
                 mb='24px'
@@ -98,14 +115,16 @@ export default function LoginComponent() {
               </FormLabel>
               <Input
                 onChange={handleInput}
+                value={state.password}
                 name='password'
                 borderRadius='15px'
-                mb='36px'
+                mb='5px'
                 fontSize='sm'
                 type='password'
                 placeholder='Your password'
                 size='lg'
               />
+              <FormErrorMessage mb='10px'>Either username or password is incorrect. </FormErrorMessage>
               <FormControl display='flex' alignItems='center'>
                 <Switch id='remember-login' colorScheme='teal' me='10px' />
                 <FormLabel
@@ -118,6 +137,7 @@ export default function LoginComponent() {
               </FormControl>
               <Button
                 onClick={onSubmit}
+                isLoading={isLoading}
                 fontSize='10px'
                 type='submit'
                 bg='teal.300'
@@ -145,10 +165,6 @@ export default function LoginComponent() {
                 Don't have an account?
                 <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
                   Sign Up
-                </Link>
-                {" "}or
-                <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
-                  Demo Login
                 </Link>
               </Text>
             </Flex>

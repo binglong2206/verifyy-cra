@@ -53,7 +53,6 @@ export default function Dashboard() {
   return (
     <> 
     {!userStatus && <Navigate to={`/404`} push={true} /> }
-     <FullScreenSpinner userStatus={true} />
       <MainPanel
         w={{
           base: "100%",
@@ -80,12 +79,12 @@ export default function Dashboard() {
         </PanelContent>
         <Footer />
 
-        <Portal>
+        {/* <Portal>
           <ConfigFixedButton onOpen={onOpen} />
         </Portal>
         <ConfigSideBar 
           isOpen={isOpen}
-          onClose={onClose} />
+          onClose={onClose} /> */}
       </MainPanel>
     </>
 );
