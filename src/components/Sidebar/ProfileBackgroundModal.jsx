@@ -29,26 +29,17 @@ import MenuButton from "./MenuButtonLayout";
 import ProfileUpload from "../ProfileUploadModal";
 import axios from 'axios'
 import { uploadProfile, uploadBackground } from "../../api/uploadFirebase";
-import YoutubeModal from './YoutubeWhitelist'
-import InstagramModal from './InstagramWhitelist'
-import FacebookModal from './FacebookWhitelist'
-
 
 const MAX_FILE_SIZE = 524288; //512KB
 
 
-const Menus = () => {
+const ProfileBGModal = () => {
   let location = useLocation();
   const [modal, setModal] = useState('Profile');
   const activeBg = useColorModeValue("white", "gray.700");
   const inactiveBg = useColorModeValue("white", "gray.700");
   const activeColor = useColorModeValue("gray.700", "white");
   const inactiveColor = useColorModeValue("gray.400", "gray.400");
-  const {isOpen, onOpen, onClose} = useDisclosure(); 
-  const { isOpen: isYoutubeOpen , onOpen: onYoutubeOpen, onClose: onYoutubeClose } = useDisclosure()
-  const { isOpen: isinstagramOpen , onOpen: onInstagramOpen, onClose: onInstagramClose } = useDisclosure()
-  const { isOpen: isFacebookOpen , onOpen: onFacebookOpen, onClose: onFacebookClose } = useDisclosure()
-
 
   const getModalTitle = () => {
     if (modal === 'Profile') {
@@ -56,6 +47,9 @@ const Menus = () => {
     } else return 'UPLOAD A NEW BACKGROUND'
   }
 
+
+  const {isOpen, onOpen, onClose} = useDisclosure(); 
+  const { isOpen: isDeleteOpen , onOpen: onDeleteOpen, onClose: onDeleteClose } = useDisclosure()
 
   const toast = useToast();
     const [status, setStatus] = useState('idle');
@@ -146,46 +140,6 @@ const Menus = () => {
 
     return (
     <>
-    <Box pt={"25px"} mb="12px">
-      <Link
-        href="google.com"
-        target="_blank"
-        display="flex"
-        lineHeight="100%"
-        mb="30px"
-        fontWeight="bold"
-        justifyContent="center"
-        alignItems="center"
-        fontSize="11px"
-      >
-        <CreativeTimLogo w="32px" h="32px" me="10px" />
-        <Text fontSize="sm" mt="3px">
-          verifyy.co
-        </Text>
-      </Link>
-      <Separator></Separator>
-    </Box>
-    <Stack direction="column" mb="40px">
-      <Box key='asd'>
-        <MenuButton text='Dashboard' isActive={true} />
-        <MenuButton text='Profile' onOpen={onOpen} setModal={setModal} />
-        <MenuButton text='Background' onOpen={onOpen} setModal={setModal} />
-        <Text color={activeColor} fontWeight="bold" mb={{ xl: "12px"}} mx="auto" ps={{sm: "10px", xl: "16px"}} py="12px" > 
-           CONNECT ANALYTICS
-        </Text>
-        <MenuButton text='Youtube' onOpen={onYoutubeOpen}/>
-        <MenuButton text='Instagram' onOpen={onInstagramOpen}/>
-        <MenuButton text='Facebook' onOpen={onFacebookOpen} />
-      </Box>
-    </Stack>    
-    <YoutubeModal isOpen={isYoutubeOpen} onOpen={onYoutubeOpen} onClose={onYoutubeClose} />
-    <InstagramModal isOpen={isinstagramOpen} onOpen={onInstagramOpen} onClose={onInstagramClose} />
-    <FacebookModal isOpen={isFacebookOpen} onOpen={onFacebookOpen} onClose={onFacebookClose} />
-
-
-    <OpenSourceCard />
-
-
     <Modal isOpen={isOpen} onClose={handleModalClose}>
         <ModalOverlay />
         <ModalContent minW="lg">
@@ -247,4 +201,4 @@ const Menus = () => {
   )
 }
 
-export default Menus
+export default ProfileBGModal

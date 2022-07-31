@@ -48,12 +48,10 @@ const MenuButtonLayout = ({text, isActive, onOpen, setModal}) => {
     }
   
     const handleModal = () => {
-      if (text === 'Profile'){
-        setModal('Profile');
-      } else {
-        setModal('Background')
-      };
       onOpen();
+
+      if (text === 'Profile') setModal('Profile');
+      if (text === 'Background') setModal('Background')
     }
 
 

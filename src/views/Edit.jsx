@@ -85,9 +85,9 @@ export default function Dashboard() {
                   name={"Matthew Ryu"}
                   email={"MatthewFireHand@gmail.com"} />
                 <div>THIS PRIVATE EDIT PAGE BELONGS TO  {username}</div>
-                {userState.charts_order.map(e => {
+                {/* {userState.charts_order.map(e => {
                   return <Text fontSize={80}>CHART ID: {e}</Text>
-                })}
+                })} */}
 
               </Flex>
           </PanelContainer>
