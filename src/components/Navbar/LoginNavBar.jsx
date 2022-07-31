@@ -85,7 +85,7 @@ import {
   
           
       <HStack display={{ sm: "none", lg: "flex" }}>
-        <NavLink to="/edit/dashboard">
+        <NavLink to="/edit">
           <Button
             fontSize="sm"
             ms="0px"

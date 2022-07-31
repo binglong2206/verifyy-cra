@@ -29,9 +29,9 @@ import MenuButton from "./MenuButtonLayout";
 import ProfileUpload from "../ProfileUploadModal";
 import axios from 'axios'
 import { uploadProfile, uploadBackground } from "../../api/uploadFirebase";
-import YoutubeModal from './YoutubeWhitelist'
-import InstagramModal from './InstagramWhitelist'
-import FacebookModal from './FacebookWhitelist'
+import YoutubeModal from '../YoutubeWhitelist'
+import InstagramModal from '../InstagramWhitelist'
+import FacebookModal from '../FacebookWhitelist'
 
 
 const MAX_FILE_SIZE = 524288; //512KB

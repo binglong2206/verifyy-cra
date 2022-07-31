@@ -43,7 +43,7 @@ export default function Dashboard() {
 
   useEffect(()=> {
     const getDashboard = async() => {
-      await axios.get(`http://localhost:8000/dashboard/edit/${username}`, {
+      await axios.get(`http://localhost:8000/dashboard/edit`, {
         withCredentials: true // include cookies
       }) // Will run check on param too
         .then(r=> {
@@ -84,7 +84,7 @@ export default function Dashboard() {
                   avatarImage={avatar}
                   name={"Matthew Ryu"}
                   email={"MatthewFireHand@gmail.com"} />
-                <div>THIS PRIVATE EDIT PAGE BELONGS TO  {username}</div>
+                <div>THIS PRIVATE EDIT PAGE BELONGS TO  {JSON.stringify(userState)}</div>
                 {/* {userState.charts_order.map(e => {
                   return <Text fontSize={80}>CHART ID: {e}</Text>
                 })} */}
