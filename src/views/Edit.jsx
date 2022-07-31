@@ -58,7 +58,7 @@ export default function Dashboard() {
     };
      
     getDashboard();
-  },[username, setFacebookState, setInstagramState, setYoutubeState]);
+  },[username, setFacebookState, setInstagramState, setYoutubeState, setStatState]);
 
 
   return (
