@@ -111,7 +111,7 @@ export default function SignUp() {
 
   return (
     <Flex position='relative' mb='40px'>
-      {navigate && <Navigate to={`/edit/${state.username}`} push={true} /> }
+      {navigate && <Navigate to={`/edit`} push={true} /> }
       <Flex
         h={{ sm: "initial", md: "75vh", lg: "85vh" }}
         w='100%'
