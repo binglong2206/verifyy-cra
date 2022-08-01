@@ -158,7 +158,7 @@ import {
               borderRadius="35px"
               px="30px"
               display={{
-                sm: "flex",
+                sm: "none",
                 lg: "flex",
               }}
             >

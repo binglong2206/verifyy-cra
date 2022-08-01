@@ -17,9 +17,12 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import Separator  from "../Separator";
+import Options from "./optionsHooks";
+import { useUserStore } from "../../state/useStore";
 
 export default function ConfigSideBar({isOpen, onClose}) {
-
+  const chartsOrder = useUserStore(state=> state.charts_order)
+  const {youtubeOptions, instagramOptions, facebookOptions} = Options();
   const { colorMode, toggleColorMode } = useColorMode();
   let bgButton = useColorModeValue(
     "linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)",
@@ -30,6 +33,35 @@ export default function ConfigSideBar({isOpen, onClose}) {
   const buttonBorder = useColorModeValue("gray.700", "white");
   const buttonColor = useColorModeValue("gray.700", "white");
   const settingsRef = useRef();
+
+
+  const handleSwitch = (chartId) => {
+    useUserStore.setState(state => {
+      const order = [...state.charts_order] // deep clone
+      order.splice(order.indexOf(chartId), 1);
+      return {charts_order: order}
+    })
+  }
+
+  const displayOptions = (options) => {
+    const jsx = options.map((e)=> {
+      return (
+        <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        px='10px'
+      >
+        <Text fontSize="md" fontWeight="600" mb="4px">
+          {e.title}
+        </Text>
+        <Switch onChange={()=>handleSwitch(e.id)} colorScheme="teal" disabled={chartsOrder.indexOf(e.id) === -1} 
+            isChecked={chartsOrder.indexOf(e.id) !== -1} />
+      </Flex>
+      )
+    });
+
+    return jsx
+  }
 
   return (
     <>
@@ -74,38 +106,8 @@ export default function ConfigSideBar({isOpen, onClose}) {
                     Modify the visibility of charts.
                   </Text>
               </Box>
-              <Box> 
-                <Flex
-                  justifyContent="space-between"
-                  alignItems="center"
-                  px='10px'
-                >
-                  <Text fontSize="md" fontWeight="600" mb="4px">
-                    Dark/Light
-                  </Text>
-                  <Switch colorScheme="teal"/>
-                </Flex>
-                <Flex
-                justifyContent="space-between"
-                alignItems="center"
-                px='10px'
-              >
-                <Text fontSize="md" fontWeight="600" mb="4px">
-                  Dark/Light
-                </Text>
-                <Switch colorScheme="teal"/>
-              </Flex>
-              <Flex
-                justifyContent="space-between"
-                alignItems="center"
-                px='10px'
-              >
-                <Text fontSize="md" fontWeight="600" mb="4px">
-                  Dark/Light
-                </Text>
-                <Switch colorScheme="teal"/>
-              </Flex>
-              </Box>
+              {displayOptions(youtubeOptions)}
+
 
               <Box mt='24px'> 
                 <Text fontSize="md" fontWeight="600" >
@@ -115,38 +117,7 @@ export default function ConfigSideBar({isOpen, onClose}) {
                     Modify the visibility of charts.
                   </Text>
               </Box>
-              <Box> 
-                <Flex
-                  justifyContent="space-between"
-                  alignItems="center"
-                  px='10px'
-                >
-                  <Text fontSize="md" fontWeight="600" mb="4px">
-                    Dark/Light
-                  </Text>
-                  <Switch colorScheme="teal"/>
-                </Flex>
-                <Flex
-                justifyContent="space-between"
-                alignItems="center"
-                px='10px'
-              >
-                <Text fontSize="md" fontWeight="600" mb="4px">
-                  Dark/Light
-                </Text>
-                <Switch colorScheme="teal"/>
-              </Flex>
-              <Flex
-                justifyContent="space-between"
-                alignItems="center"
-                px='10px'
-              >
-                <Text fontSize="md" fontWeight="600" mb="4px">
-                  Dark/Light
-                </Text>
-                <Switch colorScheme="teal"/>
-              </Flex>
-              </Box>
+              {displayOptions(instagramOptions)}
 
               <Box mt='24px'> 
                 <Text fontSize="md" fontWeight="600" >
@@ -156,41 +127,7 @@ export default function ConfigSideBar({isOpen, onClose}) {
                     Modify the visibility of charts.
                   </Text>
               </Box>
-              <Box> 
-                <Flex
-                  justifyContent="space-between"
-                  alignItems="center"
-                  px='10px'
-                >
-                  <Text fontSize="md" fontWeight="600" mb="4px">
-                    Dark/Light
-                  </Text>
-                  <Switch colorScheme="teal" disabled={true}/>
-                </Flex>
-                <Flex
-                justifyContent="space-between"
-                alignItems="center"
-                px='10px'
-              >
-                <Text fontSize="md" fontWeight="600" mb="4px">
-                  Dark/Light
-                </Text>
-                <Switch colorScheme="teal" disabled={true}/>
-              </Flex>
-              <Flex
-                justifyContent="space-between"
-                alignItems="center"
-                px='10px'
-              >
-                <Text fontSize="md" fontWeight="600" mb="4px">
-                  Dark/Light
-                </Text>
-                <Switch colorScheme="teal" disabled={true}/>
-              </Flex>
-              </Box>
-
-
-
+              {displayOptions(facebookOptions)}
 
 
             </Flex>
