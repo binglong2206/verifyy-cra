@@ -13,6 +13,7 @@ import ProfileBgImage from "../assets/img/ProfileBackground.png";
 import avatar from "../assets/img/avatar.png";
 import DashboardHeader from "../components/DashboardHeader";
 import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
+import Chart1 from "../components/charts/Chart1";
 import axios from "axios";
 
 
@@ -38,7 +39,9 @@ export default function Dashboard() {
   const userState =  useUserStore(state=> state)
   const youtubeState = useYoutubeStore(state=> state);
   const instagramState = useInstagramStore(state=>state);
-  const facebookState = useFacebookStore(state=>state)
+  const facebookState = useFacebookStore(state=>state);
+
+  const charts_order = useUserStore(state=>state.charts_order)
 
 
   useEffect(()=> {
@@ -85,9 +88,9 @@ export default function Dashboard() {
                   name={"Matthew Ryu"}
                   email={"MatthewFireHand@gmail.com"} />
                 <div>THIS PRIVATE EDIT PAGE BELONGS TO  {JSON.stringify(userState)}</div>
-                {/* {userState.charts_order.map(e => {
-                  return <Text fontSize={80}>CHART ID: {e}</Text>
-                })} */}
+
+                
+                {charts_order.indexOf(1) !== -1 && <Chart1 />}
 
               </Flex>
           </PanelContainer>
