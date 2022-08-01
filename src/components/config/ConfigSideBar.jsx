@@ -19,6 +19,7 @@ import {
 import Separator  from "../Separator";
 import Options from "./optionsHooks";
 import { useUserStore } from "../../state/useStore";
+import axios from "axios";
 
 export default function ConfigSideBar({isOpen, onClose}) {
   const chartsOrder = useUserStore(state=> state.charts_order)
@@ -35,11 +36,22 @@ export default function ConfigSideBar({isOpen, onClose}) {
   const settingsRef = useRef();
 
 
-  const handleSwitch = (chartId) => {
+  const handleSwitch = async (chartId) => {
     // Determine if switch is patch or delete
     const action = chartsOrder.indexOf(chartId) === -1 ? 'patch' : 'delete'
 
     if (action === 'patch'){
+      // Not sure why axios patch doesn't work
+      // const res = await axios.patch(`http://localhost:8000/user/charts/${chartId}`,{
+      //   withCredentials: true
+      // })
+      // .then(r=>console.log('chart patched'));
+      const r = await fetch(`http://localhost:8000/user/charts/${chartId}`, {
+        method: 'PATCH',
+        credentials: 'include',
+      });
+
+
       useUserStore.setState(state => {
         const order = [...state.charts_order] // deep clone
         order.push(chartId)
@@ -49,6 +61,11 @@ export default function ConfigSideBar({isOpen, onClose}) {
     } 
 
     if (action === 'delete') {
+      const res = await axios.delete(`http://localhost:8000/user/charts/${chartId}`,{
+        withCredentials: true
+      })
+      .then(r=>console.log('chart deleted'));
+
       useUserStore.setState(state => {
         const order = [...state.charts_order] // deep clone
         order.splice(order.indexOf(chartId), 1);
