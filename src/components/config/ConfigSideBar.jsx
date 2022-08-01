@@ -36,11 +36,28 @@ export default function ConfigSideBar({isOpen, onClose}) {
 
 
   const handleSwitch = (chartId) => {
-    useUserStore.setState(state => {
-      const order = [...state.charts_order] // deep clone
-      order.splice(order.indexOf(chartId), 1);
-      return {charts_order: order}
-    })
+    // Determine if switch is patch or delete
+    const action = chartsOrder.indexOf(chartId) === -1 ? 'patch' : 'delete'
+
+    if (action === 'patch'){
+      useUserStore.setState(state => {
+        const order = [...state.charts_order] // deep clone
+        order.push(chartId)
+        return {charts_order: order}
+      });
+      return;
+    } 
+
+    if (action === 'delete') {
+      useUserStore.setState(state => {
+        const order = [...state.charts_order] // deep clone
+        order.splice(order.indexOf(chartId), 1);
+        return {charts_order: order}
+      })
+      return;
+    }
+
+    
   }
 
   const displayOptions = (options) => {
@@ -54,7 +71,7 @@ export default function ConfigSideBar({isOpen, onClose}) {
         <Text fontSize="md" fontWeight="600" mb="4px">
           {e.title}
         </Text>
-        <Switch onChange={()=>handleSwitch(e.id)} colorScheme="teal" disabled={chartsOrder.indexOf(e.id) === -1} 
+        <Switch onChange={()=>handleSwitch(e.id)} colorScheme="teal" 
             isChecked={chartsOrder.indexOf(e.id) !== -1} />
       </Flex>
       )
