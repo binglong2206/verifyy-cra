@@ -16,6 +16,8 @@ import axios from 'axios'
 import { CheckUser } from "../hooks/checkUser";
 import FullScreenSpinner from "../components/FullScreenSpinner";
 import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
+import DarkModeButton from "../components/DarkModeButton";
+import Chart1 from "../components/charts/Chart1";
 
 
 
@@ -34,16 +36,21 @@ export default function Dashboard() {
   // Data States
   const setYoutubeState = useYoutubeStore(state=>state.setYoutubeState)
   const setInstagramState = useInstagramStore(state=> state.setInstagramState)
-  const setFacebookState = useFacebookStore(state=>state.setFacebookState)
+  const setFacebookState = useFacebookStore(state=>state.setFacebookState);
+  const setStatState = useUserStore(state=>state.setStatState);
+  const userState =  useUserStore(state=> state)
   const youtubeState = useYoutubeStore(state=> state);
   const instagramState = useInstagramStore(state=>state);
-  const facebookState = useFacebookStore(state=>state)
+  const facebookState = useFacebookStore(state=>state);
+
+  const charts_order = useUserStore(state=>state.charts_order)
 
 
   useEffect(()=> {
     const getDashboard = async() => {
-      await axios.get(`http://localhost:8000/dashboard/${username}`) // Will run check on param too, no need cookies
+      await axios.get(`http://localhost:8000/dashboard/${username}`) // Will run check on username param too, no need cookies
         .then(r=> {
+          setStatState(r.data.stat)
           setYoutubeState(r.data.yt);
           setInstagramState(r.data.ig);
           setFacebookState(r.data.fb);
@@ -81,17 +88,16 @@ export default function Dashboard() {
                   email={"MatthewFireHand@gmail.com"} />
 
                   <div>THIS PUBLIC DASHBOARD BELONGS TO  {username}</div>
+                  {charts_order.indexOf(1) !== -1 && <Chart1 />}
+
               </Flex>
           </PanelContainer>
         </PanelContent>
         <Footer />
 
-        {/* <Portal>
-          <ConfigFixedButton onOpen={onOpen} />
+        <Portal>
+          <DarkModeButton />
         </Portal>
-        <ConfigSideBar 
-          isOpen={isOpen}
-          onClose={onClose} /> */}
       </MainPanel>
     </>
 );
