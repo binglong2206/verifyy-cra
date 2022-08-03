@@ -7,13 +7,12 @@ import CardBody from '../../card/CardBody';
 import Card from '../../card/Card';
 import CardHeader from '../../card/CardHeader';
 import {useWindowSize} from 'react-use'
+import IntervalDropDown from '../../IntervalDropDown';
 
 const Intervals = () => {
     const width = useWindowSize();
+    const [activeTab, setActiveTab] = useState('m')
 
-
-  
-  
     const textColor = useColorModeValue("gray.700", "gray.600");
     const borderProfileColor = useColorModeValue(
       "white",
@@ -44,15 +43,7 @@ const Intervals = () => {
                             </Text>
                         </Flex>
                         <Flex>
-                            <Button>
-                                Day
-                            </Button>
-                            <Button>
-                                Week
-                            </Button>
-                            <Button>
-                                Month
-                            </Button>
+                            <IntervalDropDown activeTab={activeTab} setActiveTab={setActiveTab} />
                         </Flex>
                             
                      </CardHeader>
