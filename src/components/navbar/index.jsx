@@ -5,7 +5,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { SettingsIcon } from "../Icons/Icons";
-import SidebarMobile from "../Sidebar/Mobile";
+import SidebarMobile from "../sidebar/Mobile";
 
 
 export default function Navbar({onOpen}) {

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import { ChakraProvider, Portal, useDisclosure, useColorModeValue, Flex, Text } from "@chakra-ui/react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/sidebar";
 import MainPanel from "../components/layouts/MainPanel";
 import PanelContainer from "../components/layouts/PanelContainer";
 import PanelContent from "../components/layouts/PanelContent";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
 import ConfigFixedButton from "../components/config/ConfigFixedButton";
 import ConfigSideBar from "../components/config/ConfigSideBar";
@@ -13,9 +13,9 @@ import ProfileBgImage from "../assets/img/ProfileBackground.png";
 import avatar from "../assets/img/avatar.png";
 import DashboardHeader from "../components/DashboardHeader";
 import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
-import Chart1 from "../components/charts/Chart1";
 import axios from "axios";
-
+import OverviewChart from "../components/charts/overview";
+import YoutubeChart from "../components/charts/youtube";
 
 
 export default function Dashboard() {
@@ -87,10 +87,11 @@ export default function Dashboard() {
                   avatarImage={avatar}
                   name={"Matthew Ryu"}
                   email={"MatthewFireHand@gmail.com"} />
-                <div>THIS PRIVATE EDIT PAGE BELONGS TO  {JSON.stringify(userState)}</div>
+                {/* <div>THIS PRIVATE EDIT PAGE BELONGS TO  {JSON.stringify(userState)}</div>
+                {charts_order.indexOf(1) !== -1 && <Chart1 />} */}
 
-                
-                {charts_order.indexOf(1) !== -1 && <Chart1 />}
+                <OverviewChart />
+                <YoutubeChart />
 
               </Flex>
           </PanelContainer>

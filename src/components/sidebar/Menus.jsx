@@ -28,7 +28,7 @@ import OpenSourceCard from "./OpenSourceCard";
 import MenuButton from "./MenuButtonLayout";
 import ProfileUpload from "../ProfileUploadModal";
 import axios from 'axios'
-import { uploadProfile, uploadBackground } from "../../api/uploadFirebase";
+import { uploadProfile, uploadBackground } from "../../apis/uploadFirebase";
 import YoutubeModal from '../whiteListModal/YoutubeModal'
 import InstagramModal from '../whiteListModal/InstagramModal'
 import FacebookModal from '../whiteListModal/FacebookModal'

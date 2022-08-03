@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { Box, Portal, useColorMode } from "@chakra-ui/react";
 import Footer from '../components/Footer'
-import LoginNavBar from "../components/Navbar/LoginNavBar";
+import LoginNavBar from "../components/navbar/LoginNavBar";
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 

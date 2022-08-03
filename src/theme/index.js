@@ -12,6 +12,7 @@ import { CardHeaderComponent } from "./additions/card/CardHeader";
 import { MainPanelComponent } from "./additions/layout/MainPanel";
 import { PanelContentComponent } from "./additions/layout/PanelContent";
 import { PanelContainerComponent } from "./additions/layout/PanelContainer";
+import { MainPanelDashboard } from "./additions/layout/MainPanelDashboard";
 // import { mode } from "@chakra-ui/theme-tools";
 
 
@@ -27,6 +28,7 @@ const theme = extendTheme(
   CardBodyComponent, // Card Body component
   CardHeaderComponent, // Card Header component
   MainPanelComponent, // Main Panel component
+  MainPanelDashboard, // Main Panel Dashboard component
   PanelContentComponent, // Panel Content component
   PanelContainerComponent // Panel Container component
 );

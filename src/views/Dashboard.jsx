@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { ChakraProvider, Portal, useDisclosure, useColorModeValue, Flex } from "@chakra-ui/react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/sidebar";
 import MainPanel from "../components/layouts/MainPanel";
+import MainPanelDashboard from "../components/layouts/MainPanelDashboard";
 import PanelContainer from "../components/layouts/PanelContainer";
 import PanelContent from "../components/layouts/PanelContent";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
 import ConfigFixedButton from "../components/config/ConfigFixedButton";
 import ConfigSideBar from "../components/config/ConfigSideBar";
@@ -17,7 +18,7 @@ import { CheckUser } from "../hooks/checkUser";
 import FullScreenSpinner from "../components/FullScreenSpinner";
 import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
 import DarkModeButton from "../components/DarkModeButton";
-import Chart1 from "../components/charts/Chart1";
+import OverviewChart from "../components/charts/overview";
 
 
 
@@ -67,16 +68,16 @@ export default function Dashboard() {
   return (
     <> 
     {!userStatus && <Navigate to={`/404`} push={true} /> }
-      <MainPanel
+      <MainPanelDashboard
         w={{
           base: "100%",
-          xl: "100%",
+          xl: "85%",
         }}
+        margin='auto !important'
       >
         <Portal>
             <Navbar />
         </Portal>
-
         <PanelContent>
           <PanelContainer>
             <Flex direction='column'>
@@ -87,8 +88,9 @@ export default function Dashboard() {
                   name={"Matthew Ryu"}
                   email={"MatthewFireHand@gmail.com"} />
 
-                  <div>THIS PUBLIC DASHBOARD BELONGS TO  {username}</div>
-                  {charts_order.indexOf(1) !== -1 && <Chart1 />}
+                  {/* <div>THIS PUBLIC DASHBOARD BELONGS TO  {username}</div>
+                  {charts_order.indexOf(1) !== -1 && <Chart1 />} */}
+                  <OverviewChart />
 
               </Flex>
           </PanelContainer>
@@ -98,7 +100,7 @@ export default function Dashboard() {
         <Portal>
           <DarkModeButton />
         </Portal>
-      </MainPanel>
+      </MainPanelDashboard>
     </>
 );
 }
