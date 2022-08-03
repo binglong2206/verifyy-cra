@@ -7,7 +7,7 @@ import {
   RocketIcon
 } from "../../Icons/Icons.js";
 import IconBox from "../../Icons/IconBox.jsx";
-import Demographics from "./Demographics.jsx";
+import Demographics from "./DemographicsChart.jsx";
 
 const Geographics = ({ title, percentage, chart }) => {
   const iconBoxInside = useColorModeValue("white", "white");
@@ -19,6 +19,7 @@ const Geographics = ({ title, percentage, chart }) => {
     <Card p='16px' pb="1.5rem">
       <CardBody>
         <Flex direction='column' w='100%'>
+          
           <CardHeader p='12px 5px' mb='12px'>
             <Flex direction='column'>
               <Text fontSize='lg' color={textColor} fontWeight='bold'>

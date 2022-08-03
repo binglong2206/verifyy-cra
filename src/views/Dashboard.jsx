@@ -19,6 +19,9 @@ import FullScreenSpinner from "../components/FullScreenSpinner";
 import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
 import DarkModeButton from "../components/DarkModeButton";
 import OverviewChart from "../components/charts/overview";
+import YoutubeChart from "../components/charts/youtube";
+import InstagramChart from "../components/charts/instagram";
+import FacebookChart from "../components/charts/facebook";
 
 
 
@@ -91,6 +94,9 @@ export default function Dashboard() {
                   {/* <div>THIS PUBLIC DASHBOARD BELONGS TO  {username}</div>
                   {charts_order.indexOf(1) !== -1 && <Chart1 />} */}
                   <OverviewChart />
+                  <YoutubeChart />
+                  <InstagramChart />
+                  <FacebookChart />
 
               </Flex>
           </PanelContainer>

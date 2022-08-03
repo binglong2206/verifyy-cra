@@ -66,8 +66,8 @@ const Demographics = () => {
 				}}
 				series={[76, 55, 41, 20, 68, 15]}
 				type='donut'
-				width={300}
-				height={300}
+				width={325}
+				height={325}
 			/>
 		</Box>
 	);

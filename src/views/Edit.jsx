@@ -16,6 +16,8 @@ import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } fr
 import axios from "axios";
 import OverviewChart from "../components/charts/overview";
 import YoutubeChart from "../components/charts/youtube";
+import InstagramChart from "../components/charts/instagram";
+import FacebookChart from "../components/charts/facebook";
 
 
 export default function Dashboard() {
@@ -92,6 +94,8 @@ export default function Dashboard() {
 
                 <OverviewChart />
                 <YoutubeChart />
+                <InstagramChart />
+                <FacebookChart />
 
               </Flex>
           </PanelContainer>

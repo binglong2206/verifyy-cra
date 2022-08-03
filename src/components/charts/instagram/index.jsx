@@ -7,7 +7,7 @@ import GeoDemo from "./GeoDemo";
 import Demographics from "./DemographicsChart";
 import Intervals from "./Intervals";
 
-export default function YoutubeChart() {
+export default function InstagramChart() {
     return (
         <>
         <Grid
