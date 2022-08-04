@@ -55,7 +55,7 @@ export default function Dashboard() {
         withCredentials: true // include cookies
       }) // Will run check on param too
         .then(r=> {
-          setStatState(r.data.stat)
+            setStatState(r.data.stat)
           if (!r.data.stat.follower_count) { // if first time user, no agg followers
             onWelcomeOpen();
           } else {
@@ -70,7 +70,7 @@ export default function Dashboard() {
     };
      
     getDashboard();
-  },[username, setFacebookState, setInstagramState, setYoutubeState, setStatState, onWelcomeOpen]);
+  },[setFacebookState, setInstagramState, setYoutubeState, setStatState, onWelcomeOpen]);
 
   useEffect(()=> {
     onWelcomeOpen();
