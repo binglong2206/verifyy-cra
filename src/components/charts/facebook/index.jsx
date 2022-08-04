@@ -13,26 +13,29 @@ export default function FacebookChart() {
 
     return (
         <>
-        <Grid
-        templateColumns={{ md: "1fr", lg: "1.8fr 1.2fr" }}
-        templateRows={{ md: "1fr auto", lg: "1fr" }}
-        my='26px'
-        gap='24px'>
-            <Title />
-            <GeneralStats />
-        </Grid>
+        {charts.indexOf(7) !== -1 && 
+            <Grid
+            templateColumns={{ md: "1fr", lg: "1.8fr 1.2fr" }}
+            templateRows={{ md: "1fr auto", lg: "1fr" }}
+            mb={{ lg: "26px" }}
+            gap='24px'>
+                <Title />
+                <GeneralStats />
+            </Grid>
+        }
 
-        <Grid
-        templateColumns={{ sm: "1fr", lg: "1.1fr 1.9fr" }}
-        templateRows={{ sm: "repeat(2, 1fr)", lg: "1fr" }}
-        gap='24px'
-        mb={{ lg: "26px" }}>
-            <GeoDemo />
-            <Intervals />
-        </Grid>
+        {charts.indexOf(8) !== -1 && 
+            <Grid
+            templateColumns={{ sm: "1fr", lg: "1.1fr 1.9fr" }}
+            templateRows={{ sm: "repeat(2, 1fr)", lg: "1fr" }}
+            gap='24px'
+            mb={{ lg: "26px" }}>
+                <GeoDemo />
+                <Intervals />
+            </Grid>
+        }
 
-
-        <Medias />
+        {charts.indexOf(9) !== -1 &&  <Medias />}
         </>
     )
 }

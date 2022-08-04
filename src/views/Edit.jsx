@@ -63,6 +63,7 @@ export default function Dashboard() {
             setInstagramState(r.data.ig);
             setFacebookState(r.data.fb);
           }
+          console.log(r.data)
         })
         .catch(e=>{
           setUserStatus(false);
@@ -72,9 +73,7 @@ export default function Dashboard() {
     getDashboard();
   },[setFacebookState, setInstagramState, setYoutubeState, setStatState, onWelcomeOpen]);
 
-  useEffect(()=> {
-    onWelcomeOpen();
-  },[onWelcomeOpen])
+
 
 
   return (
