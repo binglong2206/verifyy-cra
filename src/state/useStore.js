@@ -32,8 +32,12 @@ export const useUserStore = create((set) => ({
 
 export const useYoutubeStore = create((set)=> ({
   id: null,
+  username: null,
+  profile_image: null,
   follower_count: 0,
+  view_count: 0,
   media_count: 0,
+  src_url: null,
   demographics: null,
   geographics: null,
   data_intervals: null,
@@ -52,9 +56,11 @@ export const useYoutubeStore = create((set)=> ({
 
 export const useInstagramStore = create((set)=> ({
   id: null,
-  username: 0,
+  username: null,
+  profile_image: null,
   follower_count: 0,
   media_count: 0,
+  src_url: null,
   demographics: [],
   geographics: [],
   data_intervals:null,
@@ -70,9 +76,11 @@ export const useInstagramStore = create((set)=> ({
 
 export const useFacebookStore = create((set)=> ({
   id: null,
+  username: null,
   follower_count: 0,
   like_count: 0,
   media_count: 0,
+  src_url: null,
   demographics: [],
   geographics: [],
   data_intervals: null,
