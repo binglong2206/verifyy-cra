@@ -14,8 +14,6 @@ import ProfileBgImage from "../assets/img/ProfileBackground.png";
 import avatar from "../assets/img/avatar.png";
 import DashboardHeader from "../components/DashboardHeader";
 import axios from 'axios'
-import { CheckUser } from "../hooks/checkUser";
-import FullScreenSpinner from "../components/FullScreenSpinner";
 import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
 import DarkModeButton from "../components/DarkModeButton";
 import OverviewChart from "../components/charts/overview";

@@ -3,8 +3,6 @@ import { useUserStore } from "../../state/useStore";
 
 const Options = () => {
     const chartsOrder = useUserStore(state=> state.charts_order);
-    console.log(chartsOrder)
-
     let youtubeOptions = [
         {
             id: 1,

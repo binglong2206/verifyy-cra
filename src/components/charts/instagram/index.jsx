@@ -1,11 +1,10 @@
 import React from "react";
 import { Grid } from "@chakra-ui/react";
-import Title from "./Title";
-import Medias from "./Medias";
-import GeneralStats from "./GeneralStats";
-import GeoDemo from "./GeoDemo";
-import Demographics from "./DemographicsChart";
-import Intervals from "./Intervals";
+import Title from "../common/Title";
+import Medias from "../common/Medias";
+import GeneralStats from "../common/GeneralStats";
+import GeoDemo from "../common/GeoDemo";
+import Intervals from "../common/Intervals";
 
 export default function InstagramChart() {
     return (

@@ -32,6 +32,7 @@ import { UploadProfile, UploadBackground } from "../../apis/uploadFirebase";
 import YoutubeModal from '../whiteListModal/YoutubeModal'
 import InstagramModal from '../whiteListModal/InstagramModal'
 import FacebookModal from '../whiteListModal/FacebookModal'
+import CustomToast from "../../hooks/CustomToast";
 
 
 const MAX_FILE_SIZE = 524288; //512KB
@@ -57,32 +58,35 @@ const Menus = () => {
   }
 
 
-  const toast = useToast();
-    const [status, setStatus] = useState('idle');
-    const [image, setImage] = useState({
+  const [status, setStatus] = useState('idle');
+  const [image, setImage] = useState({
       file: null,
       url: ""
     });
-  
-    const showSuccessToast = () => {
-        toast({
-            title: 'Upload Success.',
-            description: "We've created your account for you.",
-            status: 'success',
-            duration: 9000,
-            isClosable: true,
-          });
-    }
 
-    const showErrorToast = () => {
-        toast({
-            title: 'Error',
-            description: "We've created your account for you.",
-            status: 'error',
-            duration: 9000,
-            isClosable: true,
-          });
-    }
+   
+  const showSuccessToast = CustomToast('Upload Success.', 'Image uploaded.', 'success');
+  const showErrorToast = CustomToast('Error', 'Something went wrong', 'error')
+  // const toast = useToast();  
+  // const showSuccessToast = () => {
+  //       toast({
+  //           title: 'Upload Success.',
+  //           description: "Image uploaded.",
+  //           status: 'success',
+  //           duration: 9000,
+  //           isClosable: true,
+  //         });
+  //   }
+
+  // const showErrorToast = () => {
+  //       toast({
+  //           title: 'Error',
+  //           description: "We've .",
+  //           status: 'error',
+  //           duration: 9000,
+  //           isClosable: true,
+  //         });
+  //   }
     
 
     const handleModalClose = () => {
@@ -107,20 +111,20 @@ const Menus = () => {
     };
   
  
-    const uploadToFirebase = async (file) => {
-      setStatus('loading')
+    // const uploadToFirebase = async (file) => {
+    //   setStatus('loading')
 
-      // Create a FormData object and store the file and then make an axios post to server
-      const formData = new FormData();
-      formData.append('profile', file);
-      await axios.post('http://localhost:8000/user/profile', formData , {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'multipart-formdata'
-        }
-       }).then(r=> console.log('done uploading'))
+    //   // Create a FormData object and store the file and then make an axios post to server
+    //   const formData = new FormData();
+    //   formData.append('profile', file);
+    //   await axios.post('http://localhost:8000/user/profile', formData , {
+    //     withCredentials: true,
+    //     headers: {
+    //       'Content-Type': 'multipart-formdata'
+    //     }
+    //    }).then(r=> console.log('done uploading'))
      
-    };
+    // };
 
     const uploadHandler = async() => {
       setStatus('loading');
@@ -135,7 +139,6 @@ const Menus = () => {
       } else  {
         await UploadBackground(image.file)
           .then(r=> {
-            console.log(r)
             setStatus('Upload Background Done');
             showSuccessToast()
             onClose()
