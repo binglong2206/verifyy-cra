@@ -24,7 +24,7 @@ import { CreativeTimLogo } from "../Icons/Icons";
 import Separator from "../Separator";
 import { NavLink, useLocation } from "react-router-dom";
 import routes from "../../routes/sidebarRoutes";
-import OpenSourceCard from "./OpenSourceCard";
+import LoadDataCard from "./LoadSampleData";
 import MenuButton from "./MenuButtonLayout";
 import ProfileUpload from "../ProfileUploadModal";
 import axios from 'axios'
@@ -187,7 +187,7 @@ const Menus = () => {
     <FacebookModal isOpen={isFacebookOpen} onOpen={onFacebookOpen} onClose={onFacebookClose} />
 
 
-    <OpenSourceCard />
+    <LoadDataCard />
 
 
     <Modal isOpen={isOpen} onClose={handleModalClose}>

@@ -4,9 +4,8 @@ import { Button, Flex, Link, Text } from "@chakra-ui/react";
 import SidebarHelpImage from "../../assets/img/SidebarHelpImage.png";
 import IconBox from "../Icons/IconBox";
 
-export default function OpenSourceCard({children, ...rest}) {
-  // Pass the computed styles into the `__css` prop
-//   const { children, ...rest } = props;
+export default function LoadDataCard({children, ...rest}) {
+
   return (
     <Flex
       borderRadius="15px"
@@ -23,15 +22,11 @@ export default function OpenSourceCard({children, ...rest}) {
         <QuestionIcon color="teal.300" h="18px" w="18px" />
       </IconBox>
       <Text fontSize="sm" color="white" fontWeight="bold">
-        Full Open Source
+        Waiting for verification?
       </Text>
       <Text fontSize="xs" color="white" mb="10px">
-        Please support us!
+        Insert demo data and start testing!
       </Text>
-      <Link
-        w="100%"
-        href="https://demos.creative-tim.com/docs-purity-ui-dashboard/"
-      >
         <Button
           fontSize="10px"
           fontWeight="bold"
@@ -48,9 +43,8 @@ export default function OpenSourceCard({children, ...rest}) {
           }}
           color="black"
         >
-          Github
+          Load Sample Data
         </Button>
-      </Link>
     </Flex>
   );
 }
