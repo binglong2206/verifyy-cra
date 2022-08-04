@@ -12,7 +12,7 @@ import ConfigSideBar from "../components/config/ConfigSideBar";
 import ProfileBgImage from "../assets/img/ProfileBackground.png";
 import avatar from "../assets/img/avatar.png";
 import DashboardHeader from "../components/DashboardHeader";
-import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
+import { useTabStore, useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
 import axios from "axios";
 import OverviewChart from "../components/charts/overview";
 import YoutubeChart from "../components/charts/youtube";
@@ -27,7 +27,7 @@ export default function Dashboard() {
   const textColor = useColorModeValue("gray.700", "white");
   const bgProfile = useColorModeValue(
     "hsla(0,0%,100%,.8)",
-    "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
+    "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.8s4%)"
   );
   // document.documentElement.dir = "ltr";
 
@@ -42,6 +42,7 @@ export default function Dashboard() {
   const youtubeState = useYoutubeStore(state=> state);
   const instagramState = useInstagramStore(state=>state);
   const facebookState = useFacebookStore(state=>state);
+  const tabState = useTabStore(state=>state)
 
   const charts_order = useUserStore(state=>state.charts_order)
 
@@ -93,9 +94,11 @@ export default function Dashboard() {
                 {charts_order.indexOf(1) !== -1 && <Chart1 />} */}
 
                 <OverviewChart />
-                <YoutubeChart />
-                <InstagramChart />
-                <FacebookChart />
+                {tabState.ytTab && <YoutubeChart />}
+                {tabState.igTab && <InstagramChart />}
+                {tabState.fbTab && <FacebookChart />}
+
+           
 
               </Flex>
           </PanelContainer>

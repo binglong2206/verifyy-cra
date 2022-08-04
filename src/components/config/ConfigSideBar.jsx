@@ -19,6 +19,7 @@ import {
 import Separator  from "../Separator";
 import Options from "./optionsHooks";
 import { useUserStore } from "../../state/useStore";
+import CustomToast from "../../hooks/CustomToast";
 import axios from "axios";
 
 export default function ConfigSideBar({isOpen, onClose}) {
@@ -34,6 +35,9 @@ export default function ConfigSideBar({isOpen, onClose}) {
   const buttonBorder = useColorModeValue("gray.700", "white");
   const buttonColor = useColorModeValue("gray.700", "white");
   const settingsRef = useRef();
+  const showSuccessToast = CustomToast('Success', 'Layout updated', 'success' );
+  const showErrorToast = CustomToast('Error', 'Something went wrong', 'error' )
+
 
 
   const handleSwitch = async (chartId) => {
@@ -49,12 +53,12 @@ export default function ConfigSideBar({isOpen, onClose}) {
       const r = await fetch(`http://localhost:8000/user/charts/${chartId}`, {
         method: 'PATCH',
         credentials: 'include',
-      });
-
+      })
 
       useUserStore.setState(state => {
         const order = [...state.charts_order] // deep clone
         order.push(chartId)
+        showSuccessToast();
         return {charts_order: order}
       });
       return;
@@ -64,11 +68,11 @@ export default function ConfigSideBar({isOpen, onClose}) {
       const res = await axios.delete(`http://localhost:8000/user/charts/${chartId}`,{
         withCredentials: true
       })
-      .then(r=>console.log('chart deleted'));
-
+      
       useUserStore.setState(state => {
         const order = [...state.charts_order] // deep clone
         order.splice(order.indexOf(chartId), 1);
+        showSuccessToast();
         return {charts_order: order}
       })
       return;
