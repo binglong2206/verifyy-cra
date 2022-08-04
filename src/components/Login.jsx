@@ -38,7 +38,6 @@ export default function LoginComponent() {
   const handleInput = (e) => {
     const { name, value } = e.target;
     dispatch({ [name]: value });
-    console.log(state)
   };
 
 
@@ -52,7 +51,7 @@ export default function LoginComponent() {
       },
       withCredentials: true
     }).then(r => {
-      setLoading(false)
+      // setLoading(false)
       setNavigate(true)
     }).catch(e=>{
       setLoading(false);
@@ -125,7 +124,7 @@ export default function LoginComponent() {
                 size='lg'
               />
               <FormErrorMessage mb='10px'>Either username or password is incorrect. </FormErrorMessage>
-              <FormControl display='flex' alignItems='center'>
+              <FormControl display='flex' alignItems='center' mt={'15px '}>
                 <Switch id='remember-login' colorScheme='teal' me='10px' />
                 <FormLabel
                   htmlFor='remember-login'

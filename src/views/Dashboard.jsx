@@ -78,9 +78,9 @@ export default function Dashboard() {
         }}
         margin='auto !important'
       >
-        <Portal>
+        {/* <Portal>
             <Navbar />
-        </Portal>
+        </Portal> */}
         <PanelContent>
           <PanelContainer>
             <Flex direction='column'>

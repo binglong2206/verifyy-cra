@@ -77,9 +77,9 @@ export default function Dashboard() {
           xl: "calc(100% - 275px)",
         }}
       >
-        <Portal>
+        {/* <Portal>
             <Navbar />
-        </Portal>
+        </Portal> */}
 
         <PanelContent>
           <PanelContainer>

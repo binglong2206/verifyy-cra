@@ -11,7 +11,7 @@ export default function AuthPage() {
   const navRef = React.useRef();
   const wrapper = React.createRef();
   useEffect(() => {
-    localStorage.setItem('chakra-ui-color-mode', 'dark')
+    // localStorage.setItem('chakra-ui-color-mode', 'dark')
     document.body.style.overflow = "unset";
     return function cleanup() {};
   });

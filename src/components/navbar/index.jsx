@@ -50,8 +50,8 @@ export default function Navbar({onOpen}) {
       mx="auto"
       mt={secondaryMargin}
       pb="8px"
-      left={document.documentElement.dir === "rtl" ? "30px" : ""}
-      right={document.documentElement.dir === "rtl" ? "" : "30px"}
+      left={ ""}
+      right={"30px"}
       px={{
         sm: paddingX,
         md: "30px",
