@@ -20,6 +20,7 @@ import {
         case 'd': return 'Daily'
         case 'w': return 'Weekly'
         case 'm': return 'Monthly'
+        default: return null; 
       }
     }
 

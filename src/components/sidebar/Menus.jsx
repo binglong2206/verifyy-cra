@@ -28,7 +28,7 @@ import OpenSourceCard from "./OpenSourceCard";
 import MenuButton from "./MenuButtonLayout";
 import ProfileUpload from "../ProfileUploadModal";
 import axios from 'axios'
-import { uploadProfile, uploadBackground } from "../../apis/uploadFirebase";
+import { UploadProfile, UploadBackground } from "../../apis/uploadFirebase";
 import YoutubeModal from '../whiteListModal/YoutubeModal'
 import InstagramModal from '../whiteListModal/InstagramModal'
 import FacebookModal from '../whiteListModal/FacebookModal'
@@ -126,15 +126,16 @@ const Menus = () => {
       setStatus('loading');
 
       if (modal === 'Profile') {
-        await uploadProfile(image.file)
+        await UploadProfile(image.file)
           .then(r=> {
             setStatus('Upload Profile Done');
             showSuccessToast()
             onClose()
           })
       } else  {
-        await uploadBackground(image.file)
+        await UploadBackground(image.file)
           .then(r=> {
+            console.log(r)
             setStatus('Upload Background Done');
             showSuccessToast()
             onClose()
@@ -220,7 +221,7 @@ const Menus = () => {
             <HStack>
               <Button
                 rightIcon={<FiUpload />}
-                colorScheme="purple"
+                colorScheme="gray"
                 size="sm"
                 variant="solid"
                 onClick={uploadHandler}

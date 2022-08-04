@@ -9,6 +9,9 @@ import {
 } from "@chakra-ui/react";
 import { FaCube } from "react-icons/fa";
 import { useTabStore } from "../state/useStore";
+import { useUserStore } from "../state/useStore";
+import ProfileBgImage from "../assets/img/ProfileBackground.png";
+
 
 const DashboardHeader = ({
   backgroundHeader,
@@ -16,7 +19,6 @@ const DashboardHeader = ({
   avatarImage,
   name,
   email,
-  tabs,
 }) => {
   // State and action are auto params set by usereducer
   // const tabReducer = (state, action) => {
@@ -37,6 +39,7 @@ const DashboardHeader = ({
   //   fbTab: true
   // })
 
+  const {profile_image, background_image} = useUserStore(state=>state)
   const activeTabs = useTabStore(state=>state)
   const setTab = useTabStore(state=> state.setTab);
 
@@ -69,7 +72,7 @@ const DashboardHeader = ({
       justifyContent='center'
       align='center'>
       <Box
-        bgImage={backgroundHeader}
+        bgImage={background_image ? background_image : ProfileBgImage }
         w='100%'
         h='300px'
         borderRadius='25px'
@@ -106,7 +109,8 @@ const DashboardHeader = ({
             textAlign={{ sm: "center", md: "start" }}>
             <Avatar
               me={{ md: "22px" }}
-              src={avatarImage}
+              src={profile_image}
+              key={profile_image}
               w='80px'
               h='80px'
               borderRadius='15px'

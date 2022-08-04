@@ -1,6 +1,8 @@
+import React, {useState} from 'react';
+import { useUserStore } from '../state/useStore';
 import axios from 'axios'
 
-export const uploadProfile = async (file) => {
+export const UploadProfile = async (file) => { // hooks
 
     // Create a FormData object and store the file and then make an axios post to server
     const formData = new FormData();
@@ -10,12 +12,14 @@ export const uploadProfile = async (file) => {
       headers: {
         'Content-Type': 'multipart-formdata'
       }
+     }).then((r) => {
+      useUserStore.setState({background_image: r.data.url}) // Forces re-render after update
      })
    
   };
 
 
-export const uploadBackground = async (file) => {
+export const UploadBackground = async (file) => { // hooks
 
     // Create a FormData object and store the file and then make an axios post to server
     const formData = new FormData();
@@ -25,6 +29,10 @@ export const uploadBackground = async (file) => {
       headers: {
         'Content-Type': 'multipart-formdata'
       }
+     }).then((r) => {
+      useUserStore.setState({background_image: r.data.url}) // Forces re-render after update
      })
+
+     
    
   };
