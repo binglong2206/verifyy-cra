@@ -5,13 +5,13 @@ import create from "zustand";
 // Set(state => {...}) -> use state if you want access to prev state
 // If not, set({...}) directly will suffice
 export const useUserStore = create((set) => ({
-  id: 0,
+  id: null,
   username: "",
   email: "",
   profile_image: "",
   background_image: "",
-  follower_count: 0,
-  media_count: 0,
+  follower_count: null,
+  media_count: null,
   charts_order: [],
 
   setUserState: (username, email) => {

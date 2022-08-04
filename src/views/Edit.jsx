@@ -18,12 +18,14 @@ import OverviewChart from "../components/charts/overview";
 import YoutubeChart from "../components/charts/youtube";
 import InstagramChart from "../components/charts/instagram";
 import FacebookChart from "../components/charts/facebook";
+import WelcomeModal from "../components/WelcomeModal";
 
 
 export default function Dashboard() {
   const {username} = useParams();
   const [userStatus, setUserStatus] = useState(true);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: isWelcomeOpen, onOpen: onWelcomeOpen, onClose: onWelcomeClose } = useDisclosure();
   const textColor = useColorModeValue("gray.700", "white");
   const bgProfile = useColorModeValue(
     "hsla(0,0%,100%,.8)",
@@ -54,9 +56,13 @@ export default function Dashboard() {
       }) // Will run check on param too
         .then(r=> {
           setStatState(r.data.stat)
-          setYoutubeState(r.data.yt);
-          setInstagramState(r.data.ig);
-          setFacebookState(r.data.fb);
+          if (!r.data.stat.follower_count) { // if first time user, no agg followers
+            onWelcomeOpen();
+          } else {
+            setYoutubeState(r.data.yt);
+            setInstagramState(r.data.ig);
+            setFacebookState(r.data.fb);
+          }
         })
         .catch(e=>{
           setUserStatus(false);
@@ -64,12 +70,17 @@ export default function Dashboard() {
     };
      
     getDashboard();
-  },[username, setFacebookState, setInstagramState, setYoutubeState, setStatState]);
+  },[username, setFacebookState, setInstagramState, setYoutubeState, setStatState, onWelcomeOpen]);
+
+  useEffect(()=> {
+    onWelcomeOpen();
+  },[onWelcomeOpen])
 
 
   return (
     <> 
-    {!userStatus && <Navigate to={`/404}`} push={true} />}
+    {!userStatus && <Navigate to={`/login}`} push={true} />}
+    <WelcomeModal isOpen={isWelcomeOpen} onOpen={onWelcomeOpen} onClose={onWelcomeClose} />
     <Sidebar />
       <MainPanel
         w={{
@@ -77,10 +88,6 @@ export default function Dashboard() {
           xl: "calc(100% - 275px)",
         }}
       >
-        {/* <Portal>
-            <Navbar />
-        </Portal> */}
-
         <PanelContent>
           <PanelContainer>
             <Flex direction='column'>
@@ -90,13 +97,11 @@ export default function Dashboard() {
                   avatarImage={avatar}
                   name={"Matthew Ryu"}
                   email={"MatthewFireHand@gmail.com"} />
-                {/* <div>THIS PRIVATE EDIT PAGE BELONGS TO  {JSON.stringify(userState)}</div>
-                {charts_order.indexOf(1) !== -1 && <Chart1 />} */}
 
-                <OverviewChart />
-                {tabState.ytTab && <YoutubeChart />}
-                {tabState.igTab && <InstagramChart />}
-                {tabState.fbTab && <FacebookChart />}
+                {userState.follower_count && <OverviewChart /> }
+                {(tabState.ytTab && youtubeState.id ) && <YoutubeChart />}
+                {(tabState.igTab && instagramState.id) && <InstagramChart />}
+                {(tabState.fbTab && facebookState.id) && <FacebookChart />}
                 
               </Flex>
           </PanelContainer>

@@ -70,7 +70,7 @@ export default function Dashboard() {
 
   return (
     <> 
-    {!userStatus && <Navigate to={`/404`} push={true} /> }
+    {!userStatus && <Navigate to={`/login`} push={true} /> }
       <MainPanelDashboard
         w={{
           base: "100%",
