@@ -6,17 +6,17 @@ const Options = () => {
     let youtubeOptions = [
         {
             id: 1,
-            title: 'chart1',
+            title: 'Basic Statistics',
             swtich: chartsOrder.indexOf(1) !== -1 ? true : false
         },
         {
             id: 2,
-            title: 'chart22',
+            title: 'In-depth Analytics',
             swtich: chartsOrder.indexOf(2) !== -1 ? true : false
         },
         {
             id: 3,
-            title: 'chart333',
+            title: 'Latest Video Uploads',
             swtich: chartsOrder.indexOf(3) !== -1 ? true : false
         }
     ]
@@ -24,17 +24,17 @@ const Options = () => {
     let instagramOptions = [
         {
             id: 4,
-            title: 'chart4',
+            title: 'Basic Statistics',
             swtich:  chartsOrder.indexOf(4) !== -1 ? true : false
         },
         {
             id: 5,
-            title: 'chart5',
+            title: 'In-depth Analytics',
             swtich:  chartsOrder.indexOf(5) !== -1 ? true : false
         },
         {
             id: 6,
-            title: 'chart6',
+            title: 'Latest Posts',
             swtich:  chartsOrder.indexOf(6) !== -1 ? true : false
         }
     ]
@@ -42,17 +42,17 @@ const Options = () => {
     let  facebookOptions = [
         {
             id: 7,
-            title: 'chart7',
+            title: 'Basic Statistics',
             swtich: chartsOrder.indexOf(7) !== -1 ? true : false
         },
         {
             id: 8,
-            title: 'chart8',
+            title: 'In-depth Analytics',
             swtich: chartsOrder.indexOf(8) !== -1 ? true : false
         },
         {
             id: 9,
-            title: 'chart9',
+            title: 'Latest Posts',
             swtich: chartsOrder.indexOf(9) !== -1 ? true : false
         }
     ]

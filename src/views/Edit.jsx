@@ -97,9 +97,7 @@ export default function Dashboard() {
                 {tabState.ytTab && <YoutubeChart />}
                 {tabState.igTab && <InstagramChart />}
                 {tabState.fbTab && <FacebookChart />}
-
-           
-
+                
               </Flex>
           </PanelContainer>
         </PanelContent>

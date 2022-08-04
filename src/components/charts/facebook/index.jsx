@@ -5,8 +5,12 @@ import Medias from "../common/Medias";
 import GeneralStats from "../common/GeneralStats";
 import GeoDemo from "../common/GeoDemo";
 import Intervals from "../common/Intervals";
+import { useUserStore } from "../../../state/useStore";
 
 export default function FacebookChart() {
+    const charts = useUserStore(state=>state.charts_order)
+
+
     return (
         <>
         <Grid

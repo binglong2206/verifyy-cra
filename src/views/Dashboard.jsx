@@ -14,7 +14,7 @@ import ProfileBgImage from "../assets/img/ProfileBackground.png";
 import avatar from "../assets/img/avatar.png";
 import DashboardHeader from "../components/DashboardHeader";
 import axios from 'axios'
-import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
+import { useTabStore, useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
 import DarkModeButton from "../components/DarkModeButton";
 import OverviewChart from "../components/charts/overview";
 import YoutubeChart from "../components/charts/youtube";
@@ -44,6 +44,8 @@ export default function Dashboard() {
   const youtubeState = useYoutubeStore(state=> state);
   const instagramState = useInstagramStore(state=>state);
   const facebookState = useFacebookStore(state=>state);
+  const tabState = useTabStore(state=>state)
+
 
   const charts_order = useUserStore(state=>state.charts_order)
 
@@ -92,9 +94,9 @@ export default function Dashboard() {
                   {/* <div>THIS PUBLIC DASHBOARD BELONGS TO  {username}</div>
                   {charts_order.indexOf(1) !== -1 && <Chart1 />} */}
                   <OverviewChart />
-                  <YoutubeChart />
-                  <InstagramChart />
-                  <FacebookChart />
+                  {tabState.ytTab && <YoutubeChart />}
+                  {tabState.igTab && <InstagramChart />}
+                  {tabState.fbTab && <FacebookChart />}
 
               </Flex>
           </PanelContainer>

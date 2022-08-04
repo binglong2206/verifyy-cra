@@ -7,7 +7,7 @@ import StatsCard from "./StatsCard";
 const OverviewChart = () => {
     const iconBoxInside = useColorModeValue("white", "teal");
 return (
-    <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} spacing='24px'>
+    <SimpleGrid columns={{ sm: 1, md: 2, xl: 4 }} spacing='24px' mb={'26px'}>
         <StatsCard
           title={"Total Followers"}
           amount={"53,000"}
