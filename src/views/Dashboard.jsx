@@ -20,12 +20,14 @@ import OverviewChart from "../components/charts/overview";
 import YoutubeChart from "../components/charts/youtube";
 import InstagramChart from "../components/charts/instagram";
 import FacebookChart from "../components/charts/facebook";
+import FullScreenSpinner from "../components/preloader";
+
 
 
 
 export default function Dashboard() {
   const [userStatus, setUserStatus] = useState(true);
-  const [isLoading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const {username} = useParams()
   const { isOpen, onOpen, onClose } = useDisclosure();
   const textColor = useColorModeValue("gray.700", "white");
@@ -59,6 +61,7 @@ export default function Dashboard() {
           setInstagramState(r.data.ig);
           setFacebookState(r.data.fb);
         })
+        .then(()=>setLoading(false))
         .catch(e=>{
           setUserStatus(false);
         })
@@ -69,7 +72,8 @@ export default function Dashboard() {
 
 
   return (
-    <> 
+    <>
+    {loading && <FullScreenSpinner />}
     {!userStatus && <Navigate to={`/login`} push={true} /> }
       <MainPanelDashboard
         w={{

@@ -8,10 +8,7 @@ import {
   Flex, 
   Text,
   Button,
-  Fade, 
-  ScaleFade, 
-  Slide, 
-  SlideFade } from "@chakra-ui/react";
+ } from "@chakra-ui/react";
 import Sidebar from "../components/sidebar";
 import MainPanel from "../components/layouts/MainPanel";
 import PanelContainer from "../components/layouts/PanelContainer";
@@ -31,7 +28,6 @@ import InstagramChart from "../components/charts/instagram";
 import FacebookChart from "../components/charts/facebook";
 import WelcomeModal from "../components/WelcomeModal";
 import FullScreenSpinner from "../components/preloader";
-import { motion } from "framer-motion";
 
 
 export default function Dashboard() {

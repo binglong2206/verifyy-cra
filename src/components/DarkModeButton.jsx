@@ -1,11 +1,14 @@
 import React, {useRef} from "react";
 import { Button, useColorModeValue, useColorMode } from "@chakra-ui/react";
 import { SettingsIcon, SlackLogo } from "./Icons/Icons";
+import { BsSun, BsMoonStarsFill } from 'react-icons/bs';
+
 
 export default function DarkModeButton() {
 
   let navbarIcon = useColorModeValue("gray.500", "gray.200");
   let bgButton = useColorModeValue("white", "gray.600");
+  let hoverColor = useColorModeValue("gray.200", "gray.700");
   const { colorMode, toggleColorMode } = useColorMode();
 
 
@@ -17,26 +20,21 @@ export default function DarkModeButton() {
   return (
     <>
       <Button
-        h="52px"
-        w="52px"
+        h="60px"
+        w="60px"
         onClick={toggleColorMode}
         bg={bgButton}
         position="fixed"
-        variant="no-hover"
+        // variant="no-hover"
         left=""
         right="35px"
         bottom="30px"
         borderRadius="50px"
-        boxShadow="0 2px 12px 0 rgb(0 0 0 / 16%)"
+        boxShadow="sm"
+        // _focus={{ boxShadow: 'none', bg:'red' }}
+        _hover={{bg: hoverColor}}
       >
-       <SlackLogo
-          cursor="pointer"
-          ref={settingsRef}
-          color={navbarIcon}
-          w="20px"
-          h="20px"
-        /> 
-        
+      {colorMode === 'light' ? <BsMoonStarsFill /> : <BsSun />}  
       </Button>
     </>
   );
