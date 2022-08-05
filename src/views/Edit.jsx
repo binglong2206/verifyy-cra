@@ -19,6 +19,7 @@ import YoutubeChart from "../components/charts/youtube";
 import InstagramChart from "../components/charts/instagram";
 import FacebookChart from "../components/charts/facebook";
 import WelcomeModal from "../components/WelcomeModal";
+import FullScreenSpinner from "../components/FullScreenSpinner";
 
 
 export default function Dashboard() {
@@ -55,6 +56,7 @@ export default function Dashboard() {
         withCredentials: true // include cookies
       }) // Will run check on param too
         .then(r=> {
+          onWelcomeOpen();
             setStatState(r.data.stat)
           if (!r.data.stat.follower_count) { // if first time user, no agg followers
             onWelcomeOpen();
@@ -78,6 +80,7 @@ export default function Dashboard() {
 
   return (
     <> 
+    <FullScreenSpinner />
     {!userStatus && <Navigate to={`/login}`} push={true} />}
     <WelcomeModal isOpen={isWelcomeOpen} onOpen={onWelcomeOpen} onClose={onWelcomeClose} />
     <Sidebar />

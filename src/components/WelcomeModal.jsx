@@ -21,7 +21,8 @@ import { useTabStore, useUserStore, useYoutubeStore, useInstagramStore, useFaceb
 
 
 export default function WelcomeModal({ isOpen, onOpen, onClose }) {
-  const [selected, setSelected] = useState('L')
+  const [selectSample, setSelectSample] = useState(true);
+  const [loading, setLoading] = useState(false)
 
   // Data States
   const setYoutubeState = useYoutubeStore(state=>state.setYoutubeState)
@@ -30,71 +31,80 @@ export default function WelcomeModal({ isOpen, onOpen, onClose }) {
   const setStatState = useUserStore(state=>state.setStatState);
 
   const handleStart = async ()=> {
-    await axios.get('http://localhost:8000/user/sampleData', { // POST needs body
+    setLoading(true)
+    if (selectSample) {
+      await axios.get('http://localhost:8000/user/sampleData', { // POST needs body
       withCredentials: true
-    }).then(r=>{
-      setStatState(r.data.stat)
-      setYoutubeState(r.data.yt);
-      setInstagramState(r.data.ig);
-      setFacebookState(r.data.fb);
-    }).then(()=>onClose())
+        }).then(r=>{
+          setStatState(r.data.stat)
+          setYoutubeState(r.data.yt);
+          setInstagramState(r.data.ig);
+          setFacebookState(r.data.fb);
+        }).then(()=>onClose())
+    } else {
+      onClose();
+      setLoading(false)
+    }
+    
   }
 
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick={false}>
       <ModalOverlay />
-      <ModalContent minW="2xl">
-        <ModalCloseButton />
+      <ModalContent minW="2xl" p="8px">
+        {/* <ModalCloseButton /> */}
         <ModalHeader>
           <Text>Let's get started</Text>
           <Text
-            fontSize="sm"
+            mt="7px"
+            fontSize="md"
             color={useColorModeValue("gray", "whiteAlpha")}
             fontWeight="normal"
           >
-            Select how to proceed
+            Our OAuth 2.0 APIs are currently only available to whitelisted user. Please consider loading a sample dataset to get started,
+            or register to get whitelisted by providing the username & email to your relevant social platforms(Youtube, Instagram, Facebook) 
           </Text>
         </ModalHeader>
         <ModalBody display="flex" flexWrap={{ base: "wrap", md: "nowrap" }}>
           <Box
-            onClick={()=>setSelected('L')}
+            onClick={()=>setSelectSample(true)}
             p="4"
             m="2"
             cursor="pointer"
             flexBasis="50%"
             borderRadius="10px"
             border="2px solid"
-            bg={selected==='L' ? "blue.50" : ""}
-            borderColor={selected==='L' ? "blue.500" : ""}
-            _hover={{ bg: "red.500" }}
+            bg={selectSample ? "gray.100" : ""}
+            borderColor={selectSample ? "gray.400" : "gray.200"}
+            _hover={{ bg: "gray.200" }}
           >
             <Box mb="8">
               <Text fontSize={"md"} fontWeight="semibold">
-                Title
+                Load Sample Data
               </Text>
-              <Box p={"20px"} />
-              <Text fontSize={"sm"}>Subtitle</Text>
+              <Box p={"12px"} />
+              <Text fontSize={"sm"}>Insert a demo dataset into your dashboard and start testing!</Text>
             </Box>
           </Box>
           <Box
-            onClick={()=>setSelected('R')}
+            onClick={()=>setSelectSample(false)}
             p="4"
             m="2"
             cursor="pointer"
             flexBasis="50%"
             borderRadius="10px"
             border="2px solid"
-            bg={selected==='R' ? "blue.50" : ""}
-            borderColor={selected==='R' ? "blue.500" : ""}
-            _hover={{ bg: "red.500" }}
+            bg={!selectSample ? "gray.50" : ""}
+            borderColor={!selectSample ? "gray.300" : "gray.200"}
+            _hover={{ bg: "gray.200" }}
           >
             <Box mb="8">
               <Text fontSize={"md"} fontWeight="semibold">
-                Title
+                Whitelist Registration
               </Text>
-              <Box p={"20px"} />
-              <Text fontSize={"sm"}>Subtitle</Text>
+              <Box p={"12px"} />
+              <Text fontSize={"sm"}>Click on any of the 3 social icons on the left sidebar to start the registration.</Text>
             </Box>
           </Box>
         </ModalBody>
@@ -102,15 +112,16 @@ export default function WelcomeModal({ isOpen, onOpen, onClose }) {
           <HStack>
             <Button
               onClick={handleStart}
-              colorScheme="teal"
+              colorScheme="gray"
               rightIcon={<FiArrowRight />}
-              loadingText="..."
+              loadingText="Uploading dataset"
+              isLoading={loading}
             >
               Get Started
             </Button>
-            <Button onClick={() => onClose()} variant="ghost">
+            {/* <Button onClick={() => onClose()} variant="ghost">
               Cancel
-            </Button>
+            </Button> */}
           </HStack>
         </ModalFooter>
       </ModalContent>

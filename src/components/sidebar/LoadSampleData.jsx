@@ -15,14 +15,14 @@ export default function LoadDataCard({children, ...rest}) {
       alignItems="start"
       boxSize="border-box"
       p="16px"
-      h="170px"
+      h="200px"
       w="100%"
     >
       <IconBox width="35px" h="35px" bg="white" mb="auto">
         <QuestionIcon color="teal.300" h="18px" w="18px" />
       </IconBox>
       <Text fontSize="sm" color="white" fontWeight="bold">
-        Waiting for verification?
+        Waiting for registration?
       </Text>
       <Text fontSize="xs" color="white" mb="10px">
         Insert demo data and start testing!
@@ -44,6 +44,25 @@ export default function LoadDataCard({children, ...rest}) {
           color="black"
         >
           Load Sample Data
+        </Button>
+        <Button
+          mt='7px'
+          fontSize="10px"
+          fontWeight="bold"
+          w="100%"
+          bg="white"
+          _hover="none"
+          _active={{
+            bg: "white",
+            transform: "none",
+            borderColor: "transparent",
+          }}
+          _focus={{
+            boxShadow: "none",
+          }}
+          color="black"
+        >
+          Github Source Code
         </Button>
     </Flex>
   );

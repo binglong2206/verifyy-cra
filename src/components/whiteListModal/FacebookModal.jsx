@@ -52,7 +52,7 @@ export default function FacebookModal({isOpen, onOpen, onClose}) {
 
     return (
       <>  
-        <Modal isCentered onClose={onClose} size={'3xl'} isOpen={isOpen}>
+        <Modal onClose={onClose} size={'3xl'} isOpen={isOpen}>
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />

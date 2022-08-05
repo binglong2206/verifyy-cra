@@ -18,6 +18,7 @@ export default function InstagramChart() {
             templateColumns={{ md: "1fr", lg: "1.8fr 1.2fr" }}
             templateRows={{ md: "1fr auto", lg: "1fr" }}
             mb={{ lg: "26px" }}
+            mt={{ lg: "26px" }}
             gap='24px'>
                 <Title />
                 <GeneralStats />
