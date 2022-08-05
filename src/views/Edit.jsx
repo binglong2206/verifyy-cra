@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
-import { ChakraProvider, Portal, useDisclosure, useColorModeValue, Flex, Text } from "@chakra-ui/react";
+import { 
+  ChakraProvider, 
+  Portal, 
+  useDisclosure, 
+  useColorModeValue, 
+  Flex, 
+  Text,
+  Button,
+  Fade, 
+  ScaleFade, 
+  Slide, 
+  SlideFade } from "@chakra-ui/react";
 import Sidebar from "../components/sidebar";
 import MainPanel from "../components/layouts/MainPanel";
 import PanelContainer from "../components/layouts/PanelContainer";
@@ -19,7 +30,8 @@ import YoutubeChart from "../components/charts/youtube";
 import InstagramChart from "../components/charts/instagram";
 import FacebookChart from "../components/charts/facebook";
 import WelcomeModal from "../components/WelcomeModal";
-import FullScreenSpinner from "../components/FullScreenSpinner";
+import FullScreenSpinner from "../components/preloader";
+import { motion } from "framer-motion";
 
 
 export default function Dashboard() {
@@ -57,7 +69,7 @@ export default function Dashboard() {
         withCredentials: true // include cookies
       }) // Will run check on param too
         .then(r=> {
-          onWelcomeOpen();
+          // onWelcomeOpen();
             setStatState(r.data.stat)
           if (!r.data.stat.follower_count) { // if first time user, no agg followers
             onWelcomeOpen();
@@ -81,7 +93,10 @@ export default function Dashboard() {
 
   return (
     <> 
+    
+  
     {loading && <FullScreenSpinner />}
+    
     {!userStatus && <Navigate to={`/login}`} push={true} />}
     <WelcomeModal isOpen={isWelcomeOpen} onOpen={onWelcomeOpen} onClose={onWelcomeClose} />
     <Sidebar />
