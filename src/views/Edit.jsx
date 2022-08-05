@@ -25,6 +25,7 @@ import FullScreenSpinner from "../components/FullScreenSpinner";
 export default function Dashboard() {
   const {username} = useParams();
   const [userStatus, setUserStatus] = useState(true);
+  const [loading, setLoading] = useState(true);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isWelcomeOpen, onOpen: onWelcomeOpen, onClose: onWelcomeClose } = useDisclosure();
   const textColor = useColorModeValue("gray.700", "white");
@@ -65,8 +66,8 @@ export default function Dashboard() {
             setInstagramState(r.data.ig);
             setFacebookState(r.data.fb);
           }
-          console.log(r.data)
         })
+        .then(()=> setLoading(false))
         .catch(e=>{
           setUserStatus(false);
         })
@@ -80,7 +81,7 @@ export default function Dashboard() {
 
   return (
     <> 
-    <FullScreenSpinner />
+    {loading && <FullScreenSpinner />}
     {!userStatus && <Navigate to={`/login}`} push={true} />}
     <WelcomeModal isOpen={isWelcomeOpen} onOpen={onWelcomeOpen} onClose={onWelcomeClose} />
     <Sidebar />
