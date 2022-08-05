@@ -42,7 +42,7 @@ export default function FacebookModal({isOpen, onOpen, onClose}) {
         setModalStep(2);
         setLoading(false);
 
-        await axios.patch('http://localhost:8000/user/whitelist/youtube', {input}, {
+        await axios.patch('http://localhost:8000/user/whitelist/facebook', {input}, {
           withCredentials: true
         })
           .then(r=>console.log('youtube whitelist requested'))
@@ -72,7 +72,7 @@ export default function FacebookModal({isOpen, onOpen, onClose}) {
             <Flex p={8} flex={1} align={'center'} justify={'center'}>
               <Stack spacing={7} w={'full'} maxW={'lg'}>
                 <Heading fontSize={{ base: 'sm', md: 'md', lg: 'xl' }}>
-                <Text color={'blue.400'} as={'span'}>
+                <Text color={'blue.500'} as={'span'}>
                     Register your Facebook Account
                   </Text>
                 </Heading>
@@ -84,7 +84,7 @@ export default function FacebookModal({isOpen, onOpen, onClose}) {
                 <FormControl id="facebookPageName" >
                 <Input
                   onChange={(e)=> setInput(e.target.value)}
-                  placeholder="Your Facebook Page Name"
+                  placeholder="Facebook Page Owner's Name"
                   _placeholder={{ color: 'gray.500' }}
                 />
               </FormControl>
@@ -92,11 +92,8 @@ export default function FacebookModal({isOpen, onOpen, onClose}) {
                     onClick={handleSubmit}
                     isLoading={isLoading}
                     rounded={'md'}
-                    bg={'blue.400'}
-                    color={'white'}
-                    _hover={{
-                      bg: 'blue.500',
-                    }}>
+                    colorScheme="blue"
+                    >
                     Submit
                   </Button>
               </Stack>
@@ -105,12 +102,13 @@ export default function FacebookModal({isOpen, onOpen, onClose}) {
             {modalStep === 2 && 
             <Flex p={8} flex={1} align={'center'} justify={'center'}>
               <Box textAlign="center" py={10} px={6}>
-                  <CheckCircleIcon boxSize={'50px'} color={'blue.500'} />
-                  <Heading as="h2" size="xl" mt={6} mb={2}>
-                    Beta-request received.
+              <CheckCircleIcon boxSize={'50px'} color={'blue.500'} />
+                  <Heading as="h2" size="lg" mt={6} mb={2}>
+                      Registration received.
                   </Heading>
-                  <Text color={'gray.500'}>
-                    Your Verifyy account will be ready to connect to your Facebook analytics within 24h
+                  <Text color={'gray.500'} fontSize='lg'>
+                    Our Youtube OAuth2.0 endpoints will be available within 24H.
+                    Please check back later.
                   </Text>
               </Box>
             </Flex> }

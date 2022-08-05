@@ -45,7 +45,6 @@ export default function WelcomeModal({ isOpen, onOpen, onClose }) {
       onClose();
       setLoading(false)
     }
-    
   }
 
 

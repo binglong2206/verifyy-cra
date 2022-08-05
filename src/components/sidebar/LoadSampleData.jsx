@@ -1,10 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import { QuestionIcon } from "@chakra-ui/icons";
 import { Button, Flex, Link, Text } from "@chakra-ui/react";
 import SidebarHelpImage from "../../assets/img/SidebarHelpImage.png";
 import IconBox from "../Icons/IconBox";
+import axios from "axios";
+import { useTabStore, useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../../state/useStore";
+
 
 export default function LoadDataCard({children, ...rest}) {
+  const [loading, setLoading] = useState(false)
+
+  // Data States
+  const setYoutubeState = useYoutubeStore(state=>state.setYoutubeState)
+  const setInstagramState = useInstagramStore(state=> state.setInstagramState)
+  const setFacebookState = useFacebookStore(state=>state.setFacebookState);
+  const setStatState = useUserStore(state=>state.setStatState);
+
+  const handleStart = async ()=> {
+    setLoading(true)
+    await axios.get('http://localhost:8000/user/sampleData', { // POST needs body
+    withCredentials: true
+      }).then(r=>{
+        setStatState(r.data.stat)
+        setYoutubeState(r.data.yt);
+        setInstagramState(r.data.ig);
+        setFacebookState(r.data.fb);
+      })
+      .then(()=>setLoading(false))
+    } 
 
   return (
     <Flex
@@ -28,6 +51,9 @@ export default function LoadDataCard({children, ...rest}) {
         Insert demo data and start testing!
       </Text>
         <Button
+          onClick={handleStart}
+          isLoading={loading}
+          loadingText="Updating dataset"
           fontSize="10px"
           fontWeight="bold"
           w="100%"
