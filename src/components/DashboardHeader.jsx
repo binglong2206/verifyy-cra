@@ -1,4 +1,4 @@
-import React, {useState, useReducer} from "react";
+import React from "react";
 import {
   Avatar,
   Box,
@@ -45,21 +45,13 @@ const DashboardHeader = ({
 
 
   const textColor = useColorModeValue("gray.700", "gray.600");
-  const borderProfileColor = useColorModeValue(
-    "white",
-    "rgba(255, 255, 255, 0.31)"
-  );
+
   const emailColor = useColorModeValue("gray.400", "gray.500");
   const selectedTabStyle = {
     bg:'hsla(0,0%,100%,.3)',
     boxShadow:'inset 0 0 1px 1px hsl(0deg 0% 100% / 90%), 0 20px 27px 0 rgb(0 0 0 / 5%)'
   }
   const buttonColor = useColorModeValue("gray.700", "gray.700")
-  const bgProfile = useColorModeValue(
-    "hsla(0,0%,100%,.8)",
-    "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
-  );
-  
 
 
   return (

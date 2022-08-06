@@ -8,17 +8,14 @@ import {
   Heading,
   Input,
   Link,
-  Switch,
   Text,
   useColorModeValue,
   FormErrorMessage,
   FormHelperText
 } from "@chakra-ui/react";
-import {Formik, Form, Field} from 'formik';
 import signInImage from "../assets/img/signInImage.png";
 import axios from 'axios'
 import { Navigate } from "react-router-dom";
-import { Link as ReachLink } from "@reach/router"
 
 export default function SignUp() {
   const titleColor = useColorModeValue("teal.300", "teal.200");

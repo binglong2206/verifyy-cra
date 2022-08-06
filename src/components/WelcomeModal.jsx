@@ -2,12 +2,10 @@ import React, {useState} from "react";
 import {
   ModalBody,
   Text,
-  TextProps,
   useColorModeValue,
   Box,
   Modal,
   ModalOverlay,
-  ModalCloseButton,
   ModalHeader,
   ModalContent,
   HStack,
@@ -16,8 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { FiArrowRight } from "react-icons/fi";
 import axios from "axios";
-import InitDashboard from "../hooks/InitDashboard";
-import { useTabStore, useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
+import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../state/useStore";
 
 
 export default function WelcomeModal({ isOpen, onOpen, onClose }) {

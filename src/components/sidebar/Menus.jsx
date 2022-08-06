@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {
     Box,
-    Button, Flex,
+    Button,
     Link,
     Stack,
     Text,
@@ -16,18 +16,13 @@ import {
     ModalCloseButton,
     ModalHeader,
     HStack,
-    useToast
 } from "@chakra-ui/react";
 import { FiUpload } from "react-icons/fi";
-import IconBox from "../Icons/IconBox";
 import { CreativeTimLogo } from "../Icons/Icons";
 import Separator from "../Separator";
-import { NavLink, useLocation } from "react-router-dom";
-import routes from "../../routes/sidebarRoutes";
+import { useLocation } from "react-router-dom";
 import LoadDataCard from "./LoadSampleData";
 import MenuButton from "./MenuButtonLayout";
-import ProfileUpload from "../ProfileUploadModal";
-import axios from 'axios'
 import { UploadProfile, UploadBackground } from "../../apis/uploadFirebase";
 import YoutubeModal from '../whiteListModal/YoutubeModal'
 import InstagramModal from '../whiteListModal/InstagramModal'
@@ -41,10 +36,7 @@ const MAX_FILE_SIZE = 524288; //512KB
 const Menus = () => {
   let location = useLocation();
   const [modal, setModal] = useState('Profile');
-  const activeBg = useColorModeValue("white", "gray.700");
-  const inactiveBg = useColorModeValue("white", "gray.700");
   const activeColor = useColorModeValue("gray.700", "white");
-  const inactiveColor = useColorModeValue("gray.400", "gray.400");
   const {isOpen, onOpen, onClose} = useDisclosure(); 
   const { isOpen: isYoutubeOpen , onOpen: onYoutubeOpen, onClose: onYoutubeClose } = useDisclosure()
   const { isOpen: isinstagramOpen , onOpen: onInstagramOpen, onClose: onInstagramClose } = useDisclosure()

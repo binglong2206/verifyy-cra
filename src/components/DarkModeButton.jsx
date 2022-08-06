@@ -1,19 +1,14 @@
-import React, {useRef} from "react";
+import React from "react";
 import { Button, useColorModeValue, useColorMode } from "@chakra-ui/react";
-import { SettingsIcon, SlackLogo } from "./Icons/Icons";
 import { BsSun, BsMoonStarsFill } from 'react-icons/bs';
 
 
 export default function DarkModeButton() {
 
-  let navbarIcon = useColorModeValue("gray.500", "gray.200");
   let bgButton = useColorModeValue("white", "gray.600");
   let hoverColor = useColorModeValue("gray.200", "gray.700");
   const { colorMode, toggleColorMode } = useColorMode();
 
-
-
-  const settingsRef = useRef();
 
 
 

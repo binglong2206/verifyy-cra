@@ -4,15 +4,13 @@ import {
     PopoverContent,
     PopoverBody,
     PopoverArrow,
-    IconButton,
     Button,
     Stack,
     Flex,
-    Text,
   } from '@chakra-ui/react';
   
   import { BsThreeDotsVertical, BsChatSquareQuote } from 'react-icons/bs';
-  import { RiShutDownLine, RiRestartLine, RiFileShredLine } from 'react-icons/ri';
+  import { RiFileShredLine } from 'react-icons/ri';
   
   export default function IntervalDropDown({activeTab, setActiveTab}) {
     const getTabName = ()=> {
@@ -31,14 +29,7 @@ import {
           <PopoverTrigger>
             <Button leftIcon={<RiFileShredLine />} rightIcon={<BsThreeDotsVertical />}>
               {getTabName()}
-            </Button>
-            {/* <IconButton
-              aria-label="More server options"
-              icon={<BsThreeDotsVertical />}
-              variant="solid"
-              w="fit-content"
-            /> */}
-            
+            </Button>         
           </PopoverTrigger>
           <PopoverContent w="fit-content" _focus={{ boxShadow: 'none' }}>
             <PopoverArrow />

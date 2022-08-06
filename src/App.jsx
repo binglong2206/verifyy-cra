@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import { ChakraProvider, useColorMode } from '@chakra-ui/react'
+import React from "react";
+import { ChakraProvider } from '@chakra-ui/react'
 import theme from './theme'
-import {Route, Routes, BrowserRouter } from "react-router-dom";
 import SiteRoutes  from "./routes/SiteRoutes";
 import './App.css';
 
