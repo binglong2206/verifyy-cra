@@ -34,7 +34,6 @@ const MAX_FILE_SIZE = 524288; //512KB
 
 
 const Menus = () => {
-  let location = useLocation();
   const [modal, setModal] = useState('Profile');
   const activeColor = useColorModeValue("gray.700", "white");
   const {isOpen, onOpen, onClose} = useDisclosure(); 

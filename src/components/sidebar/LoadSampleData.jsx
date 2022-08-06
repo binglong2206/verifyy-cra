@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import { QuestionIcon } from "@chakra-ui/icons";
-import { Button, Flex, Link, Text } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 import SidebarHelpImage from "../../assets/img/SidebarHelpImage.png";
 import IconBox from "../Icons/IconBox";
 import axios from "axios";
-import { useTabStore, useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../../state/useStore";
+import { useUserStore, useYoutubeStore, useInstagramStore, useFacebookStore } from "../../state/useStore";
 
 
 export default function LoadDataCard({children, ...rest}) {

@@ -3,26 +3,20 @@ import {
     Modal,
     ModalOverlay,
     ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
+
     ModalCloseButton,
     Button,
-    useDisclosure,
     useColorModeValue,
     Text,
     Input,
-    HStack,
     FormControl,
     Stack,
     Flex, 
     Heading,
-    useBreakpointValue,
     Image,
     Box
   } from '@chakra-ui/react'
   import { CheckCircleIcon } from '@chakra-ui/icons';
-  import { FiUpload } from "react-icons/fi";
 import axios from 'axios';
 
 

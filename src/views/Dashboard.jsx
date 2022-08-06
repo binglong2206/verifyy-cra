@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Navigate, useNavigate } from "react-router-dom";
-import { ChakraProvider, Portal, useDisclosure, useColorModeValue, Flex } from "@chakra-ui/react";
-import Sidebar from "../components/sidebar";
-import MainPanel from "../components/layouts/MainPanel";
+import { useParams, Navigate } from "react-router-dom";
+import { Portal, useColorModeValue, Flex } from "@chakra-ui/react";
+
 import MainPanelDashboard from "../components/layouts/MainPanelDashboard";
 import PanelContainer from "../components/layouts/PanelContainer";
 import PanelContent from "../components/layouts/PanelContent";
-import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
-import ConfigFixedButton from "../components/config/ConfigFixedButton";
-import ConfigSideBar from "../components/config/ConfigSideBar";
+
 import ProfileBgImage from "../assets/img/ProfileBackground.png";
 import avatar from "../assets/img/avatar.png";
 import DashboardHeader from "../components/DashboardHeader";
@@ -29,8 +26,7 @@ export default function Dashboard() {
   const [userStatus, setUserStatus] = useState(true);
   const [loading, setLoading] = useState(true);
   const {username} = useParams()
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const textColor = useColorModeValue("gray.700", "white");
+
   const bgProfile = useColorModeValue(
     "hsla(0,0%,100%,.8)",
     "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
@@ -42,14 +38,10 @@ export default function Dashboard() {
   const setInstagramState = useInstagramStore(state=> state.setInstagramState)
   const setFacebookState = useFacebookStore(state=>state.setFacebookState);
   const setStatState = useUserStore(state=>state.setStatState);
-  const userState =  useUserStore(state=> state)
-  const youtubeState = useYoutubeStore(state=> state);
-  const instagramState = useInstagramStore(state=>state);
-  const facebookState = useFacebookStore(state=>state);
+
   const tabState = useTabStore(state=>state)
 
 
-  const charts_order = useUserStore(state=>state.charts_order)
 
 
   useEffect(()=> {
@@ -68,7 +60,7 @@ export default function Dashboard() {
     };
      
     getDashboard();
-  },[username, setFacebookState, setInstagramState, setYoutubeState]);
+  },[username, setFacebookState, setInstagramState, setYoutubeState, setStatState]);
 
 
   return (

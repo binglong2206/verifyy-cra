@@ -1,6 +1,6 @@
 import React, {useRef} from "react";
 import { Button, useColorModeValue } from "@chakra-ui/react";
-import { SettingsIcon, VisaIcon } from "../Icons/Icons";
+import { SettingsIcon } from "../Icons/Icons";
 
 export default function ConfigFixedButton({onOpen, darkMode}) {
 

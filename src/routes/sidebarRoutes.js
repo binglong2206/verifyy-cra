@@ -1,13 +1,11 @@
 // import
 import React from "react";
 import {
-  HomeIcon,
   StatsIcon,
   CreditIcon,
   PersonIcon,
   DocumentIcon,
-  RocketIcon,
-  SupportIcon,
+  RocketIcon
 } from "../components/Icons/Icons";
 
 const dashRoutes = [

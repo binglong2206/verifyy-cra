@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { 
-  ChakraProvider, 
   Portal, 
   useDisclosure, 
   useColorModeValue, 
   Flex, 
-  Text,
-  Button,
+
  } from "@chakra-ui/react";
 import Sidebar from "../components/sidebar";
 import MainPanel from "../components/layouts/MainPanel";
 import PanelContainer from "../components/layouts/PanelContainer";
 import PanelContent from "../components/layouts/PanelContent";
-import Navbar from "../components/navbar";
 import Footer from "../components/Footer";
 import ConfigFixedButton from "../components/config/ConfigFixedButton";
 import ConfigSideBar from "../components/config/ConfigSideBar";
@@ -31,12 +28,10 @@ import FullScreenSpinner from "../components/preloader";
 
 
 export default function Dashboard() {
-  const {username} = useParams();
   const [userStatus, setUserStatus] = useState(true);
   const [loading, setLoading] = useState(true);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { isOpen: isWelcomeOpen, onOpen: onWelcomeOpen, onClose: onWelcomeClose } = useDisclosure();
-  const textColor = useColorModeValue("gray.700", "white");
   const bgProfile = useColorModeValue(
     "hsla(0,0%,100%,.8)",
     "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.8s4%)"
@@ -56,7 +51,6 @@ export default function Dashboard() {
   const facebookState = useFacebookStore(state=>state);
   const tabState = useTabStore(state=>state)
 
-  const charts_order = useUserStore(state=>state.charts_order)
 
 
   useEffect(()=> {

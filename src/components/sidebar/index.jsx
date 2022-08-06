@@ -1,6 +1,6 @@
 import React, {useRef} from "react";
 import {
-    Box, useColorModeValue
+    Box
   } from "@chakra-ui/react";
 import Menus from "./Menus";
   

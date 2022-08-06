@@ -1,5 +1,5 @@
 // Chakra Imports
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import {
   Box,
   Button,
@@ -9,12 +9,9 @@ import {
   DrawerContent,
   DrawerHeader,
   Flex,
-  Icon,
-  Link,
   Switch,
   Text,
   useColorMode,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import Separator  from "../Separator";
 import Options from "./optionsHooks";
@@ -26,17 +23,9 @@ export default function ConfigSideBar({isOpen, onClose}) {
   const chartsOrder = useUserStore(state=> state.charts_order)
   const {youtubeOptions, instagramOptions, facebookOptions} = Options();
   const { colorMode, toggleColorMode } = useColorMode();
-  let bgButton = useColorModeValue(
-    "linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)",
-    "white"
-  );
-  let colorButton = useColorModeValue("white", "gray.700");
-  const buttonBg = useColorModeValue("white", "transparent");
-  const buttonBorder = useColorModeValue("gray.700", "white");
-  const buttonColor = useColorModeValue("gray.700", "white");
+
   const settingsRef = useRef();
   const showSuccessToast = CustomToast('Success', 'Layout updated', 'success' );
-  const showErrorToast = CustomToast('Error', 'Something went wrong', 'error' )
 
 
 

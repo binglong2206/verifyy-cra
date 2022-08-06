@@ -5,15 +5,12 @@ import {
     Icon,
     Spacer,
     Text,
-    useColorModeValue,
-    Grid,
     Image
   } from "@chakra-ui/react";
   // Custom components
   import Card from "../../card/Card.js";
   import CardBody from "../../card/CardBody.js";
   import { BsArrowRight } from "react-icons/bs";
-  import GeneralStats from "./GeneralStats.jsx";
 
 
 export default function Title() {

@@ -1,6 +1,5 @@
 import React from "react";
 import {
-    Box,
     Button,
     Flex,
     HStack,
@@ -12,7 +11,6 @@ import {
     CreativeTimLogo,
     DocumentIcon,
     HomeIcon,
-    PersonIcon,
     RocketIcon,
   } from "../Icons/Icons";
   import { NavLink } from "react-router-dom";

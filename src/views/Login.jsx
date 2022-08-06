@@ -1,16 +1,13 @@
 import React, {useEffect} from "react";
-import { useParams } from "react-router-dom";
-import { Box, Portal, useColorMode } from "@chakra-ui/react";
+import { Box, Portal } from "@chakra-ui/react";
 import Footer from '../components/Footer'
 import LoginNavBar from "../components/navbar/LoginNavBar";
 import Login from "../components/Login";
-import SignUp from "../components/SignUp";
 
 
 export default function AuthPage() {
   const navRef = React.useRef();
   const wrapper = React.createRef();
-  const { colorMode, toggleColorMode } = useColorMode();
 
   useEffect(() => {
     document.body.style.overflow = "unset";

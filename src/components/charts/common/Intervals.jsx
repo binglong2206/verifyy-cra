@@ -1,33 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import ReactApexChart from 'react-apexcharts';
-import classNames from 'classnames';
-import { Box, Button, Flex, Text, useColorModeValue } from '@chakra-ui/react';
-import { ApexOptions } from 'apexcharts';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import CardBody from '../../card/CardBody';
 import Card from '../../card/Card';
 import CardHeader from '../../card/CardHeader';
-import {useWindowSize} from 'react-use'
 import IntervalDropDown from '../../IntervalDropDown';
 
 const Intervals = () => {
-    const width = useWindowSize();
     const [activeTab, setActiveTab] = useState('m')
 
-    const textColor = useColorModeValue("gray.700", "gray.600");
-    const borderProfileColor = useColorModeValue(
-      "white",
-      "rgba(255, 255, 255, 0.31)"
-    );
-    const emailColor = useColorModeValue("gray.400", "gray.500");
-    const selectedTabStyle = {
-      bg:'hsla(0,0%,100%,.3)',
-      boxShadow:'inset 0 0 1px 1px hsl(0deg 0% 100% / 90%), 0 20px 27px 0 rgb(0 0 0 / 5%)'
-    }
-    const buttonColor = useColorModeValue("gray.700", "gray.700")
-    const bgProfile = useColorModeValue(
-      "hsla(0,0%,100%,.8)",
-      "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
-    );
 
 	return (
         <Card p='16px' pb="1.5rem">

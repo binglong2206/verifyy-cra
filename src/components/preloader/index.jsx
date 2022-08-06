@@ -1,9 +1,8 @@
 
-import React, {useState, useEffect} from "react"
-import { Flex, Text, Box, Button, useDisclosure, Modal, ModalOverlay, ModalContent, Spinner, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react"
+import React from "react"
+import { Flex } from "@chakra-ui/react"
 import PulseLoader from 'react-spinners/PulseLoader'
-import PropagateLoader from 'react-spinners/PropagateLoader'
-import Zoom from 'react-reveal/Zoom';
+
 
 
 export default function FullScreenSpinner({username}) {

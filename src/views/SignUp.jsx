@@ -1,9 +1,7 @@
 import React, {useEffect} from "react";
-import { useParams } from "react-router-dom";
 import { Box, Portal } from "@chakra-ui/react";
 import Footer from '../components/Footer'
 import LoginNavBar from "../components/navbar/LoginNavBar";
-import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 
 

@@ -1,9 +1,7 @@
 import React from "react";
 import {
-  Button,
   Flex,
   Grid,
-  Icon,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -12,11 +10,10 @@ import {
 import Card from "../../card/Card";
 import CardBody from "../../card/CardBody";
 import CardHeader from "../../card/CardHeader";
-import { FaPlus } from "react-icons/fa";
 import MediaCard from "./MediaCard";
 import mediaThumbnail from '../../../assets/img/ImageArchitect1.png'
 
-const Medias = ({ title, description }) => {
+const Medias = () => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
 

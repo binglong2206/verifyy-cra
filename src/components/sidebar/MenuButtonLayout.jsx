@@ -1,21 +1,12 @@
 import React from "react";
 import {
-    Box,
     Button, Flex,
-    Link,
-    Stack,
     Text,
     useColorModeValue
 } from "@chakra-ui/react";
 import IconBox from "../Icons/IconBox";
 import {
-  HomeIcon,
   StatsIcon,
-  CreditIcon,
-  PersonIcon,
-  DocumentIcon,
-  RocketIcon,
-  SupportIcon,
 } from "../Icons/Icons";
 
 

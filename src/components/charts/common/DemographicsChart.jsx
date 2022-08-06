@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactApexChart from 'react-apexcharts';
-import classNames from 'classnames';
 import { Box } from '@chakra-ui/react';
-import { ApexOptions } from 'apexcharts';
 
 const Demographics = () => {
 	return (

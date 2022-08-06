@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, SimpleGrid, Text, useColorModeValue, Progress, Box } from "@chakra-ui/react";
+import { Flex, SimpleGrid, Text, useColorModeValue, Progress } from "@chakra-ui/react";
 import Card from "../../card/Card.js";
 import CardBody from "../../card/CardBody.js";
 import CardHeader from "../../card/CardHeader.js";
