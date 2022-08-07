@@ -14,12 +14,13 @@ import {
   FormErrorMessage
 } from "@chakra-ui/react";
 import signInImage from "../assets/img/signInImage.png";
+import modernBackground from '../assets/img/modernBackground.webp'
 import axios from 'axios'
-import { Navigate } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 
 
 export default function LoginComponent() {
-  const titleColor = useColorModeValue("teal.300", "teal.200");
+  const titleColor = useColorModeValue("blue.300", "blue.200");
   const textColor = useColorModeValue("gray.400", "white");
 
   const [navigate, setNavigate] = useState(false);
@@ -45,7 +46,7 @@ export default function LoginComponent() {
     setLoading(true);
     setShowError(false)
     e.preventDefault(); // prevent form from default refresh;
-    await axios.post('http://localhost:8000/login', state, {
+    await axios.post('/api/login', state, {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -125,7 +126,7 @@ export default function LoginComponent() {
               />
               <FormErrorMessage mb='10px'>Either username or password is incorrect. </FormErrorMessage>
               <FormControl display='flex' alignItems='center' mt={'15px '}>
-                <Switch id='remember-login' colorScheme='teal' me='10px' />
+                <Switch id='remember-login' colorScheme='blue' me='10px' />
                 <FormLabel
                   htmlFor='remember-login'
                   mb='0'
@@ -139,18 +140,14 @@ export default function LoginComponent() {
                 isLoading={isLoading}
                 fontSize='10px'
                 type='submit'
-                bg='teal.300'
+                colorScheme={'blue'}
+                // bg='blue.300'
                 w='100%'
                 h='45'
                 mb='20px'
                 color='white'
                 mt='20px'
-                _hover={{
-                  bg: "teal.200",
-                }}
-                _active={{
-                  bg: "teal.400",
-                }}>
+                >
                 SIGN IN
               </Button>
             </FormControl>
@@ -162,9 +159,10 @@ export default function LoginComponent() {
               mt='0px'>
               <Text color={textColor} fontWeight='medium'>
                 Don't have an account?
-                <Link color={titleColor} as='span' ms='5px' fontWeight='bold'>
-                  Sign Up
-                </Link>
+                <NavLink to='/' color={titleColor} as='span' ms='5px' fontWeight='bold'>
+                 {" "}Sign Up
+                </NavLink>
+             
               </Text>
             </Flex>
           </Flex>
@@ -177,7 +175,8 @@ export default function LoginComponent() {
           position='absolute'
           right='0px'>
           <Box
-            bgImage={signInImage}
+            bgImage={modernBackground}
+            bgColor= 'black'
             w='100%'
             h='100%'
             bgSize='cover'

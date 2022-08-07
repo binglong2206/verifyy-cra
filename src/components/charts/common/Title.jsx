@@ -66,7 +66,7 @@ export default function Title() {
                 </Flex>
                 <Spacer />
                 <Flex
-                    bg='teal.300'
+                    bg='blue.300'
                     align='center'
                     justify='center'
                     borderRadius='15px'

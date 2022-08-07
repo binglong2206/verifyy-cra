@@ -42,7 +42,7 @@ import CardHeader from "../../card/CardHeader";
                 <Text
                   fontSize='sm'
                   fontWeight='600'
-                  color='teal.300'
+                  color='blue.300'
                   alignSelf='center'>
                   800
                 </Text>
@@ -69,7 +69,7 @@ import CardHeader from "../../card/CardHeader";
                 <Text
                   fontSize='sm'
                   fontWeight='600'
-                  color='teal.300'
+                  color='blue.300'
                   alignSelf='center'>
                   700
                 </Text>
@@ -95,7 +95,7 @@ import CardHeader from "../../card/CardHeader";
                 <Text
                   fontSize='sm'
                   fontWeight='600'
-                  color='teal.300'
+                  color='blue.300'
                   alignSelf='center'>
                   500
                 </Text>

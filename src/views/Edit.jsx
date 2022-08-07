@@ -55,7 +55,7 @@ export default function Dashboard() {
 
   useEffect(()=> {
     const getDashboard = async() => {
-      await axios.get(`http://localhost:8000/dashboard/edit`, {
+      await axios.get(`/api/dashboard/edit`, {
         withCredentials: true // include cookies
       }) // Will run check on param too
         .then(r=> {

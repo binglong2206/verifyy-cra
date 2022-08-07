@@ -12,7 +12,7 @@ import Demographics from "./DemographicsChart.jsx";
 const Geographics = ({ title, percentage, chart }) => {
   const iconBoxInside = useColorModeValue("white", "white");
   const textColor = useColorModeValue("gray.700", "white");
-  const iconTeal = useColorModeValue("teal.300", "teal.300");
+  const iconTeal = useColorModeValue("blue.300", "blue.300");
 
 
   return (
@@ -47,7 +47,7 @@ const Geographics = ({ title, percentage, chart }) => {
                     {"amount"}
                 </Text>
                 <Progress
-                    colorScheme='teal'
+                    colorScheme='blue'
                     borderRadius='12px'
                     h='5px'
                     value={40}
@@ -66,7 +66,7 @@ const Geographics = ({ title, percentage, chart }) => {
                     {"amount"}
                 </Text>
                 <Progress
-                    colorScheme='teal'
+                    colorScheme='blue'
                     borderRadius='12px'
                     h='5px'
                     value={40}
@@ -86,7 +86,7 @@ const Geographics = ({ title, percentage, chart }) => {
                     {"amount"}
                 </Text>
                 <Progress
-                    colorScheme='teal'
+                    colorScheme='blue'
                     borderRadius='12px'
                     h='5px'
                     value={40}

@@ -36,7 +36,7 @@ export default function YoutubeModal({isOpen, onOpen, onClose}) {
         setModalStep(2);
         setLoading(false);
 
-        await axios.patch('http://localhost:8000/user/whitelist/youtube', {input}, {
+        await axios.patch('/api/user/whitelist/youtube', {input}, {
           withCredentials: true
         })
           .then(r=>console.log('youtube whitelist requested'))
@@ -71,9 +71,9 @@ export default function YoutubeModal({isOpen, onOpen, onClose}) {
                   </Text>
                 </Heading>
                 <Text fontSize={{ base: 'sm', lg: 'sm' }} color={textColor}>
-                  Verifyy.co is currently still in beta phase, so every users are technically beta-users. Please subtmit the Page name you intend to connect, 
-                  and our team will promptly whitelist your account. No sensitive information would be shared and 
-                  you will be able connect to your analytics within 24H.
+                Our OAuth 2.0 APIs are currently only available to whitelisted user. Please consider loading a sample dataset to get started, or register to get whitelisted by providing the username & email to your relevant social platforms(Youtube, Instagram, Facebook)
+
+
                 </Text>
                 <FormControl id="facebookPageName" >
                 <Input

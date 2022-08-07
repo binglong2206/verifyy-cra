@@ -6,7 +6,7 @@ export const UploadProfile = async (file) => { // hooks
     // Create a FormData object and store the file and then make an axios post to server
     const formData = new FormData();
     formData.append('profile', file);
-    await axios.post('http://localhost:8000/user/profile', formData , {
+    await axios.post('/api/user/profile', formData , {
       withCredentials: true,
       headers: {
         'Content-Type': 'multipart-formdata'
@@ -23,7 +23,7 @@ export const UploadBackground = async (file) => { // hooks
     // Create a FormData object and store the file and then make an axios post to server
     const formData = new FormData();
     formData.append('profile', file);
-    await axios.post('http://localhost:8000/user/background', formData , {
+    await axios.post('/api/user/background', formData , {
       withCredentials: true,
       headers: {
         'Content-Type': 'multipart-formdata'

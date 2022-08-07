@@ -66,7 +66,7 @@ import {
         <Flex w="100%" justifyContent={{ sm: "start", lg: "space-between" }}>
           
         <Link
-        href={`${process.env.PUBLIC_URL}/#/`}
+        href={`/`}
         target="_blank"
         display="flex"
         lineHeight="100%"
@@ -75,7 +75,7 @@ import {
         alignItems="center"
         color={mainText}
       >
-        <CreativeTimLogo w="32px" h="32px" me="10px" />
+        <RocketIcon w="32px" h="32px" me="10px" />
         <Text fontSize="sm" mt="3px">
           verifyy.co
         </Text>
@@ -97,7 +97,8 @@ import {
             <Text>Dashboard</Text>
           </Button>
         </NavLink>
-        <NavLink to="/google">
+        <Link href="https://github.com/binglong2206/verifyy-cra"
+          target="_blank">
           <Button
             fontSize="sm"
             ms="0px"
@@ -112,9 +113,9 @@ import {
           >
             <Text>Source Code</Text>
           </Button>
-        </NavLink>
+          </Link>
   
-        <NavLink to="/google">
+        <NavLink to="/">
           <Button
             fontSize="sm"
             ms="0px"
@@ -130,7 +131,7 @@ import {
             <Text>Sign Up</Text>
           </Button>
         </NavLink>
-        <NavLink to="/google">
+        <NavLink to="/login">
           <Button
             fontSize="sm"
             ms="0px"
@@ -147,7 +148,7 @@ import {
         </NavLink>
       </HStack>
   
-          <Link href="google">
+          <Link href="/login">
             <Button
               bg={bgButton}
               color={colorButton}

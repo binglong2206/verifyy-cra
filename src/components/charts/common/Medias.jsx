@@ -36,34 +36,34 @@ const Medias = () => {
           gap='24px'>
           <MediaCard
             image={mediaThumbnail}
-            name={"Project #1"}
-            category={"Modern"}
+            name={"Media #1"}
+            category={"Title"}
             description={
-              "As Uber works through a huge amount of internal management turmoil."
+              "Media Description"
             }
           />
           <MediaCard
             image={mediaThumbnail}
-            name={"Project #2"}
-            category={"Scandinavian"}
+            name={"Media #2"}
+            category={"Title"}
             description={
-              "Music is something that every person has his or her own specific opinion about."
+              "Media Description"
             }
           />
           <MediaCard
             image={mediaThumbnail}
-            name={"Project #3"}
-            category={"Minimalist"}
+            name={"Media #3"}
+            category={"Title"}
             description={
-              "Different people have different taste, especially various types of music."
+              "Media Description"
             }
           />
           <MediaCard
             image={mediaThumbnail}
-            name={"Project #3"}
-            category={"Minimalist"}
+            name={"Media #3"}
+            category={"Title"}
             description={
-              "Different people have different taste, especially various types of music."
+              "Media Description"
             }
           />
           

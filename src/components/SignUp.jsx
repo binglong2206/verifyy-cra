@@ -14,11 +14,12 @@ import {
   FormHelperText
 } from "@chakra-ui/react";
 import signInImage from "../assets/img/signInImage.png";
+import modernBackground from '../assets/img/modernBackground.webp'
 import axios from 'axios'
-import { Navigate } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 
 export default function SignUp() {
-  const titleColor = useColorModeValue("teal.300", "teal.200");
+  const titleColor = useColorModeValue("blue.300", "blue.200");
   const textColor = useColorModeValue("gray.400", "white");
   const [isLoading, setLoading] = useState(false);
   const [navigate, setNavigate] = useState(false); 
@@ -172,18 +173,13 @@ export default function SignUp() {
                   borderRadius='10px'
                   fontSize='10px'
                   // type='submit'
-                  bg='teal.300'
+                  colorScheme={'blue'}
                   w='100%'
                   h='45'
                   mb='20px'
                   color='white'
                   mt='20px'
-                  _hover={{
-                    bg: "teal.200",
-                  }}
-                  _active={{
-                    bg: "teal.400",
-                  }}>
+                 >
                   CONTINUE
                 </Button>
               </FormControl>}
@@ -222,7 +218,7 @@ export default function SignUp() {
                   fontSize='10px'
                   variant='ghost'
                   type='submit'
-                  colorScheme='teal'
+                  colorScheme='blue'
                   w='40%'
                   h='45'
                   mb='20px'
@@ -235,18 +231,13 @@ export default function SignUp() {
                   isLoading={accountLoading}
                   fontSize='10px'
                   type='submit'
-                  bg='teal.300'
+                  colorScheme={'blue'}
                   w='60%'
                   h='45'
                   mb='20px'
                   color='white'
                   mt='20px'
-                  _hover={{
-                    bg: "teal.200",
-                  }}
-                  _active={{
-                    bg: "teal.400",
-                  }}>
+                  >
                   CREATE ACCOUNT
                 </Button>
               </Flex>
@@ -260,13 +251,13 @@ export default function SignUp() {
               mt='0px'>
               <Text color={textColor} fontWeight='medium'>
                 Others:
-                <Link href='/login' isExternal={false} color={titleColor}  ms='5px' fontWeight='bold'>
-                  Login
-                </Link>
+                <NavLink to='/login' color={titleColor}  ms='5px' fontWeight='bold'>
+                {" "}Login
+                </NavLink>
                 {" "} or 
-                <Link href='/login' color={titleColor} ms='5px' fontWeight='bold'>
-                  Demo Login
-                </Link>
+                <NavLink to='/login' color={titleColor} ms='5px' fontWeight='bold'>
+                {" "}Demo Login
+                </NavLink>
        
               </Text>
             </Flex>
@@ -280,7 +271,7 @@ export default function SignUp() {
           position='absolute'
           right='0px'>
           <Box
-            bgImage={signInImage}
+            bgImage={modernBackground}
             w='100%'
             h='100%'
             bgSize='cover'

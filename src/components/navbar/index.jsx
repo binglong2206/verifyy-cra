@@ -22,11 +22,6 @@ export default function Navbar({onOpen}) {
   let secondaryMargin = "22px"; // 0px
   let paddingX = "30px";
 
-  let mainTeal = useColorModeValue("teal.300", "teal.300");
-  let inputBg = useColorModeValue("white", "gray.800");
-  let navBarColor = useColorModeValue("gray.500", "gray.200");
-  let searchIcon = useColorModeValue("gray.700", "gray.200");
-
   return (
     <Flex
       position={navbarPosition}

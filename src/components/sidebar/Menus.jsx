@@ -18,7 +18,7 @@ import {
     HStack,
 } from "@chakra-ui/react";
 import { FiUpload } from "react-icons/fi";
-import { CreativeTimLogo } from "../Icons/Icons";
+import { RocketIcon } from "../Icons/Icons";
 import Separator from "../Separator";
 import { useLocation } from "react-router-dom";
 import LoadDataCard from "./LoadSampleData";
@@ -153,7 +153,7 @@ const Menus = () => {
         alignItems="center"
         fontSize="11px"
       >
-        <CreativeTimLogo w="32px" h="32px" me="10px" />
+        <RocketIcon w="32px" h="32px" me="10px" />
         <Text fontSize="sm" mt="3px">
           verifyy.co
         </Text>

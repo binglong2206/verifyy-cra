@@ -39,7 +39,7 @@ export default function ConfigSideBar({isOpen, onClose}) {
       //   withCredentials: true
       // })
       // .then(r=>console.log('chart patched'));
-      const r = await fetch(`http://localhost:8000/user/charts/${chartId}`, {
+      const r = await fetch(`/api/user/charts/${chartId}`, {
         method: 'PATCH',
         credentials: 'include',
       })
@@ -54,7 +54,7 @@ export default function ConfigSideBar({isOpen, onClose}) {
     } 
 
     if (action === 'delete') {
-      const res = await axios.delete(`http://localhost:8000/user/charts/${chartId}`,{
+      const res = await axios.delete(`/api/user/charts/${chartId}`,{
         withCredentials: true
       })
       

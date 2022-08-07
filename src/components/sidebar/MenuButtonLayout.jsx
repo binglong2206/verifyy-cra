@@ -78,7 +78,7 @@ const MenuButtonLayout = ({text, isActive, onOpen, setModal}) => {
   >
     <Flex>
         <IconBox
-          bg={isActive ? "red.500" : inactiveColor }
+          bg={isActive ? "blue.500" : inactiveColor }
           color="white"
           h="30px"
           w="30px"

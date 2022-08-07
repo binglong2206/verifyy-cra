@@ -65,7 +65,8 @@ const DashboardHeader = ({
       justifyContent='center'
       align='center'>
       <Box
-        bgImage={background_image ? background_image : ProfileBgImage }
+        bgImage={background_image ? background_image : '' }
+        bgColor={!background_image ? 'gray.500' : ''}
         w='100%'
         h='300px'
         borderRadius='25px'

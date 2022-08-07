@@ -36,12 +36,12 @@ const MediaCard = ({ image, name, category, description }) => {
         <Flex justifyContent='space-between'>
           <Button
             variant='outline'
-            colorScheme='teal'
+            colorScheme='blue'
             minW='110px'
             h='36px'
             fontSize='xs'
             px='1.5rem'>
-            VIEW PROJECT
+            VIEW MEDIA
           </Button>
 
         </Flex>

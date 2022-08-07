@@ -46,7 +46,7 @@ export default function Dashboard() {
 
   useEffect(()=> {
     const getDashboard = async() => {
-      await axios.get(`http://localhost:8000/dashboard/${username}`) // Will run check on username param too, no need cookies
+      await axios.get(`/api/dashboard/${username}`) // Will run check on username param too, no need cookies
         .then(r=> {
           setStatState(r.data.stat)
           setYoutubeState(r.data.yt);

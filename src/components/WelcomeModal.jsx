@@ -30,7 +30,7 @@ export default function WelcomeModal({ isOpen, onOpen, onClose }) {
   const handleStart = async ()=> {
     setLoading(true)
     if (selectSample) {
-      await axios.get('http://localhost:8000/user/sampleData', { // POST needs body
+      await axios.get('/api/user/sampleData', { // POST needs body
       withCredentials: true
         }).then(r=>{
           setStatState(r.data.stat)
