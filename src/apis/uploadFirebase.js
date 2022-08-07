@@ -12,6 +12,7 @@ export const UploadProfile = async (file) => { // hooks
         'Content-Type': 'multipart-formdata'
       }
      }).then((r) => {
+      console.log(r.data)
       useUserStore.setState({profile_image: r.data.url}) // Forces re-render after update
      })
    

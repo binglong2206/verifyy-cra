@@ -39,7 +39,8 @@ const DashboardHeader = ({
   //   fbTab: true
   // })
 
-  const {profile_image, background_image} = useUserStore(state=>state)
+  const { background_image} = useUserStore(state=>state)
+  const profile_image = useUserStore(state=>state.profile_image)
   const activeTabs = useTabStore(state=>state)
   const setTab = useTabStore(state=> state.setTab);
 
