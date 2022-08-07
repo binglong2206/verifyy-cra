@@ -9,10 +9,10 @@ export default function AuthPage() {
   const navRef = React.useRef();
   const wrapper = React.createRef();
 
-  useEffect(() => {
-    document.body.style.overflow = "unset";
-    return function cleanup() {};
-  });
+  // useEffect(() => {
+  //   document.body.style.overflow = "unset";
+  //   return function cleanup() {};
+  // });
 
 
   return (

@@ -58,7 +58,8 @@ export default function SignUp() {
     }
 
     // Make POST request to check username
-    const res = await axios.get(`http://localhost:8000/checkUser/${value}`)
+    const res = await axios.get(`/api/checkUser/${value}`)
+    console.log('CALLING TO /API/CHECKUSER')
 
     if (res.data.result === true ) {
       setTimeout(() => {
@@ -91,7 +92,7 @@ export default function SignUp() {
     setAccountLoading(true);
 
     setTimeout(async ()=> {
-      await axios.post('http://localhost:8000/signup', state, {
+      await axios.post('/api/signup', state, {
       headers: {
         'Content-Type': 'application/json'
       },
