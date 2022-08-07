@@ -30,7 +30,7 @@ export default function Footer(props) {
         <Text as="span">Made with 🔥 by </Text>
         <Link
           // color={linkTeal}
-          color="teal.400"
+          color="blue.400"
           href="google.com"
           target="_blank"
         > Binglong Chee.  
