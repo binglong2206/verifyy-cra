@@ -5,12 +5,33 @@ import Medias from "../common/Medias";
 import GeneralStats from "../common/GeneralStats";
 import GeoDemo from "../common/GeoDemo";
 import Intervals from "../common/Intervals";
-import { useUserStore } from "../../../state/useStore";
+import { useUserStore, useYoutubeStore } from "../../../state/useStore";
+import { BsFillPersonCheckFill } from "react-icons/bs";
+
 
 
 export default function YoutubeChart() {
+    const user = useUserStore(state=>state)
+    const youtube = useYoutubeStore(state=>state)
     const charts = useUserStore(state=>state.charts_order)
 
+    const stats = [{
+        title: 'Follower_count',
+        value: 77,
+        icon: <BsFillPersonCheckFill h={"24px"} w={"24px"} />
+        },
+        {
+            title: 'Follower_count',
+            value: 77,
+            icon: <BsFillPersonCheckFill h={"24px"} w={"24px"} />
+        },
+        {
+            title: 'Follower_count',
+            value: 77,
+            icon: <BsFillPersonCheckFill h={"24px"} w={"24px"} />
+            }
+    
+    ]
     return (
         <>
         {charts.indexOf(1) !== -1 && 
@@ -19,8 +40,14 @@ export default function YoutubeChart() {
             templateRows={{ md: "1fr auto", lg: "1fr" }}
             mb={{ lg: "26px" }}
             gap='24px'>
-                <Title />
-                <GeneralStats />
+                <Title 
+                    title={'Youtube Channel Analytics'}
+                    username={youtube.username}
+                    description={'blah'}
+                    src_url={youtube.src_url}
+                    profile_image={youtube.profile_image}
+                    />
+                <GeneralStats props={stats}/>
             </Grid>
         }
 
