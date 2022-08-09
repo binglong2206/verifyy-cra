@@ -30,7 +30,7 @@ export default function Title({title, username, description, src_url, profile_im
                     <Text fontSize='lg' color={'gray.400'} fontWeight='bold' pb='.5rem'>
                     {username}
                     </Text>
-                    <Text fontSize='sm' color='gray.400' fontWeight='normal'>
+                    <Text fontSize='sm' color='gray.500' fontWeight='normal'>
                     {description}
                     </Text>
                     <Spacer />

@@ -16,18 +16,18 @@ export default function YoutubeChart() {
     const charts = useUserStore(state=>state.charts_order)
 
     const stats = [{
-        title: 'Follower_count',
-        value: 77,
-        icon: <BsFillPersonCheckFill h={"24px"} w={"24px"} />
-        },
-        {
-            title: 'Follower_count',
-            value: 77,
+            title: 'Subscribers',
+            value: youtube.follower_count,
             icon: <BsFillPersonCheckFill h={"24px"} w={"24px"} />
         },
         {
-            title: 'Follower_count',
-            value: 77,
+            title: 'Views',
+            value: youtube.view_count,
+            icon: <BsFillPersonCheckFill h={"24px"} w={"24px"} />
+        },
+        {
+            title: 'Uploads',
+            value: youtube.media_count,
             icon: <BsFillPersonCheckFill h={"24px"} w={"24px"} />
             }
     
@@ -43,7 +43,7 @@ export default function YoutubeChart() {
                 <Title 
                     title={'Youtube Channel Analytics'}
                     username={youtube.username}
-                    description={'blah'}
+                    description={'Data verified by Verifyy.co'}
                     src_url={youtube.src_url}
                     profile_image={youtube.profile_image}
                     />

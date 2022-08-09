@@ -26,7 +26,7 @@ const Geographics = ({ title, percentage, chart }) => {
                 {'Geographics & Demographics'}
               </Text>
               <Text fontSize='sm' color='gray.500' fontWeight='400'>
-                {'description'}
+                {'Data verified by Verifyy.co'}
               </Text>
             </Flex>
           </CardHeader>

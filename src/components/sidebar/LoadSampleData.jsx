@@ -57,7 +57,7 @@ export default function LoadDataCard({children, ...rest}) {
           loadingText="Updating dataset"
           fontSize="10px"
           fontWeight="bold"
-          w="100%"
+          w="70%"
           bg="white"
           _hover="none"
           _active={{
@@ -72,25 +72,26 @@ export default function LoadDataCard({children, ...rest}) {
         >
           Load Sample Data
         </Button>
-        <Button
-          mt='7px'
-          fontSize="10px"
-          fontWeight="bold"
-          w="100%"
-          bg="white"
-          _hover="none"
-          _active={{
-            bg: "white",
-            transform: "none",
-            borderColor: "transparent",
-          }}
-          _focus={{
-            boxShadow: "none",
-          }}
-          color="black"
-        >
-          Github Source Code
-        </Button>
+        <Link href={'https://github.com/binglong2206/verifyy-server-db'} isExternal> 
+          <Button
+            mt='7px'
+            fontSize="10px"
+            fontWeight="bold"
+            bg="white"
+            _hover="none"
+            _active={{
+              bg: "white",
+              transform: "none",
+              borderColor: "transparent",
+            }}
+            _focus={{
+              boxShadow: "none",
+            }}
+            color="black"
+          >
+            Github Source Code
+          </Button>
+        </Link>
     </Flex>
   );
 }

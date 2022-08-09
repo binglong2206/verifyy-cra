@@ -33,7 +33,7 @@ import { BsFillPersonCheckFill } from "react-icons/bs";
                       {e.icon}
                     </IconBox>
                     <Flex direction='column' ml={4}>
-                      <Text fontSize='sm' color={textColor} fontWeight='bold'>
+                      <Text fontSize='sm' color={textColor} fontWeight='400'>
                         {e.title}
                       </Text>
                     </Flex>
