@@ -103,8 +103,8 @@ export default function Dashboard() {
                   backgroundHeader={ProfileBgImage}
                   backgroundProfile={bgProfile}
                   avatarImage={avatar}
-                  name={"Matthew Ryu"}
-                  email={"MatthewFireHand@gmail.com"} />
+                  name={userState.username}
+                  email={userState.email} />
 
                 {userState.follower_count && <OverviewChart /> }
                 {(tabState.ytTab && youtubeState.id ) && <YoutubeChart />}
