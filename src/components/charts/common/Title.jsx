@@ -5,15 +5,15 @@ import {
     Icon,
     Spacer,
     Text,
-    Image
+    Image,
+    Link
   } from "@chakra-ui/react";
-  // Custom components
   import Card from "../../card/Card.js";
   import CardBody from "../../card/CardBody.js";
   import { BsArrowRight } from "react-icons/bs";
 
 
-export default function Title() {
+export default function Title({title, username, description, src_url, profile_image}) {
     return (
         
         <Card minHeight='290.5px' p='1.2rem'>
@@ -25,43 +25,45 @@ export default function Title() {
                     lineHeight='1.6'
                     width={{ lg: "45%" }}>
                     <Text fontSize='sm' color='gray.400' fontWeight='bold'>
-                    {'Youtube Channel Analytics'}
+                    {title}
                     </Text>
                     <Text fontSize='lg' color={'gray.400'} fontWeight='bold' pb='.5rem'>
-                    {'@MatthewRyuFirehand'}
+                    {username}
                     </Text>
                     <Text fontSize='sm' color='gray.400' fontWeight='normal'>
-                    {'sadasd'}
+                    {description}
                     </Text>
                     <Spacer />
                     <Flex align='center'>
-                    <Button
-                        p='0px'
-                        variant='no-hover'
-                        bg='transparent'
-                        my={{ sm: "1.5rem", lg: "0px" }}>
-                        <Text
-                        fontSize='sm'
-                        color={'gray.500'}
-                        fontWeight='bold'
-                        cursor='pointer'
-                        transition='all .5s ease'
-                        my={{ sm: "1.5rem", lg: "0px" }}
-                        _hover={{ me: "4px" }}>
-                        Visit Channel
-                        </Text>
-                        <Icon
-                        as={BsArrowRight}
-                        w='20px'
-                        h='20px'
-                        fontSize='2xl'
-                        transition='all .5s ease'
-                        mx='.3rem'
-                        cursor='pointer'
-                        pt='4px'
-                        _hover={{ transform: "translateX(20%)" }}
-                        />
-                    </Button>
+                    <Link href={src_url} isExternal={true}> 
+                        <Button
+                            p='0px'
+                            variant='no-hover'
+                            bg='transparent'
+                            my={{ sm: "1.5rem", lg: "0px" }}>
+                            <Text
+                            fontSize='sm'
+                            color={'gray.500'}
+                            fontWeight='bold'
+                            cursor='pointer'
+                            transition='all .5s ease'
+                            my={{ sm: "1.5rem", lg: "0px" }}
+                            _hover={{ me: "4px" }}>
+                            Visit Page
+                            </Text>
+                            <Icon
+                            as={BsArrowRight}
+                            w='20px'
+                            h='20px'
+                            fontSize='2xl'
+                            transition='all .5s ease'
+                            mx='.3rem'
+                            cursor='pointer'
+                            pt='4px'
+                            _hover={{ transform: "translateX(20%)" }}
+                            />
+                        </Button>
+                    </Link>
                     </Flex>
                 </Flex>
                 <Spacer />
@@ -73,7 +75,7 @@ export default function Title() {
                     width={{ lg: "40%" }}
                     minHeight={{ sm: "250px" }}>
                     <Image
-                        src={""}
+                        src={profile_image}
                         alt='Profile Image'
                         minWidth={{ md: "300px", lg: "auto" }}
                     />
