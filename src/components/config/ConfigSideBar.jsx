@@ -71,9 +71,10 @@ export default function ConfigSideBar({isOpen, onClose}) {
   }
 
   const displayOptions = (options) => {
-    const jsx = options.map((e)=> {
+    const jsx = options.map((e, key)=> {
       return (
         <Flex
+        key={key}
         justifyContent="space-between"
         alignItems="center"
         px='10px'

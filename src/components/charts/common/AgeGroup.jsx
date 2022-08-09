@@ -2,23 +2,18 @@ import React from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { Box } from '@chakra-ui/react';
 
-const Geographics = ({data}) => {
-
-    const geoData = Object.entries(data) // [[key, value]...]
-    const labels = geoData.map(e=> {return e[0]})
-    const series = geoData.map(e=>{return Math.round(e[1] * 100)/100})
-
+const Demographics = () => {
 	return (
 		<Box margin='auto'>
 			<ReactApexChart
 				options={{
 					colors: [
-						'#42d7f5',
-						'#73159e',
-						'#6e856d', 
-						'#d1bf88', 
-						'#eb4c17', 
-                        '#eb4c97', 
+						'#42d7f5', // process.env.REACT_APP_PRIMARY_COLOR
+						'#73159e', // process.env.REACT_APP_SECONDARY_COLOR,
+						'#6e856d', // process.env.REACT_APP_SUCCESS_COLOR,
+						'#d1bf88', // process.env.REACT_APP_INFO_COLOR,
+						'#eb4c17', // process.env.REACT_APP_WARNING_COLOR,
+                        '#eb4c97', // process.env.REACT_APP_WARNING_COLOR,
 					],
 					chart: {
                         type: 'donut',
@@ -27,7 +22,7 @@ const Geographics = ({data}) => {
                     stroke: {
                         width: 0,
                     },
-                    labels: labels,
+                    labels: ['TH', 'US', 'GH', 'JP', 'GE', 'Others'],
                     dataLabels: {
                         enabled: false,
                     },
@@ -67,7 +62,7 @@ const Geographics = ({data}) => {
                         position: 'right',
                     },
 				}}
-				series={series}
+				series={[76, 55, 41, 20, 68, 15]}
 				type='donut'
 				width={325}
 				height={325}
@@ -76,4 +71,4 @@ const Geographics = ({data}) => {
 	);
 };
 
-export default Geographics;
+export default Demographics;

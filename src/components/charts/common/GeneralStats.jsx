@@ -25,9 +25,9 @@ import { BsFillPersonCheckFill } from "react-icons/bs";
         <CardBody px='5px'>
           <Flex direction='column' w='100%'>
 
-            {props && props.map(e => {
+            {props && props.map((e, key) => {
               return (
-                <Flex justifyContent='space-between' mb='21px'>
+                <Flex key={key} justifyContent='space-between' mb='21px'>
                   <Flex align='center'>
                     <IconBox as='box' h={"45px"} w={"45px"} bg={'blue'}>
                       {e.icon}

@@ -10,6 +10,7 @@ import { BsFillPersonCheckFill } from "react-icons/bs";
 
 
 
+
 export default function YoutubeChart() {
     const user = useUserStore(state=>state)
     const youtube = useYoutubeStore(state=>state)
@@ -57,7 +58,10 @@ export default function YoutubeChart() {
             templateRows={{ sm: "repeat(2, 1fr)", lg: "1fr" }}
             gap='24px'
             mb={{ lg: "26px" }}>
-                <GeoDemo />
+                <GeoDemo 
+                    {...youtube.demographics} // male, female, age:{}
+                    geographics={youtube.geographics}
+                    />
                 <Intervals />
             </Grid>
         }
