@@ -12,11 +12,10 @@ import { BsFillPersonCheckFill } from "react-icons/bs";
 
 
 export default function YoutubeChart() {
-    const user = useUserStore(state=>state)
     const youtube = useYoutubeStore(state=>state)
     const charts = useUserStore(state=>state.charts_order)
 
-    const stats = [{
+    const generalStats = [{
             title: 'Subscribers',
             value: youtube.follower_count,
             icon: <BsFillPersonCheckFill h={"24px"} w={"24px"} />
@@ -31,8 +30,61 @@ export default function YoutubeChart() {
             value: youtube.media_count,
             icon: <BsFillPersonCheckFill h={"24px"} w={"24px"} />
             }
-    
     ]
+
+    const getIntervalData = () => {
+        let dayCategories, weekCategories, monthCategories,
+            daySeries, weekSeries, monthSeries;
+
+        const legends = ['Views', 'Likes', 'Subscribers Gained']
+        
+        if (youtube.data_intervals) { 
+            dayCategories = [youtube.data_intervals.day[0][0]]
+            weekCategories = youtube.data_intervals.week.map(e => {
+                return e[0]
+            });
+            monthCategories = youtube.data_intervals.month.map(e => {
+                return e[0]
+            });
+
+            daySeries = legends.map(legend => {
+                return {
+                    name: legend,
+                    type: 'column',
+                    data: [youtube.data_intervals.day[0][legends.indexOf(legend) + 1]]
+                }
+            })
+
+            weekSeries = legends.map(legend => {
+                return {
+                    name: legend,
+                    type: 'column',
+                    data: youtube.data_intervals.week.map(e => e[legends.indexOf(legend) + 1])
+                }
+            })
+
+            monthSeries = legends.map(legend => {
+                return {
+                    name: legend,
+                    type: 'column',
+                    data: youtube.data_intervals.month.map(e => e[legends.indexOf(legend) + 1])
+                }
+            })
+        }
+        console.log(daySeries)
+
+        return {
+            legends: legends,
+            daySeries: daySeries,
+            weekSeries: weekSeries,
+            monthSeries: monthSeries,
+            dayCategories: dayCategories,
+            weekCategories: weekCategories,
+            monthCategories: monthCategories
+        }
+    }
+
+
     return (
         <>
         {charts.indexOf(1) !== -1 && 
@@ -48,7 +100,7 @@ export default function YoutubeChart() {
                     src_url={youtube.src_url}
                     profile_image={youtube.profile_image}
                     />
-                <GeneralStats props={stats}/>
+                <GeneralStats props={generalStats}/>
             </Grid>
         }
 
@@ -62,7 +114,9 @@ export default function YoutubeChart() {
                     {...youtube.demographics} // male, female, age:{}
                     geographics={youtube.geographics}
                     />
-                <Intervals />
+                <Intervals 
+                    data={getIntervalData()}
+                    />
             </Grid>
         }
 

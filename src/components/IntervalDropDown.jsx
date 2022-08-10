@@ -36,6 +36,7 @@ import {
             <PopoverBody>
               <Stack>
                 <Button
+                  isActive={activeTab === 'd'}
                   onClick={()=>setActiveTab('d')}
                   w="194px"
                   variant="ghost"
@@ -46,6 +47,7 @@ import {
                   Daily
                 </Button>
                 <Button
+                  isActive={activeTab === 'w'}
                   onClick={()=>setActiveTab('w')}
                   w="194px"
                   variant="ghost"
@@ -56,6 +58,7 @@ import {
                   Weekly
                 </Button>
                 <Button
+                  isActive={activeTab === 'm'}
                   onClick={()=>setActiveTab('m')}
                   w="194px"
                   variant="ghost"
