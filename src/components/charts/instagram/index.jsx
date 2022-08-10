@@ -14,6 +14,7 @@ import { BsFillPersonCheckFill } from "react-icons/bs";
 export default function InstagramChart() {
     const youtube = useYoutubeStore(state=>state)
     const instagram = useInstagramStore(state=>state)
+    const intervalData = useInstagramStore(state=>state.data_intervals)
     const charts = useUserStore(state=>state.charts_order)
 
     const generalStats = [{
@@ -33,21 +34,28 @@ export default function InstagramChart() {
             daySeries, weekSeries, monthSeries;
 
         const legends = ['Followers', 'Impressions', 'Reaches']
+        const intervalKeys = ['follower_count', 'impression_count', 'reach_count'] // Temporary solution, to delete
+
         
-        if (instagram.data_intervals) { 
-            dayCategories = [youtube.data_intervals.day[0][0]]
-            weekCategories = youtube.data_intervals.week.map(e => {
-                return e[0]
+        
+        if (intervalData) { 
+            // Get data by mapping over follower/impression/reach, doesn't matter
+            dayCategories = [intervalData.day.follower_count[0].end_time.slice(0,10)] // Take end date of any key and format date
+            weekCategories = intervalData.week.follower_count.map(e => {
+                return e.end_time.slice(0,10)
             });
-            monthCategories = youtube.data_intervals.month.map(e => {
-                return e[0]
+            monthCategories = intervalData.month.follower_count.map(e => {
+                return e.end_time.slice(0,10)
             });
 
             daySeries = legends.map(legend => {
                 return {
                     name: legend,
                     type: 'column',
-                    data: [youtube.data_intervals.day[0][legends.indexOf(legend) + 1]]
+                    // Select follower/impres/reach depending on the index of the mapped legends
+                    // Daily has 2 value, prev[0] and current[1]. Use prev
+                    data: [intervalData.day[intervalKeys[legends.indexOf(legend)]][0].value] 
+                    
                 }
             })
 
@@ -55,7 +63,9 @@ export default function InstagramChart() {
                 return {
                     name: legend,
                     type: 'column',
-                    data: youtube.data_intervals.week.map(e => e[legends.indexOf(legend) + 1])
+                    data: intervalData.week[intervalKeys[legends.indexOf(legend)]].map(e =>{
+                        return e.value
+                    })
                 }
             })
 
@@ -63,7 +73,9 @@ export default function InstagramChart() {
                 return {
                     name: legend,
                     type: 'column',
-                    data: youtube.data_intervals.month.map(e => e[legends.indexOf(legend) + 1])
+                    data: intervalData.month[intervalKeys[legends.indexOf(legend)]].map(e =>{
+                        return e.value
+                    })
                 }
             })
         }
