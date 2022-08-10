@@ -4,17 +4,18 @@ import {
   Button,
   Flex,
   Image,
+  Link,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 
-const MediaCard = ({ image, name, category, description }) => {
+const MediaCard = ({ image, name, category, description, src_url }) => {
   const textColor = useColorModeValue("gray.700", "white");
 
   return (
     <Flex direction='column'>
       <Box mb='20px' position='relative' borderRadius='15px'>
-        <Image src={image} borderRadius='15px' />
+        <Image src={image} borderRadius='15px' boxSize='sm' objectFit='cover' maxH='220px' />
         <Box
           w='100%'
           h='100%'
@@ -34,15 +35,17 @@ const MediaCard = ({ image, name, category, description }) => {
           {description}
         </Text>
         <Flex justifyContent='space-between'>
-          <Button
-            variant='outline'
-            colorScheme='blue'
-            minW='110px'
-            h='36px'
-            fontSize='xs'
-            px='1.5rem'>
-            VIEW MEDIA
-          </Button>
+          <Link href={src_url} isExternal>
+            <Button
+              variant='outline'
+              colorScheme='blue'
+              minW='110px'
+              h='36px'
+              fontSize='xs'
+              px='1.5rem'>
+              VIEW MEDIA
+            </Button>
+          </Link>
 
         </Flex>
       </Flex>

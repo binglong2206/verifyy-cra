@@ -71,7 +71,6 @@ export default function YoutubeChart() {
                 }
             })
         }
-        console.log(daySeries)
 
         return {
             legends: legends,
@@ -120,7 +119,12 @@ export default function YoutubeChart() {
             </Grid>
         }
 
-        {charts.indexOf(3) !== -1 &&  <Medias />}
+        {charts.indexOf(3) !== -1 &&  
+            <Medias 
+                title='Latest Video Uploads'
+                description=''
+                medias={youtube.medias}
+            />}
 
         </>
     )

@@ -5,7 +5,8 @@ import {
   useDisclosure, 
   useColorModeValue, 
   Flex, 
-
+  Button,
+  Link
  } from "@chakra-ui/react";
 import Sidebar from "../components/sidebar";
 import MainPanel from "../components/layouts/MainPanel";
@@ -99,6 +100,9 @@ export default function Dashboard() {
         <PanelContent>
           <PanelContainer>
             <Flex direction='column'>
+              <Link href="http://localhost:8000/api/youtube/redirect">
+              <Button>Connect Youtube</Button>
+              </Link>
               <DashboardHeader
                   backgroundHeader={ProfileBgImage}
                   backgroundProfile={bgProfile}

@@ -5,14 +5,13 @@ import Medias from "../common/Medias";
 import GeneralStats from "../common/GeneralStats";
 import GeoDemo from "../common/GeoDemo";
 import Intervals from "../common/Intervals";
-import { useUserStore, useYoutubeStore, useInstagramStore } from "../../../state/useStore";
+import { useUserStore, useInstagramStore } from "../../../state/useStore";
 import { BsFillPersonCheckFill } from "react-icons/bs";
 
 
 
 
 export default function InstagramChart() {
-    const youtube = useYoutubeStore(state=>state)
     const instagram = useInstagramStore(state=>state)
     const intervalData = useInstagramStore(state=>state.data_intervals)
     const charts = useUserStore(state=>state.charts_order)
@@ -129,7 +128,12 @@ export default function InstagramChart() {
             </Grid>
         }
 
-        {charts.indexOf(3) !== -1 &&  <Medias />}
+        {charts.indexOf(3) !== -1 &&  
+            <Medias 
+                title='Latest Video Uploads'
+                description=''
+                medias={instagram.medias}
+            />}
 
         </>
     )

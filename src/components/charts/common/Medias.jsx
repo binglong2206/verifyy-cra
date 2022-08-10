@@ -13,7 +13,7 @@ import CardHeader from "../../card/CardHeader";
 import MediaCard from "./MediaCard";
 import mediaThumbnail from '../../../assets/img/ImageArchitect1.png'
 
-const Medias = () => {
+const Medias = ({title, description, medias}) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
 
@@ -22,52 +22,38 @@ const Medias = () => {
       <CardHeader p='12px 5px' mb='12px'>
         <Flex direction='column'>
           <Text fontSize='lg' color={textColor} fontWeight='bold'>
-            {'title'}
+            {title}
           </Text>
           <Text fontSize='sm' color='gray.500' fontWeight='400'>
-            {'description'}
+            {description}
           </Text>
         </Flex>
       </CardHeader>
       <CardBody px='5px'>
-        <Grid
-          templateColumns={{ sm: "1fr", md: "1fr 1fr", xl: "repeat(4, 1fr)" }}
-          templateRows={{ sm: "1fr 1fr 1fr auto", md: "1fr 1fr", xl: "1fr" }}
-          gap='24px'>
-          <MediaCard
-            image={mediaThumbnail}
-            name={"Media #1"}
-            category={"Title"}
-            description={
-              "Media Description"
-            }
-          />
-          <MediaCard
-            image={mediaThumbnail}
-            name={"Media #2"}
-            category={"Title"}
-            description={
-              "Media Description"
-            }
-          />
-          <MediaCard
-            image={mediaThumbnail}
-            name={"Media #3"}
-            category={"Title"}
-            description={
-              "Media Description"
-            }
-          />
-          <MediaCard
-            image={mediaThumbnail}
-            name={"Media #3"}
-            category={"Title"}
-            description={
-              "Media Description"
-            }
-          />
-          
-        </Grid>
+        {medias && 
+          <Grid
+            templateColumns={{ sm: "1fr", md: "1fr 1fr", xl: "repeat(4, 1fr)" }}
+            templateRows={{ sm: "1fr 1fr 1fr auto", md: "1fr 1fr", xl: "1fr" }}
+            gap='24px'
+            mb='20px'
+            >
+
+            {medias.map(e => {
+              return (
+                <MediaCard
+                image={e.thumbnail}
+                name={e.title}
+                src_url={e.src_url}
+                category={e.title}
+                description={
+                  "Media Description"
+              }
+            />
+              )
+            })}
+           
+          </Grid>
+        }
       </CardBody>
     </Card>
   );
