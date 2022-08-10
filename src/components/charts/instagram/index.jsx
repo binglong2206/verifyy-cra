@@ -5,38 +5,120 @@ import Medias from "../common/Medias";
 import GeneralStats from "../common/GeneralStats";
 import GeoDemo from "../common/GeoDemo";
 import Intervals from "../common/Intervals";
-import { useUserStore } from "../../../state/useStore";
+import { useUserStore, useYoutubeStore, useInstagramStore } from "../../../state/useStore";
+import { BsFillPersonCheckFill } from "react-icons/bs";
+
+
 
 
 export default function InstagramChart() {
+    const youtube = useYoutubeStore(state=>state)
+    const instagram = useInstagramStore(state=>state)
     const charts = useUserStore(state=>state.charts_order)
+
+    const generalStats = [{
+            title: 'Followers',
+            value: instagram.follower_count,
+            icon: <BsFillPersonCheckFill h={"24px"} w={"24px"} />
+        },
+        {
+            title: 'Total Posts',
+            value: instagram.media_count,
+            icon: <BsFillPersonCheckFill h={"24px"} w={"24px"} />
+        }
+    ]
+
+    const getIntervalData = () => {
+        let dayCategories, weekCategories, monthCategories,
+            daySeries, weekSeries, monthSeries;
+
+        const legends = ['Followers', 'Impressions', 'Reaches']
+        
+        if (instagram.data_intervals) { 
+            dayCategories = [youtube.data_intervals.day[0][0]]
+            weekCategories = youtube.data_intervals.week.map(e => {
+                return e[0]
+            });
+            monthCategories = youtube.data_intervals.month.map(e => {
+                return e[0]
+            });
+
+            daySeries = legends.map(legend => {
+                return {
+                    name: legend,
+                    type: 'column',
+                    data: [youtube.data_intervals.day[0][legends.indexOf(legend) + 1]]
+                }
+            })
+
+            weekSeries = legends.map(legend => {
+                return {
+                    name: legend,
+                    type: 'column',
+                    data: youtube.data_intervals.week.map(e => e[legends.indexOf(legend) + 1])
+                }
+            })
+
+            monthSeries = legends.map(legend => {
+                return {
+                    name: legend,
+                    type: 'column',
+                    data: youtube.data_intervals.month.map(e => e[legends.indexOf(legend) + 1])
+                }
+            })
+        }
+
+        return {
+            legends: legends,
+            daySeries: daySeries,
+            weekSeries: weekSeries,
+            monthSeries: monthSeries,
+            dayCategories: dayCategories,
+            weekCategories: weekCategories,
+            monthCategories: monthCategories
+        }
+    }
+
 
     return (
         <>
-        {charts.indexOf(4) !== -1 && 
+        {charts.indexOf(1) !== -1 && 
             <Grid
             templateColumns={{ md: "1fr", lg: "1.8fr 1.2fr" }}
             templateRows={{ md: "1fr auto", lg: "1fr" }}
             mb={{ lg: "26px" }}
             mt={{ lg: "26px" }}
+
             gap='24px'>
-                <Title />
-                <GeneralStats />
+                <Title 
+                    title={'Instagram Business Account Analytics'}
+                    username={instagram.username}
+                    // description={'Data verified by Verifyy.co'}
+                    src_url={instagram.src_url}
+                    profile_image={instagram.profile_image}
+                    />
+                <GeneralStats props={generalStats}/>
             </Grid>
         }
 
-        {charts.indexOf(5) !== -1 && 
+        {charts.indexOf(2) !== -1 && 
             <Grid
             templateColumns={{ sm: "1fr", lg: "1.1fr 1.9fr" }}
             templateRows={{ sm: "repeat(2, 1fr)", lg: "1fr" }}
             gap='24px'
             mb={{ lg: "26px" }}>
-                <GeoDemo />
-                <Intervals />
+                <GeoDemo 
+                    {...instagram.demographics} // male, female, age:{}
+                    geographics={instagram.geographics}
+                    />
+                <Intervals 
+                    data={getIntervalData()}
+                    />
             </Grid>
         }
 
-        {charts.indexOf(6) !== -1 &&  <Medias />}
+        {charts.indexOf(3) !== -1 &&  <Medias />}
+
         </>
     )
 }

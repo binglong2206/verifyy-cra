@@ -77,7 +77,7 @@ export default function Title({title, username, description, src_url, profile_im
                     <Image
                         src={profile_image}
                         alt='Profile Image'
-                        minWidth={{ md: "300px", lg: "auto" }}
+                        maxWidth={{ md: "250px", lg: "auto" }}
                     />
                 </Flex>
                 </Flex>

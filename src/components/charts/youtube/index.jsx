@@ -96,7 +96,7 @@ export default function YoutubeChart() {
                 <Title 
                     title={'Youtube Channel Analytics'}
                     username={youtube.username}
-                    description={'Data verified by Verifyy.co'}
+                    // description={'Data verified by Verifyy.co'}
                     src_url={youtube.src_url}
                     profile_image={youtube.profile_image}
                     />
