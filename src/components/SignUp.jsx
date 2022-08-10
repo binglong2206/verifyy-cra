@@ -92,7 +92,7 @@ export default function SignUp() {
     e.preventDefault(); // prevent form from default refresh;
     setAccountLoading(true);
 
-    setTimeout(async ()=> {
+
       await axios.post('/api/signup', state, {
       headers: {
         'Content-Type': 'application/json'
@@ -103,7 +103,6 @@ export default function SignUp() {
     }).catch(e => {
       console.error('Account creation failed', e)
     })
-    }, 2000)
     
   }
 

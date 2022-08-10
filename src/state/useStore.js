@@ -61,10 +61,10 @@ export const useInstagramStore = create((set)=> ({
   follower_count: 0,
   media_count: 0,
   src_url: null,
-  demographics: [],
-  geographics: [],
+  demographics: null,
+  geographics: null,
   data_intervals:null,
-  medias: [],
+  medias: null,
   setInstagramState: (props) => {
     for (let key in props) {
       set({
@@ -81,10 +81,10 @@ export const useFacebookStore = create((set)=> ({
   like_count: 0,
   media_count: 0,
   src_url: null,
-  demographics: [],
-  geographics: [],
+  demographics: null,
+  geographics: null,
   data_intervals: null,
-  medias: [],
+  medias: null,
   setFacebookState: (props) => {
     for (let key in props) {
       set({

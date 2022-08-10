@@ -34,8 +34,6 @@ export default function InstagramChart() {
 
         const legends = ['Followers', 'Impressions', 'Reaches']
         const intervalKeys = ['follower_count', 'impression_count', 'reach_count'] // Temporary solution, to delete
-
-        
         
         if (intervalData) { 
             // Get data by mapping over follower/impression/reach, doesn't matter
