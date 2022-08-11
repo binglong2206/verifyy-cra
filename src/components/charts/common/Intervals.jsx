@@ -61,14 +61,14 @@ const Intervals = ({data}) => {
                 {data && <Box margin='auto'>
                     <ReactApexChart
                         options={{
-                            colors: [
-                                '#42d7f5', 
-                                '#73159e', 
-                                '#6e856d', 
-                                '#d1bf88', 
-                                '#eb4c17', 
-                                '#eb4c97', 
-                            ],
+                            // colors: [
+                            //     '#b30000', 
+                            //     '#1979ff', 
+                            //     '#422af7', 
+                            //     '#d1bf88', 
+                            //     '#eb4c17', 
+                            //     '#eb4c97', 
+                            // ],
                             chart: {
                                 height: 370,
                                 type: 'line',

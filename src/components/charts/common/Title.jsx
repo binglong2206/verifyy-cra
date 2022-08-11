@@ -44,7 +44,7 @@ export default function Title({title, username, description, src_url, profile_im
                     </Text>
                     <Spacer />
                     <Flex align='center'>
-                    <Link href={src_url} isExternal={true}> 
+                    <Link href={'/edit'}> 
                         <Button
                             p='0px'
                             variant='no-hover'

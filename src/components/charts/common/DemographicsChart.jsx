@@ -12,14 +12,14 @@ const Geographics = ({data}) => {
 		<Box margin='auto'>
 			<ReactApexChart
 				options={{
-					colors: [
-						'#42d7f5',
-						'#73159e',
-						'#6e856d', 
-						'#d1bf88', 
-						'#eb4c17', 
-                        '#eb4c97', 
-					],
+					// colors: [
+					// 	'#42d7f5',
+					// 	'#73159e',
+					// 	'#6e856d', 
+					// 	'#d1bf88', 
+					// 	'#eb4c17', 
+                    //     '#eb4c97', 
+					// ],
 					chart: {
                         type: 'donut',
                         height: 350,
@@ -40,7 +40,7 @@ const Geographics = ({data}) => {
                                     name: {
                                         show: true,
                                         fontSize: '24px',
-                                        fontFamily: 'Poppins',
+                                        // fontFamily: 'Poppins',
                                         fontWeight: 900,
                                         offsetY: 0,
                                         formatter(val) {
@@ -50,7 +50,7 @@ const Geographics = ({data}) => {
                                     value: {
                                         show: true,
                                         fontSize: '16px',
-                                        fontFamily: 'Poppins',
+                                        // fontFamily: 'Poppins',
                                         fontWeight: 900,
                                         offsetY: 16,
                                         formatter(val) {

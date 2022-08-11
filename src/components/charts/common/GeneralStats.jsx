@@ -29,7 +29,7 @@ import { BsFillPersonCheckFill } from "react-icons/bs";
               return (
                 <Flex key={key} justifyContent='space-between' mb='21px'>
                   <Flex align='center'>
-                    <IconBox as='box' h={"45px"} w={"45px"} bg={'blue'}>
+                    <IconBox as='box' h={"45px"} w={"45px"} bg={'gray.700'} color={'white'}>
                       {e.icon}
                     </IconBox>
                     <Flex direction='column' ml={4}>
@@ -42,7 +42,7 @@ import { BsFillPersonCheckFill } from "react-icons/bs";
                     <Text
                       fontSize='sm'
                       fontWeight='600'
-                      color='blue.300'
+                      color='black'
                       alignSelf='center'>
                       {e.value}
                     </Text>

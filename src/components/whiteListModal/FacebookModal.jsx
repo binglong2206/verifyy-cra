@@ -101,7 +101,7 @@ export default function FacebookModal({isOpen, onOpen, onClose}) {
                       Registration received.
                   </Heading>
                   <Text color={'gray.500'} fontSize='lg'>
-                    Our Youtube OAuth2.0 endpoints will be available within 24H.
+                    Your Youtube OAuth2.0 endpoints will be available within 24H.
                     Please check back later.
                   </Text>
               </Box>
