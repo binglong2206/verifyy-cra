@@ -128,9 +128,11 @@ export default function InstagramChart() {
 
         {charts.indexOf(6) !== -1 &&  
             <Medias 
-                title='Latest Video Uploads'
+                title='Latest Posts'
                 description=''
                 medias={instagram.medias}
+                statsKeys={['like_count', 'comment_count']}
+                statsLabel={['Likes', "Comments"]}
             />}
 
         </>

@@ -6,7 +6,8 @@ import {
     Spacer,
     Text,
     Image,
-    Link
+    Link,
+    useColorModeValue
   } from "@chakra-ui/react";
   import Card from "../../card/Card.js";
   import CardBody from "../../card/CardBody.js";
@@ -14,8 +15,10 @@ import {
 
 
 export default function Title({title, username, description, src_url, profile_image}) {
+    const textColor = useColorModeValue("gray.700", "white");
+
+
     return (
-        
         <Card minHeight='290.5px' p='1.2rem'>
             <CardBody w='100%'>
                 <Flex flexDirection={{ sm: "column", lg: "row" }} w='100%'>
@@ -24,7 +27,7 @@ export default function Title({title, username, description, src_url, profile_im
                     h='100%'
                     lineHeight='1.6'
                     width={{ lg: "45%" }}>
-                    <Text fontSize='sm' color='gray.400' fontWeight='bold'>
+                    {/* <Text fontSize='sm' color='gray.400' fontWeight='bold'>
                     {title}
                     </Text>
                     <Text fontSize='lg' color={'gray.400'} fontWeight='bold' pb='.5rem'>
@@ -32,6 +35,12 @@ export default function Title({title, username, description, src_url, profile_im
                     </Text>
                     <Text fontSize='sm' color='gray.500' fontWeight='normal'>
                     {description}
+                    </Text> */}
+                    <Text fontSize='lg' color={textColor} fontWeight='bold'>
+                        {title}
+                    </Text>
+                    <Text fontSize='sm' color='gray.500' fontWeight='400'>
+                        {username}
                     </Text>
                     <Spacer />
                     <Flex align='center'>
@@ -68,16 +77,20 @@ export default function Title({title, username, description, src_url, profile_im
                 </Flex>
                 <Spacer />
                 <Flex
-                    bg='blue.300'
+                    // bg='blue.300'
                     align='center'
                     justify='center'
-                    borderRadius='15px'
+                    // borderRadius='15px'
                     width={{ lg: "40%" }}
-                    minHeight={{ sm: "250px" }}>
+                    h={{ sm: "250px" }}
+                    >
                     <Image
                         src={profile_image}
                         alt='Profile Image'
-                        maxWidth={{ md: "250px", lg: "auto" }}
+                        borderRadius='xl'
+                        objectFit='cover'
+                        h='100%'
+                        w='100%'
                     />
                 </Flex>
                 </Flex>

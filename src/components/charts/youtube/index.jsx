@@ -124,6 +124,8 @@ export default function YoutubeChart() {
                 title='Latest Video Uploads'
                 description=''
                 medias={youtube.medias}
+                statsKeys={['view_count', 'like_count', 'comment_count']}
+                statsLabel={['Views', 'Likes', "Comments"]}
             />}
 
         </>

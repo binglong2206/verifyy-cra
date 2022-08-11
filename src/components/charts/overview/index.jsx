@@ -20,22 +20,26 @@ return (
         <StatsCard
           title={"Total Followers"}
           amount={user.follower_count ? user.follower_count : 0}
+          bgColor={useColorModeValue('gray.700', 'white')}
           icon={<BsFillPersonCheckFill h={"24px"} w={"24px"} color={iconBoxInside} />}
         />
         <StatsCard
           title={"Youtube's Subscribers"}
           amount={youtube.follower_count}
           // percentage={5}
+          bgColor='red.500'
           icon={<BsYoutube h={"24px"} w={"24px"} color={iconBoxInside} />}
         />
         <StatsCard
           title={"Instagram Followers"}
           amount={instagram.follower_count}
+          bgColor='purple.500'
           icon={<BsInstagram h={"24px"} w={"24px"} color={iconBoxInside} />}
         />
         <StatsCard
           title={"Facebook Fans"}
           amount={facebook.follower_count}
+          bgColor='blue.500'
           // percentage={8}
           icon={<BsFacebook h={"24px"} w={"24px"} color={iconBoxInside} />}
         />

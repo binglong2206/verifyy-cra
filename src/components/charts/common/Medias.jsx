@@ -13,9 +13,19 @@ import CardHeader from "../../card/CardHeader";
 import MediaCard from "./MediaCard";
 import mediaThumbnail from '../../../assets/img/ImageArchitect1.png'
 
-const Medias = ({title, description, medias}) => {
+const Medias = ({title, description, medias, statsKeys, statsLabel}) => {
   // Chakra color mode
   const textColor = useColorModeValue("gray.700", "white");
+
+  const getStats = (media) => {
+    let stats = '';
+
+    for (let i in statsKeys) {
+      stats += `${statsLabel[i]}: ${media[statsKeys[i]]}${" "}`
+    }
+
+    return stats;
+  }
 
   return (
     <Card p='16px' my='0px'>
@@ -44,10 +54,8 @@ const Medias = ({title, description, medias}) => {
                 image={e.thumbnail}
                 name={e.title}
                 src_url={e.src_url}
-                category={e.title}
-                description={
-                  "Media Description"
-              }
+                title={e.title}
+                description={getStats(e)}
             />
               )
             })}

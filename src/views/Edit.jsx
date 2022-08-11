@@ -100,9 +100,9 @@ export default function Dashboard() {
         <PanelContent>
           <PanelContainer>
             <Flex direction='column'>
-              <Link href="http://localhost:8000/api/youtube/redirect">
-              <Button>Connect Youtube</Button>
-              </Link>
+              {/* <Link href="http://localhost:8000/api/youtube/redirect">
+                <Button>Connect Youtube</Button>
+              </Link> */}
               <DashboardHeader
                   backgroundHeader={ProfileBgImage}
                   backgroundProfile={bgProfile}

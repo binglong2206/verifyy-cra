@@ -135,7 +135,16 @@ export default function FacebookChart() {
             </Grid>
         }
 
-        {charts.indexOf(9) !== -1 &&  <Medias />}
+        {charts.indexOf(9) !== -1 &&  
+            <Medias 
+                title='Latest Posts'
+                description=''
+                medias={facebook.medias}
+                statsKeys={['like_count', 'comment_count']}
+                statsLabel={['Likes', "Comments"]}
+            />
+        }
+   
 
         </>
     )

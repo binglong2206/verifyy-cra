@@ -11,7 +11,7 @@ import {
   import CardBody from "../../card/CardBody.js";
   import IconBox from "../../Icons/IconBox";
   
-  const StatsCard = ({ title, amount, percentage, icon }) => {
+  const StatsCard = ({ title, amount, percentage, icon, bgColor }) => {
     const iconBlue = useColorModeValue("blue.300", "blue.300");
     const textColor = useColorModeValue("gray.700", "white");
   
@@ -43,7 +43,7 @@ import {
                 </StatHelpText>
               </Flex>
             </Stat>
-            <IconBox as='box' h={"45px"} w={"45px"} bg={iconBlue}>
+            <IconBox as='box' h={"45px"} w={"45px"} bg={bgColor}>
               {icon}
             </IconBox>
           </Flex>

@@ -69,6 +69,7 @@ const DashboardHeader = ({
         bgColor={!background_image ? 'gray.500' : ''}
         w='100%'
         h='300px'
+        objectFit='cover'
         borderRadius='25px'
         bgPosition='50%'
         bgRepeat='no-repeat'
