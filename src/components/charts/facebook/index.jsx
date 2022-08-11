@@ -100,7 +100,7 @@ export default function FacebookChart() {
 
     return (
         <>
-        {charts.indexOf(1) !== -1 && 
+        {charts.indexOf(7) !== -1 && 
             <Grid
             templateColumns={{ md: "1fr", lg: "1.8fr 1.2fr" }}
             templateRows={{ md: "1fr auto", lg: "1fr" }}
@@ -119,7 +119,7 @@ export default function FacebookChart() {
             </Grid>
         }
 
-        {charts.indexOf(2) !== -1 && 
+        {charts.indexOf(8) !== -1 && 
             <Grid
             templateColumns={{ sm: "1fr", lg: "1.1fr 1.9fr" }}
             templateRows={{ sm: "repeat(2, 1fr)", lg: "1fr" }}
@@ -135,7 +135,7 @@ export default function FacebookChart() {
             </Grid>
         }
 
-        {charts.indexOf(3) !== -1 &&  <Medias />}
+        {charts.indexOf(9) !== -1 &&  <Medias />}
 
         </>
     )
