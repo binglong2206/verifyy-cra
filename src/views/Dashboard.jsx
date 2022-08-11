@@ -38,7 +38,10 @@ export default function Dashboard() {
   const setInstagramState = useInstagramStore(state=> state.setInstagramState)
   const setFacebookState = useFacebookStore(state=>state.setFacebookState);
   const setStatState = useUserStore(state=>state.setStatState);
-
+  const userState =  useUserStore(state=> state)
+  const youtubeState = useYoutubeStore(state=> state);
+  const instagramState = useInstagramStore(state=>state);
+  const facebookState = useFacebookStore(state=>state);
   const tabState = useTabStore(state=>state)
 
 
@@ -84,15 +87,16 @@ export default function Dashboard() {
                   backgroundHeader={ProfileBgImage}
                   backgroundProfile={bgProfile}
                   avatarImage={avatar}
-                  name={"Matthew Ryu"}
-                  email={"MatthewFireHand@gmail.com"} />
+                  name={userState.username}
+                  email={userState.email} 
+                  />
 
                   {/* <div>THIS PUBLIC DASHBOARD BELONGS TO  {username}</div>
                   {charts_order.indexOf(1) !== -1 && <Chart1 />} */}
-                  <OverviewChart />
-                  {tabState.ytTab && <YoutubeChart />}
-                  {tabState.igTab && <InstagramChart />}
-                  {tabState.fbTab && <FacebookChart />}
+                  {userState.follower_count && <OverviewChart /> }
+                {(tabState.ytTab && youtubeState.id ) && <YoutubeChart />}
+                {(tabState.igTab && instagramState.id) && <InstagramChart />}
+                {(tabState.fbTab && facebookState.id) && <FacebookChart />}
 
               </Flex>
           </PanelContainer>

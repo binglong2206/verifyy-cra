@@ -42,7 +42,7 @@ import { BsFillPersonCheckFill } from "react-icons/bs";
                     <Text
                       fontSize='sm'
                       fontWeight='600'
-                      color='black'
+                      color={textColor}
                       alignSelf='center'>
                       {e.value}
                     </Text>

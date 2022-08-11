@@ -31,7 +31,7 @@ const MediaCard = ({ image, name, title, description, src_url }) => {
         <Text fontSize='xl' color={textColor} fontWeight='bold' mb='10px'>
           {title}
         </Text>
-        <Text fontSize='md' color='gray.700' fontWeight='bold' mb='20px'>
+        <Text fontSize='md' color={textColor} fontWeight='bold' mb='20px'>
           {description}
         </Text>
         <Flex justifyContent='space-between'>
