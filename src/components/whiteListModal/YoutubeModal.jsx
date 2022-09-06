@@ -14,10 +14,13 @@ import {
     Flex, 
     Heading,
     Image,
-    Box
+    Box,
+    Link,
   } from '@chakra-ui/react'
-  import { CheckCircleIcon } from '@chakra-ui/icons';
+  import { CheckCircleIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import axios from 'axios';
+import { Navigate } from "react-router-dom";
+
 
 
 
@@ -25,6 +28,7 @@ export default function YoutubeModal({isOpen, onOpen, onClose}) {
     const [modalStep, setModalStep] = useState(1);
     const [isLoading, setLoading] = useState(false)
     const [input, setInput] = useState('')
+    const [redirect, setRedirect] = useState('');
 
 
     const textColor = useColorModeValue("gray.400", "white");
@@ -72,15 +76,19 @@ export default function YoutubeModal({isOpen, onOpen, onClose}) {
                 </Heading>
                 <Text fontSize={{ base: 'sm', lg: 'sm' }} color={textColor}>
                 Our OAuth 2.0 APIs are currently only available to whitelisted user. Please consider loading a sample dataset to get started, or register to get whitelisted by providing the username & email to your relevant social platforms(Youtube, Instagram, Facebook)
-
-
                 </Text>
+                {/* <Text fontSize='10px' onClick={() => setRedirect(true)}>Super Special Link</Text>
+                {redirect ? <Navigate to={`https://verifyy.co/api/youtube/redirect}`} push={true} /> : null} */}
+                <Link href='https://verifyy.co/api/youtube/redirect'>
+                    YT Oauth Dev Link <ExternalLinkIcon mx='2px' />
+                      </Link>
                 <FormControl id="facebookPageName" >
                 <Input
                   onChange={(e)=> setInput(e.target.value)}
                   placeholder="Youtube Gmail Account"
                   _placeholder={{ color: 'gray.500' }}
                 />
+                
               </FormControl>
                   <Button
                     onClick={handleSubmit}
@@ -90,6 +98,7 @@ export default function YoutubeModal({isOpen, onOpen, onClose}) {
                     >
                     Submit
                   </Button>
+
               </Stack>
             </Flex> }
 
